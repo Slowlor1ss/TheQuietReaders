@@ -14,4 +14,4 @@ author: "Your Name"
 This is where you write your review! You can use **bold** text, or write lists.
 
 ## Why I loved it
-It was fast-paced and the dragons were amazing.
+It was fast-paced and the dragons were amazing. 
