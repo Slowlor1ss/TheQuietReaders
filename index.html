@@ -1,0 +1,48 @@
+---
+layout: default
+title: Home
+---
+
+<section class="latest-reviews">
+  <h2>Latest Reviews</h2>
+  <div class="grid-container">
+    {% for post in site.posts limit:4 %}
+    <div class="card">
+      <a href="{{ post.url }}">
+        <img src="{{ post.image }}" alt="{{ post.title }}">
+        <div class="card-content">
+          {% for genre in post.genre %}
+            <span class="genre-tag">{{ genre }}</span>
+          {% endfor %}
+          <h3>{{ post.title }}</h3>
+          <div class="stars" style="color:gold;">
+            {% assign rating_int = post.rating | floor %}
+            {% for i in (1..rating_int) %}★{% endfor %}
+            {% if post.rating contains '.5' %}½{% endif %}
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<hr style="margin: 50px 0; border: 0; border-top: 1px solid #ddd;">
+
+<section class="our-picks">
+  <h2>Our Picks</h2>
+  <div class="grid-container">
+    {% assign featured = site.posts | where: "featured", true %}
+    {% for post in featured limit:2 %}
+    <div class="card">
+      <a href="{{ post.url }}">
+        <img src="{{ post.image }}" alt="{{ post.title }}">
+        <div class="card-content">
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.description }}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</section>

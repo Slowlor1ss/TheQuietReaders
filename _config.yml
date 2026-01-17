@@ -1,0 +1,21 @@
+title: The Quiet Readers
+email: contact@thequietreaders.com
+description: >-
+  A dreamy space for book reviews, romance, fantasy, and media.
+baseurl: "" 
+url: "https://thequietreaders.com" 
+twitter_username: quietreaders
+github_username:  quietreaders
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Navigation links for your header
+header_pages:
+  - index.html
+  - about.md
+  - books.md
+  - tv.md
+  - games.md

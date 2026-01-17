@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+</head>
+<body>
+
+  <header id="site-header">
+    <div class="header-content">
+      <a href="/" class="site-title">{{ site.title }}</a>
+      <nav>
+        <a href="/about">About</a>
+        <a href="/books">Books</a>
+        <a href="/tv">Movies & TV</a>
+        <a href="/games">Games</a>
+      </nav>
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      {{ content }}
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>We are The Quiet Readers, exploring worlds one page at a time.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Subscribe</h3>
+        <p>Join our newsletter for weekly updates.</p>
+        <form>
+            <input type="email" placeholder="Your email address">
+            <button>Join</button>
+        </form>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>hello@thequietreaders.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; {{ site.time | date: "%Y" }} The Quiet Readers.
+    </div>
+  </footer>
+
+  <div id="back-to-top" onclick="scrollToTop()">&#8679;</div>
+
+  <script src="/assets/js/scripts.js"></script>
+</body>
+</html>

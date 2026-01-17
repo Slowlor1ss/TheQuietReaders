@@ -1,0 +1,68 @@
+---
+layout: default
+---
+
+<article class="review-post">
+  
+  <div class="review-header">
+    <div class="review-image">
+      <img src="{{ page.image }}" alt="{{ page.title }}">
+    </div>
+    <div class="review-meta">
+      <h1 class="post-title">{{ page.title }}</h1>
+      <div class="tags">
+        {% for genre in page.genre %}
+        <span class="genre-tag">{{ genre }}</span>
+        {% endfor %}
+      </div>
+      <div class="stars-large">
+        Rating: 
+        {% assign rating_int = page.rating | floor %}
+        {% for i in (1..rating_int) %}★{% endfor %}
+        {% if page.rating contains '.5' %}½{% endif %}
+      </div>
+      <p class="author">Review by <strong>{{ page.author }}</strong> on {{ page.date | date_to_string }}</p>
+    </div>
+  </div>
+
+  <div class="review-content">
+    {{ content }}
+  </div>
+
+  <hr>
+
+  <h3>You might also like...</h3>
+  <div class="grid-container">
+    {% assign maxRelated = 2 %}
+    {% assign minCommonTags =  1 %}
+    {% assign maxRelatedCounter = 0 %}
+    
+    {% for post in site.posts %}
+      {% assign sameTagCount = 0 %}
+      
+      {% for tag in post.genre %}
+        {% if post.url != page.url %}
+          {% if page.genre contains tag %}
+            {% assign sameTagCount = sameTagCount | plus: 1 %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if sameTagCount >= minCommonTags %}
+        <div class="card">
+            <a href="{{ post.url }}">
+            <img src="{{ post.image }}" alt="{{ post.title }}">
+            <div class="card-content">
+                <h4>{{ post.title }}</h4>
+            </div>
+            </a>
+        </div>
+        {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+        {% if maxRelatedCounter >= maxRelated %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+</article>
