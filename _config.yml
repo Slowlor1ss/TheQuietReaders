@@ -5,7 +5,7 @@ description: >-
 baseurl: "" 
 url: "https://thequietreaders.com" 
 twitter_username: quietreaders
-github_username:  quietreaders
+github_username:  slowlor1ss
 
 # Build settings
 theme: minima
