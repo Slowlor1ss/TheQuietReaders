@@ -4,32 +4,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }} | {{ site.title }}</title>
-  
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
-  
+  <link rel="stylesheet" href="/assets/css/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 </head>
 <body>
 
   <header id="site-header">
     <div class="header-content">
-      <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
+      <a href="/" class="site-title">{{ site.title }}</a>
       <nav>
-        <a href="{{ site.baseurl }}/about">About</a>
-        <a href="{{ site.baseurl }}/books">Books</a>
-        <a href="{{ site.baseurl }}/tv">Movies & TV</a>
-        <a href="{{ site.baseurl }}/games">Games</a>
+        <a href="/about">About</a>
+        <a href="/books">Books</a>
+        <a href="/tv">Movies & TV</a>
+        <a href="/games">Games</a>
       </nav>
-      
-      <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search reviews...">
-        <ul id="results-container"></ul>
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
       </div>
     </div>
   </header>
 
-  <main class="page-content">
+  <main class="page-content" aria-label="Content">
     <div class="wrapper">
       {{ content }}
     </div>
@@ -39,7 +36,15 @@
     <div class="footer-content">
       <div class="footer-section">
         <h3>About Us</h3>
-        <p>Exploring worlds one page at a time.</p>
+        <p>We are The Quiet Readers, exploring worlds one page at a time.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Subscribe</h3>
+        <p>Join our newsletter for weekly updates.</p>
+        <form>
+            <input type="email" placeholder="Your email address">
+            <button>Join</button>
+        </form>
       </div>
       <div class="footer-section">
         <h3>Contact</h3>
@@ -53,17 +58,6 @@
 
   <div id="back-to-top" onclick="scrollToTop()">&#8679;</div>
 
-  <script>
-    SimpleJekyllSearch({
-      searchInput: document.getElementById('search-input'),
-      resultsContainer: document.getElementById('results-container'),
-      json: '{{ site.baseurl }}/search.json',
-      searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
-      noResultsText: 'No results found',
-      limit: 5,
-      fuzzy: false
-    })
-  </script>
-  <script src="{{ site.baseurl }}/assets/js/scripts.js"></script>
+  <script src="/assets/js/scripts.js"></script>
 </body>
 </html>
