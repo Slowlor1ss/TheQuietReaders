@@ -26,8 +26,8 @@ h1, h2, h3, .site-title, .page-heading {
 /* --- Custom Divider Line (Matches Homepage) --- */
 hr {
   border: 0;                  /* Removes the ugly 3D border */
-  border-top: 1px solid #eee; /* Adds the clean, thin grey line */
-  margin: 50px 0;             /* Adds plenty of breathing room above/below */
+  border-top: 2px solid #eee; /* Adds the clean, thin grey line */
+  margin: 30px 0;             /* Adds plenty of breathing room above/below */
   height: 0;                  /* Ensures it doesn't take up extra height */
 }
 
