@@ -86,3 +86,30 @@ layout: default
   </div>
 
 </article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Book",
+    "name": "{{ page.title }}",
+    "image": "{{ site.url }}{{ site.baseurl }}{{ page.image }}",
+    {% if page.isbn %}"isbn": "{{ page.isbn }}"{% endif %}
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "{{ page.rating }}",
+    "bestRating": "5"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "{{ page.author }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Quiet Readers"
+  },
+  "description": "{{ page.description | strip_html | escape }}"
+}
+</script>
