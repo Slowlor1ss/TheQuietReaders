@@ -3,14 +3,14 @@ layout: review
 title: "The Wrong Game by Kandi Steiner"
 date: 18-01-2026
 pages: 416
-isbn: " 9781923232068"
+isbn: "9781923232068"
 amznlink: "https://amzn.to/3Z5FEcR"
 bookshplink: ""
 image: "/assets/images/books/TheWrongGameKandiSteiner_Small.png"
 genre: ["Contemporary", "Romance"]
 category: "Book"
 rating: 3
-featured: true
+featured: false
 description: "Two season tickets. One genius idea. Zero interest in a relationship. Until…"
 author: "Eris Langley"
 ---

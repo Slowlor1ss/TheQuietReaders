@@ -4,86 +4,117 @@ layout: default
 
 <article class="review-post">
   
-  <img src="{{ site.baseurl }}{{ page.image }}" alt="{{ page.title }}" class="review-float-image">
+    <img src="{{ site.baseurl }}{{ page.image }}" alt="{{ page.title }}" class="review-float-image">
 
-  <div class="review-meta">
-    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="review-meta">
+        <h1 class="post-title">{{ page.title }}</h1>
     
-    <div class="tags">
-      {% for genre in page.genre %}
-      <span class="genre-tag">{{ genre }}</span>
-      {% endfor %}
-    </div>
-    
-    <div class="stars-large">
-      Rating: 
-      {% include stars.html rating=page.rating %}
-    </div>
-
-    {% if page.pages %}
-    <p class="page-count" style="margin-top: 5px; margin-bottom: 5px; color: #555;">
-      Pages: {{ page.pages }}
-    </p>
-    {% endif %}
-
-    <p class="author" style="margin-top: 5px;">Review by <strong>{{ page.author }}</strong> on {{ page.date | date: "%-d %B %Y" }}</p>
-  </div>
-
-  <div class="review-content">
-    {{ content }}
-  </div>
-
-  <div style="clear: both;"></div>
-
-  <hr>
-
-  <h3>You might also like...</h3>
-  <div class="grid-container">
-    {% assign maxRelated = 2 %}
-    {% assign minCommonTags = 1 %}
-    {% assign maxRelatedCounter = 0 %}
-    
-    {% for post in site.posts %}
-      {% assign sameTagCount = 0 %}
-      
-      {% for tag in post.genre %}
-        {% if post.url != page.url %}
-          {% if page.genre contains tag %}
-            {% assign sameTagCount = sameTagCount | plus: 1 %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-      
-      {% if sameTagCount >= minCommonTags %}
-        <div class="card">
-          <a href="{{ site.baseurl }}{{ post.url }}">
-            <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}">
-            <div class="card-content">
-              
-              <div class="tags-container">
-                {% for genre in post.genre %}
-                  <span class="genre-tag">{{ genre }}</span>
-                {% endfor %}
-              </div>
-
-              <h3>{{ post.title }}</h3>
-
-              {% include stars.html rating=post.rating %}
-
-              <p>
-                {{ post.description }}
-              </p>
-
-            </div>
-          </a>
+        <div class="tags">
+            {% for genre in page.genre %}
+            <span class="genre-tag">{{ genre }}</span>
+            {% endfor %}
         </div>
-        {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
-        {% if maxRelatedCounter >= maxRelated %}
-          {% break %}
+    
+        <div class="stars-large">
+            Rating: 
+            {% include stars.html rating=page.rating %}
+        </div>
+
+        {% if page.pages %}
+        <p class="page-count" style="margin-top: 5px; margin-bottom: 5px; color: #555;">
+            Pages: {{ page.pages }}
+        </p>
         {% endif %}
-      {% endif %}
-    {% endfor %}
-  </div>
+
+        <p class="author" style="margin-top: 5px;">Review by <strong>{{ page.author }}</strong> on {{ page.date | date: "%-d %B %Y" }}</p>
+
+        <div class="affiliate-section">
+            
+            <div class="affiliate-buttons-col">
+                
+                {% if page.amznlink and page.amznlink != "" %}
+                <a href="{{ page.amznlink }}" target="_blank" rel="nofollow noopener" class="buy-btn">
+                    Amazon
+                </a>
+                {% endif %}
+
+                {% if page.bookshplink and page.bookshplink != "" %}
+                <a href="{{ page.bookshplink }}" target="_blank" rel="nofollow noopener" class="buy-btn">
+                    Bookshop
+                </a>
+                {% endif %}
+            </div>
+
+            <div class="affiliate-message-col">
+              {% if page.bookshplink and page.bookshplink != "" %}
+              <div class="bookshop-reason">
+                <span class="reason-icon">🌱</span>
+                <p>
+                  <strong>Support Local:</strong> We recommend <strong>Bookshop.org</strong> to help keep independent bookstores alive.
+                </p>
+              </div>
+              {% endif %}
+            </div>
+        </div>
+          <p class="affiliate-disclaimer">We earn a commission if you buy via these links.</p>
+
+    </div>
+
+    <div class="review-content">
+        {{ content }}
+    </div>
+
+    <div style="clear: both;"></div>
+
+    <hr>
+
+    <h3>You might also like...</h3>
+    <div class="grid-container">
+        {% assign maxRelated = 2 %}
+        {% assign minCommonTags = 1 %}
+        {% assign maxRelatedCounter = 0 %}
+    
+        {% for post in site.posts %}
+            {% assign sameTagCount = 0 %}
+      
+            {% for tag in post.genre %}
+                {% if post.url != page.url %}
+                    {% if page.genre contains tag %}
+                        {% assign sameTagCount = sameTagCount | plus: 1 %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+      
+            {% if sameTagCount >= minCommonTags %}
+            <div class="card">
+                <a href="{{ site.baseurl }}{{ post.url }}">
+                    <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}">
+                    <div class="card-content">
+              
+                        <div class="tags-container">
+                            {% for genre in post.genre %}
+                            <span class="genre-tag">{{ genre }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <h3>{{ post.title }}</h3>
+
+                        {% include stars.html rating=post.rating %}
+
+                        <p>
+                            {{ post.description }}
+                        </p>
+
+                    </div>
+                </a>
+            </div>
+            {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+            {% if maxRelatedCounter >= maxRelated %}
+                {% break %}
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
 
 </article>
 

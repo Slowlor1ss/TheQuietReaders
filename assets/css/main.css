@@ -389,6 +389,155 @@ nav a:hover { color: var(--primary); }
   margin-bottom: 20px;   /* Space between the meta info and the review text */
 }
 
+/* --- Affiliate Section Container --- */
+.affiliate-section {
+    display: flex;
+    align-items: center; /* Vertically centers the text with the buttons */
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* --- Left Column: Message --- */
+.affiliate-message-col {
+    flex: 1; /* Takes up all remaining space */
+}
+
+.bookshop-reason {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    
+    padding: 10px 15px;
+    background-color: #fcfbfd;
+    border-radius: 8px;
+    border-left: 3px solid #8e44ad;
+}
+
+.reason-icon {
+    font-size: 1.2rem;
+}
+
+.bookshop-reason p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* --- Affiliate Section Container --- */
+.affiliate-section {
+    display: flex;
+    flex-direction: row; /* Buttons Left, Text Right */
+    align-items: flex-start; /* Align to top so they don't stretch weirdly */
+    gap: 15px;
+    margin-top: 20px;
+    width: 61%;
+}
+
+/* --- Left Column: Buttons --- */
+.affiliate-buttons-col {
+    width: 25%; /* Fixed width to keep buttons compact */
+    flex-shrink: 0; /* Prevents buttons from getting squished */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* --- Right Column: Message --- */
+.affiliate-message-col {
+    flex: 1; /* Takes up the remaining space on the right */
+    display: flex;
+    align-items: center; /* Vertically center the text box */
+    height: 100%;
+    padding-top: 2px; /* Slight visual adjustment to align with top button */
+}
+
+/* The Sustainability Box */
+.bookshop-reason {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    
+    padding: 8px 12px;
+    background-color: #fcfbfd; /* Subtle background */
+    border-radius: 8px;
+    border-left: 3px solid #8e44ad;
+}
+
+.reason-icon {
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+.bookshop-reason p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.3;
+}
+
+/* --- Button Styling --- */
+.buy-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 6px 0; /* Slightly thinner to save vertical space */
+    
+    background-color: transparent;
+    border: 1px solid #8e44ad;
+    color: #8e44ad !important;
+    
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: #8e44ad;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(142, 68, 173, 0.2);
+}
+
+.affiliate-disclaimer {
+    font-size: 0.65rem;
+    color: #aaa;
+    text-align: left;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+/* --- Mobile versions for affiliate buttons --- */
+@media (max-width: 600px) {
+    .affiliate-section {
+        flex-direction: column; /* Stack vertically */
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .affiliate-buttons-col {
+        width: 70%;        /* Make buttons distinct (not full edge-to-edge) */
+        max-width: 280px;  /* Stop them getting too big on larger phones */
+        margin: 0 auto;    /* This centers the button block horizontally */
+    }
+
+    .affiliate-message-col {
+        width: 100%;
+    }
+    
+    .bookshop-reason {
+        justify-content: center; /* Center the icon and text */
+    }
+
+    .affiliate-disclaimer {
+        text-align: center;
+    }
+}
+
 /* --- Mobile View --- */
 /* On phones, we stack it so it's not squished */
 @media (max-width: 768px) {

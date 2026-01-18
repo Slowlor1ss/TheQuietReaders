@@ -52,7 +52,7 @@ title: Home
 
   <div class="grid-container">
     {% assign featured = site.posts | where: "featured", true %}
-    {% for post in featured limit:2 %}
+    {% for post in featured limit:4 %}
     
     <div class="card">
       <a href="{{ site.baseurl }}{{ post.url }}">
