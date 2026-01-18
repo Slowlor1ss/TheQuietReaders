@@ -15,6 +15,17 @@ body {
   color: var(--text-color);
   margin: 0;
   line-height: 1.8;
+
+  /* Ensure the body is at least as tall as the screen */
+  min-height: 100vh;
+  /* Stack everything vertically (also to ensure the footer sticks to bottom) */
+  display: flex;
+  flex-direction: column;
+}
+
+/* This makes the middle section grow to fill the empty space */
+.page-content, main {
+  flex: 1;
 }
 
 h1, h2, h3, .site-title, .page-heading {
@@ -83,6 +94,60 @@ nav a:hover { color: var(--primary); }
 }
 
 /* Search Bar Styling */
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+
+  /* width: 100%; */
+  max-width: 200px;
+  min-width: 185px;
+  /* padding: 12px 20px; */
+
+  /* Make space for the icon so text doesn't type over it */
+  border: 1px solid #ddd;
+  border-radius: 25px; /* Fully rounded pill shape */
+  outline: none;
+  font-size: 1rem;
+
+  transition: all 0.3s ease;
+} 
+
+.search-bar:focus {
+  border-color: #8e44ad;
+  box-shadow: 0 0 8px rgba(142, 68, 173, 0.2);
+}
+
+/* --- The Clickable Button --- */
+.search-icon-btn {
+  position: absolute;
+  
+  /* Position on the RIGHT */
+  right: 10px; 
+  top: 50%;
+  transform: translateY(-50%);
+  
+  /* Remove button styles */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 10;
+  display: flex;
+}
+
+/* --- The SVG Icon --- */
+.search-icon {
+  width: 20px;
+  height: 20px;
+  stroke: #8e44ad;
+}
+
 .search-container { position: relative; }
 #search-input {
   padding: 8px 15px;
@@ -210,6 +275,63 @@ nav a:hover { color: var(--primary); }
   color: #f1c40f; /* Stars colour */
   letter-spacing: 2px;
   font-size: 1.1rem;
+}
+
+/* --- Header Layout --- */
+.section-header {
+  display: flex;
+  justify-content: space-between; /* Pushes title left, link right */
+  align-items: baseline;          /* Aligns text to the bottom "line" */
+  margin-bottom: 25px;
+  border-bottom: 1px solid #f0f0f0; /* Optional: A very faint line under the header */
+  padding-bottom: 10px;
+}
+
+.section-header h2 {
+  margin: 0; /* Remove default margin so it aligns perfectly */
+  font-size: 1.8rem;
+}
+
+/* --- The View All Link --- */
+.view-all-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #8e44ad; /* Your purple */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* The arrow symbol wrapper */
+.view-all-link span {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+/* Hover Effects */
+.view-all-link:hover {
+  color: #6c3483; /* Slightly darker purple */
+}
+
+.view-all-link:hover span {
+  transform: translateX(4px); /* Moves the arrow to the right */
+}
+
+/* --- Mobile Optimization --- */
+@media (max-width: 600px) {
+  .section-header {
+    align-items: center; /* Center vertically on phone is safer */
+    margin-bottom: 20px;
+  }
+  
+  .section-header h2 {
+    font-size: 1.4rem; /* Smaller title on phone */
+  }
+  
+  .view-all-link {
+    font-size: 0.85rem; /* Smaller link text */
+  }
 }
 
 /* Review Page Specifics */

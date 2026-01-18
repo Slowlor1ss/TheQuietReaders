@@ -1,28 +1,20 @@
 ---
 layout: default
-title: Book Reviews
-permalink: /books/
+title: Our Picks
+permalink: /our-picks/
 ---
 
-<h1 class="page-heading">Book Reviews</h1>
+<div class="container">
+  <!-- <div class="section-header">
+    <h1>Our Picks</h1>
+  </div> -->
+  <h1 class="page-heading" style="margin-bottom: 0px;">Our Picks</h1>
+  <p style="margin-top: 0px; margin-bottom: 30px;">The books we simply couldn't put down.</p>
 
-<div class="grid-container">
-  {% assign book_posts = site.posts | where: "category", "Book" %}
-  {% for post in book_posts %}
-    <!-- <div class="card">
-      <a href="{{ site.baseurl }}{{ post.url }}">
-        <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}">
-        <div class="card-content">
-          {% for genre in post.genre %}
-            <span class="genre-tag">{{ genre }}</span>
-          {% endfor %}
-          <h3>{{ post.title }}</h3>
-          <div class="stars">
-             {% include stars.html rating=post.rating %}
-          </div>
-        </div>
-      </a>
-    </div> -->
+  <div class="grid-container">
+    {% assign featured = site.posts | where: "featured", true %}
+    {% for post in featured %}
+    
     <div class="card">
       <a href="{{ site.baseurl }}{{ post.url }}">
         <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}">
@@ -47,5 +39,6 @@ permalink: /books/
         </div>
       </a>
     </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 </div>
