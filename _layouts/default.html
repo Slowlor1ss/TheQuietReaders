@@ -8,7 +8,9 @@
   
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
   <!-- <title>{{ page.title }} | {{ site.title }}</title> -->
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/images/favicon.png">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
   <!-- Need a cookies banner <script async src="https://www.googletagmanager.com/gtag/js?id=G-56P0DL0NK1"></script> Need a cookies banner -->
@@ -21,10 +23,10 @@
       <a href="/" class="site-title">{{ site.title }}</a>
       <nav>
         <a href="{{ site.baseurl }}/" class="nav-home">Home</a>
-        <a href="/books">Books</a>
-        <a href="/tv">Movies & TV</a>
-        <a href="/games">Games</a>
-        <a href="/about">About</a>
+        <a href="{{ site.baseurl }}/books">Books</a>
+        <a href="{{ site.baseurl }}/tv">Movies & TV</a>
+        <a href="{{ site.baseurl }}/games">Games</a>
+        <a href="{{ site.baseurl }}/about">About</a>
       </nav>
       
       <div class="search-container">
@@ -51,9 +53,9 @@
       <div class="footer-section">
         <h3>Explore</h3>
         <ul class="footer-links">
-          <li><a href="/books/">Book Reviews</a></li>
-          <li><a href="/tv/">Movies & TV</a></li>
-          <li><a href="/about/">About Us</a></li>
+          <li><a href="{{ site.baseurl }}/books/">Book Reviews</a></li>
+          <li><a href="{{ site.baseurl }}/tv/">Movies & TV</a></li>
+          <li><a href="{{ site.baseurl }}/about/">About Us</a></li>
         </ul>
       </div>
 
