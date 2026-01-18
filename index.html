@@ -7,19 +7,28 @@ title: Home
   <h2>Latest Reviews</h2>
   <div class="grid-container">
     {% for post in site.posts limit:4 %}
+    
     <div class="card">
-      <a href="{{ post.url }}">
-        <img src="{{ post.image }}" alt="{{ post.title }}">
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}">
         <div class="card-content">
-          {% for genre in post.genre %}
-            <span class="genre-tag">{{ genre }}</span>
-          {% endfor %}
-          <h3>{{ post.title }}</h3>
-          <div class="stars" style="color:gold;">
-            {% assign rating_int = post.rating | floor %}
-            {% for i in (1..rating_int) %}★{% endfor %}
-            {% if post.rating contains '.5' %}½{% endif %}
+          
+          <div class="tags-container" style="margin-bottom:10px;">
+            {% for genre in post.genre %}
+              <span class="genre-tag">{{ genre }}</span>
+            {% endfor %}
           </div>
+
+          <h3>{{ post.title }}</h3>
+
+          <div class="stars" style="margin-bottom: 10px;">
+            {% include stars.html rating=post.rating %}
+          </div>
+
+          <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
+            {{ post.description }}
+          </p>
+
         </div>
       </a>
     </div>
@@ -27,19 +36,35 @@ title: Home
   </div>
 </section>
 
-<hr style="margin: 50px 0; border: 0; border-top: 1px solid #ddd;">
+<hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
 
 <section class="our-picks">
   <h2>Our Picks</h2>
   <div class="grid-container">
     {% assign featured = site.posts | where: "featured", true %}
     {% for post in featured limit:2 %}
+    
     <div class="card">
-      <a href="{{ post.url }}">
-        <img src="{{ post.image }}" alt="{{ post.title }}">
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}">
         <div class="card-content">
+          
+          <div class="tags-container" style="margin-bottom:10px;">
+            {% for genre in post.genre %}
+              <span class="genre-tag">{{ genre }}</span>
+            {% endfor %}
+          </div>
+
           <h3>{{ post.title }}</h3>
-          <p>{{ post.description }}</p>
+
+          <div class="stars" style="margin-bottom: 10px;">
+            {% include stars.html rating=post.rating %}
+          </div>
+
+          <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
+            {{ post.description }}
+          </p>
+
         </div>
       </a>
     </div>

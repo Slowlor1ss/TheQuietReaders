@@ -6,7 +6,7 @@
   <title>{{ page.title }} | {{ site.title }}</title>
   <link rel="stylesheet" href="/assets/css/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 </head>
 <body>
@@ -15,13 +15,16 @@
     <div class="header-content">
       <a href="/" class="site-title">{{ site.title }}</a>
       <nav>
-        <a href="/about">About</a>
+        <a href="{{ site.baseurl }}/" class="nav-home">Home</a>
         <a href="/books">Books</a>
         <a href="/tv">Movies & TV</a>
         <a href="/games">Games</a>
+        <a href="/about">About</a>
       </nav>
-      <div class="search-bar">
-        <input type="text" placeholder="Search...">
+      
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search reviews...">
+        <ul id="results-container"></ul>
       </div>
     </div>
   </header>
@@ -32,32 +35,56 @@
     </div>
   </main>
 
-  <footer>
+<footer>
     <div class="footer-content">
+      
       <div class="footer-section">
-        <h3>About Us</h3>
-        <p>We are The Quiet Readers, exploring worlds one page at a time.</p>
+        <h3>The Quiet Readers</h3>
+        <p>A dreamy space for book reviews, romance, fantasy, and media. Exploring new worlds, one page at a time.</p>
       </div>
+
       <div class="footer-section">
-        <h3>Subscribe</h3>
-        <p>Join our newsletter for weekly updates.</p>
-        <form>
-            <input type="email" placeholder="Your email address">
-            <button>Join</button>
+        <h3>Explore</h3>
+        <ul class="footer-links">
+          <li><a href="/books/">Book Reviews</a></li>
+          <li><a href="/tv/">Movies & TV</a></li>
+          <li><a href="/about/">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Stay Updated</h3>
+        <p>Join our newsletter for weekly magic.</p>
+        <form class="subscribe-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
         </form>
       </div>
-      <div class="footer-section">
-        <h3>Contact</h3>
-        <p>hello@thequietreaders.com</p>
-      </div>
+      
     </div>
+
     <div class="footer-bottom">
-      &copy; {{ site.time | date: "%Y" }} The Quiet Readers.
+      &copy; {{ site.time | date: "%Y" }} The Quiet Readers. Designed with &#9829;
     </div>
   </footer>
 
-  <div id="back-to-top" onclick="scrollToTop()">&#8679;</div>
+  <div id="back-to-top" onclick="scrollToTop()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </div>
 
-  <script src="/assets/js/scripts.js"></script>
+  <script>
+    SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '{{ site.baseurl }}/search.json',
+      searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+      noResultsText: 'No results found',
+      limit: 5,
+      fuzzy: false
+    })
+  </script>
+  <script src="{{ site.baseurl }}/assets/js/scripts.js"></script>
 </body>
 </html>

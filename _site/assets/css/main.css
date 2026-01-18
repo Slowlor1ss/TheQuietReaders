@@ -1,41 +1,54 @@
 :root {
-  --primary: #6A0DAD; /* Deep Purple */
-  --accent: #C8A2C8; /* Lilac */
-  --bg-color: #FDFBFE; /* Very light purple tint */
-  --text-color: #333;
-  --header-bg: rgba(255, 255, 255, 0.95);
-  --shadow: 0 4px 20px rgba(106, 13, 173, 0.1);
+  --primary: #8e44ad;
+  --secondary: #ab65c7;
+  --accent: #d2b4de;   /* Lilac */
+  --bg-color: #fdfafc; /* Very faint purple-white */
+  --text-color: #2c3e50;
+  --header-bg: rgba(255, 255, 255, 0.98);
+  --shadow: 0 10px 30px rgba(142, 68, 173, 0.1); /* Lilac shadow */
 }
 
+/* Base Styles */
 body {
   font-family: 'Lato', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
-h1, h2, h3, .site-title {
+h1, h2, h3, .site-title, .page-heading {
   font-family: 'Playfair Display', serif;
   color: var(--primary);
+  margin-top: 0;
 }
 
-a { color: var(--primary); text-decoration: none; }
+/* --- Custom Divider Line (Matches Homepage) --- */
+hr {
+  border: 0;                  /* Removes the ugly 3D border */
+  border-top: 1px solid #eee; /* Adds the clean, thin grey line */
+  margin: 50px 0;             /* Adds plenty of breathing room above/below */
+  height: 0;                  /* Ensures it doesn't take up extra height */
+}
 
-/* Header */
+/* Layout Wrapper */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Header & Nav */
 header {
   position: sticky;
   top: 0;
   background: var(--header-bg);
-  padding: 20px 0;
-  box-shadow: var(--shadow);
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   z-index: 1000;
-  transition: padding 0.3s;
+  transition: all 0.3s ease;
 }
-
-header.shrink {
-  padding: 10px 0;
-}
+header.shrink { padding: 5px 0; }
 
 .header-content {
   max-width: 1200px;
@@ -47,118 +60,424 @@ header.shrink {
 }
 
 .site-title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
+  text-decoration: none;
+  color: var(--primary);
 }
 
 nav a {
-  margin-left: 20px;
+  margin-left: 25px;
+  text-decoration: none;
   color: var(--text-color);
   font-weight: 700;
-  text-transform: uppercase;
   font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+nav a:hover { color: var(--primary); }
+
+/* Make the Home link stand out */
+.nav-home {
+  color: var(--secondary) !important; /* Force it to be purple */
 }
 
-nav a:hover {
-  color: var(--accent);
+/* Search Bar Styling */
+.search-container { position: relative; }
+#search-input {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  font-family: 'Lato', sans-serif;
+  outline: none;
 }
+#results-container {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  display: none; /* Hidden until results appear */
+}
+#results-container:not(:empty) { display: block; }
+#results-container li { border-bottom: 1px solid #eee; }
+#results-container li a {
+  display: block;
+  padding: 10px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+#results-container li a:hover { background: var(--bg-color); }
 
-/* Grids */
+/* The Grid */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 20px;
+  gap: 40px;
 }
 
 .card {
   background: white;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.02);
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow);
+}
+
+/* --- Remove Underlined Card Text --- */
+.card a {
+  text-decoration: none !important; /* Forces underlines off */
+  color: inherit;       /* Keeps text dark/grey, not "link blue" */
+  display: block;       /* Keeps clickable area solid */
+}
+
+/* change title color on hover */
+.card:hover h3 {
+  color: var(--secondary); /* Alternative lighter Purple */
+  transition: color 0.3s ease;
 }
 
 .card img {
   width: 100%;
-  height: 250px;
+  height: 280px;
   object-fit: cover;
 }
 
+/* --- Tight Card Spacing --- */
+
 .card-content {
-  padding: 20px;
+  padding: 20px; /* Standard padding around the edges */
+}
+
+/* Title */
+.card-content h3 {
+  margin-top: 5px;
+  margin-bottom: 5px; /* Very tight below the title */
+  line-height: 1.2;   /* Keeps multi-line titles close together */
+}
+
+/* Stars note we got more star code under .stars  */
+.card-content .stars {
+  margin-bottom: 8px; /* Small breathing room before description */
+  line-height: 1;     /* Prevents stars from being too tall */
+  display: block;
+}
+
+/* Description */
+.card-content p {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Genre Tags */
+.tags-container {
+  margin-bottom: 8px;
 }
 
 .genre-tag {
   background: var(--accent);
   color: white;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: bold;
   text-transform: uppercase;
-  margin-right: 5px;
+  margin-right: 6px;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
-/* Review Page */
-.review-header {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 40px;
+.stars {
+  color: #f1c40f; /* Stars colour */
+  letter-spacing: 2px;
+  font-size: 1.1rem;
 }
 
+/* Review Page Specifics */
+.review-header { display: flex; gap: 50px; margin-bottom: 50px; align-items: flex-start; }
 .review-image img {
-  max-width: 300px;
-  border-radius: 10px;
+  width: 300px;
+  border-radius: 12px;
   box-shadow: var(--shadow);
 }
+.review-meta h1 { font-size: 3rem; margin-bottom: 10px; line-height: 1.1; }
+.author { font-style: italic; color: #777; margin-top: 20px; }
 
+.review-content {
+  font-size: 17px;
+  line-height: 1.8;    /* Gives nice breathing room between lines */
+  color: #2c3e50;      /* Dark grey is easier to read than pure black */
+  /*max-width: 800px;     Prevents lines from getting too long to read */
+}
+
+/* --- Magazine Style Layout --- */
+
+.review-float-image {
+  float: left;           /* Pushes image to the left */
+  width: 260px;          /* Fixed width for the cover */
+  height: auto;          /* Maintains aspect ratio */
+  
+  /* Margins to push text away */
+  margin-right: 35px;    
+  margin-bottom: 20px;   /* Space at the bottom before text wraps under */
+  
+  /* Pretty styling */
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.review-meta {
+  margin-bottom: 20px;   /* Space between the meta info and the review text */
+}
+
+/* --- Mobile View --- */
+/* On phones, we stack it so it's not squished */
 @media (max-width: 768px) {
+  .review-float-image {
+    float: none;
+    display: block;
+    margin: 0 auto 20px; /* Center the image */
+    width: 220px;
+  }
+  
+  .review-meta {
+    text-align: center; /* Center the title on mobile */
+  }
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+  .header-content { flex-direction: column; gap: 15px; }
   .review-header { flex-direction: column; }
-  .grid-container { grid-template-columns: 1fr; }
+  .review-image img { width: 100%; max-width: 400px; }
+  nav a { margin: 0 10px; }
 }
 
-/* Footer */
-footer {
-  background: #f0ebf5;
-  padding: 50px 0 20px;
-  margin-top: 60px;
+/* --- Dreamy Back to Top Button --- */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  
+  /* Size & Shape */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  
+  /* Dreamy "Frosted Glass" Background */
+  background: rgba(142, 68, 173, 0.85); /* Semi-transparent purple */
+  backdrop-filter: blur(4px);            /* Blurs the text behind it */
+  color: white;
+  
+  /* Centering the SVG Icon */
   text-align: center;
+  
+  /* Behavior */
+  cursor: pointer;
+  opacity: 0;          /* Hidden by default */
+  pointer-events: none; /* Can't click when hidden */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+  z-index: 2000;
 }
 
-.footer-content {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
+#back-to-top svg{
+  padding-top: 20%;
 }
 
-.footer-section {
-  padding: 20px;
-  flex: 1;
-  min-width: 250px;
+/* When the JavaScript adds the "show" class (or display:block) */
+#back-to-top[style*="display: block"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hover Animation */
+#back-to-top:hover {
+  background: #8e44ad; /* Solid purple on hover */
+  transform: translateY(-5px); /* Floats up slightly */
+  box-shadow: 0 6px 20px rgba(142, 68, 173, 0.5);
 }
 
 /* Back to Top */
-#back-to-top {
+/* #back-to-top {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
   background: var(--primary);
   color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
   text-align: center;
-  line-height: 40px;
-  font-size: 20px;
+  line-height: 45px;
+  border-radius: 50%;
   cursor: pointer;
   display: none;
+  font-size: 1.5rem;
+  transition: opacity 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+} */
+
+/* --- Footer --- */
+
+footer {
+  /* Deep purple gradient */
+  background: linear-gradient(135deg, #4a2c5a 0%, #2e1a38 100%);
+  color: rgba(255, 255, 255, 0.9); /* Soft white text */
+  margin-top: 80px;
+  
+  /* Round corners */
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  
+  /* Spacing */
+  padding: 30px 0 0px;
+  /* padding: 10px 0 10px;  */
+  position: relative;
+}
+
+.footer-content {
+  /* This keeps content from sticking to the edges */
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px; /* Inner breathing room */
+  
+  /* Grid Layout for columns */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 50px;
+}
+
+.footer-section h3 {
+  color: #dcd6e8; /* Lilac accent for headers */
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.footer-section p {
+  font-size: 0.95rem;
+  line-height: 1.6;
   opacity: 0.8;
 }
 
-#back-to-top:hover { opacity: 1; }
+/* Clean List Styles */
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #d2b4de; /* Lilac glow on hover */
+  padding-left: 5px; /* Subtle slide effect */
+}
+
+/* Newsletter Form Styling */
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  font-family: 'Lato', sans-serif;
+  outline: none;
+}
+
+.subscribe-form button {
+  background: #d2b4de; /* Lilac Button */
+  color: #2e1a38; /* Dark Text */
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.subscribe-form button:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom {
+  text-align: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+  footer {
+    border-radius: 30px 30px 0 0; /* Slightly smaller curve on mobile */
+    text-align: center;
+  }
+  .subscribe-form {
+    flex-direction: column;
+  }
+  .subscribe-form button {
+    width: 100%;
+  }
+}
+
+/* --------- Stars ----------- */
+
+.stars {
+  color: #f1c40f;
+  
+  /* Size Control */
+  font-size: 1.6rem; /* Increased size (was 1.1rem) */
+  
+  /* Spacing Control */
+  display: inline-flex; /* This ignores the whitespace in your HTML! */
+  gap: 2px;             /* Tiny gap between stars (optional) */
+  align-items: center;  
+  line-height: 1;
+}
+
+/* The Empty Star (Grey) */
+.empty-star {
+  color: #e0e0e0;
+}
+
+/* The Magic Half Star */
+.half-star {
+  /* Gradient cheated slightly to look visually centered */
+  background: linear-gradient(90deg, #f1c40f 45.5%, #e0e0e0 45.5%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}

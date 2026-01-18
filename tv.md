@@ -1,21 +1,18 @@
 ---
 layout: default
-title: Book Reviews
-permalink: /books/
+title: Movies & TV
+permalink: /tv/
 ---
 
-<h1 class="page-heading">Book Reviews</h1>
+<h1 class="page-heading">Movies & TV Reviews</h1>
 
 <div class="grid-container">
-  {% assign book_posts = site.posts | where: "category", "Book" %}
-  {% for post in book_posts %}
+  {% assign tv_posts = site.posts | where: "category", "TV" %}
+  {% for post in tv_posts %}
     <div class="card">
       <a href="{{ site.baseurl }}{{ post.url }}">
         <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}">
         <div class="card-content">
-          {% for genre in post.genre %}
-            <span class="genre-tag">{{ genre }}</span>
-          {% endfor %}
           <h3>{{ post.title }}</h3>
           <div class="stars">
              {% include stars.html rating=post.rating %}

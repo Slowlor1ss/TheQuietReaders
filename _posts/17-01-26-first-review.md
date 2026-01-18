@@ -1,11 +1,11 @@
 ---
 layout: review
 title: "Fourth Wing"
-date: 2024-01-20
+date: 17-01-2026
 image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=800"
 genre: ["Fantasy", "Romance"]
 category: "Book"
-rating: 5
+rating: 4.5
 featured: true
 description: "Enter the brutal world of Basgiath War College."
 author: "Your Name"

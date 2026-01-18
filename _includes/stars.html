@@ -1,0 +1,29 @@
+{%- assign rating = include.rating | plus: 0 -%}
+{%- assign full_stars = rating | floor -%}
+{%- assign half_star = false -%}
+{%- assign check = rating | minus: full_stars -%}
+
+{%- if check >= 0.5 -%}
+  {%- assign half_star = true -%}
+{%- endif -%}
+
+{%- assign empty_stars = 5 | minus: full_stars -%}
+{%- if half_star -%}
+  {%- assign empty_stars = empty_stars | minus: 1 -%}
+{%- endif -%}
+
+<div class="stars" aria-label="{{ rating }} out of 5 stars">
+  {%- if full_stars > 0 -%}
+    {%- for i in (1..full_stars) -%}★{%- endfor -%}
+  {%- endif -%}
+
+  {%- if half_star -%}
+    <span class="half-star">★</span>
+  {%- endif -%}
+
+  {%- if empty_stars > 0 -%}
+    {%- for i in (1..empty_stars) -%}
+      <span class="empty-star">★</span>
+    {%- endfor -%}
+  {%- endif -%}
+</div>
