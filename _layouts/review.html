@@ -19,8 +19,14 @@ layout: default
       Rating: 
       {% include stars.html rating=page.rating %}
     </div>
-    
-    <p class="author">Review by <strong>{{ page.author }}</strong> on {{ page.date | date: "%-d %B %Y" }}</p>
+
+    {% if page.pages %}
+    <p class="page-count" style="margin-top: 5px; margin-bottom: 5px; color: #555;">
+      Pages: {{ page.pages }}
+    </p>
+    {% endif %}
+
+    <p class="author" style="margin-top: 5px;">Review by <strong>{{ page.author }}</strong> on {{ page.date | date: "%-d %B %Y" }}</p>
   </div>
 
   <div class="review-content">

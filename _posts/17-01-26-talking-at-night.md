@@ -2,12 +2,13 @@
 layout: review
 title: "Talking at Night by Claire Daverley"
 date: 17-01-2026
+pages: 416
 image: "/assets/images/books/TalkingAtNightClaireDaverly.png"
 genre: ["Contemporary", "Romance"]
 category: "Book"
 rating: 4
 featured: true
-description: "What do you do when the one person you should let go is the one just can't let go?"
+description: "What do you do when the one person you should forget is the one just can't let go?"
 author: "Eris Langley"
 --- 
 
@@ -43,20 +44,13 @@ Overall, I would recommend you read this book if you are in a headspace where yo
 
 Now everytime I read this book again, it feels like there is a new song that comes to mind. So here is a (relatively) small collection of songs that remind me of the vibe of the novel. 
 
-Chloe or Sam or Sophia or Marcus by Taylor Swift
-
-Twenty-Something by Aidan Bisset
-
-Frida Kahlo by Still Woozy
-
-The Night We Met by Lord Huron
-
-Sea of Love by Cat Power
-
-I found by Amber Run
-
-Moon Song by Phoebe Bridgers
-
-Youth by Daughter
+[Chloe or Sam or Sophia or Marcus by Taylor Swift](https://www.youtube.com/watch?v=QISHxEfhvTc)\
+[Twenty-Something by Aidan Bisset](https://www.youtube.com/watch?v=bu1U-2srzSc)\
+[Frida Kahlo by Still Woozy](https://www.youtube.com/watch?v=tqVcYhr5VEw)\
+[The Night We Met by Lord Huron](https://www.youtube.com/watch?v=90DKXLbzLto)\
+[Sea of Love by Cat Power](https://www.youtube.com/watch?v=VWsKJBY_9-Y)\
+[I Found by Amber Run](https://www.youtube.com/watch?v=hwGBYGexu_I)\
+[Moon Song by Phoebe Bridgers](https://www.youtube.com/watch?v=9gD1I_J3A_c)\
+[Youth by Daughter](https://www.youtube.com/watch?v=sQTjT-yNqII)
 
 *(P.S. We made them links so feel free to click on them and get teleported straight into the vibes.)*

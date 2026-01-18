@@ -3,12 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }} | {{ site.title }}</title>
+  
+  {% seo %}
+  
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+  <!-- <title>{{ page.title }} | {{ site.title }}</title> -->
   <link rel="stylesheet" href="/assets/css/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <!-- Need a cookies banner <script async src="https://www.googletagmanager.com/gtag/js?id=G-56P0DL0NK1"></script> Need a cookies banner -->
 </head>
+
 <body>
 
   <header id="site-header">
@@ -23,7 +28,7 @@
       </nav>
       
       <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search reviews...">
+        <input type="text" id="search-input" placeholder="Search title, author, or genre..." class="search-bar">
         <ul id="results-container"></ul>
       </div>
     </div>

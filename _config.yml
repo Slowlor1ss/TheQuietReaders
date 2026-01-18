@@ -1,6 +1,6 @@
 title: The Quiet Readers
 email: contact@thequietreaders.com
-description: >-
+description: >- # The ">-" lets you write a long description
   A dreamy space for book reviews, romance, fantasy, and media.
 baseurl: "" 
 url: "https://thequietreaders.com" 
@@ -11,6 +11,7 @@ github_username:  slowlor1ss
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Navigation links for your header
 header_pages:

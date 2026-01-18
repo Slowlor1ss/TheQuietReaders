@@ -118,7 +118,8 @@ nav a:hover { color: var(--primary); }
 /* The Grid */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 40px;
 }
 
@@ -152,7 +153,10 @@ nav a:hover { color: var(--primary); }
 .card img {
   width: 100%;
   height: 280px;
-  object-fit: cover;
+  object-fit: contain;
+
+  /* faint border so white covers don't disappear into the white background */
+  border-bottom: 1px solid #f0f0f0;
 }
 
 /* --- Tight Card Spacing --- */
@@ -216,13 +220,31 @@ nav a:hover { color: var(--primary); }
   box-shadow: var(--shadow);
 }
 .review-meta h1 { font-size: 3rem; margin-bottom: 10px; line-height: 1.1; }
-.author { font-style: italic; color: #777; margin-top: 20px; }
+.author { font-style: italic; color: #777; }
 
 .review-content {
   font-size: 17px;
   line-height: 1.8;    /* Gives nice breathing room between lines */
   color: #2c3e50;      /* Dark grey is easier to read than pure black */
   /*max-width: 800px;     Prevents lines from getting too long to read */
+}
+
+/* --- Beautiful Links in Reviews --- */
+.review-content a {
+  color: #8e44ad;           /* Your primary purple */
+  font-weight: 600;         /* Make them slightly bold */
+  text-decoration: none;    /* Remove the old ugly underline */
+  border-bottom: 2px solid rgba(142, 68, 173, 0.3); /* A faint purple line under it */
+  transition: all 0.2s ease;
+  padding: 0 2px;           /* Tiny bit of breathing room */
+}
+
+/* Hover Effect: Looks like a marker pen */
+.review-content a:hover {
+  background-color: rgba(142, 68, 173, 0.1); /* Soft purple background */
+  border-bottom-color: #8e44ad;              /* Solid purple line */
+  color: #6c3483;                            /* Darker purple text */
+  border-radius: 4px;
 }
 
 /* --- Magazine Style Layout --- */
@@ -268,7 +290,7 @@ nav a:hover { color: var(--primary); }
   nav a { margin: 0 10px; }
 }
 
-/* --- Dreamy Back to Top Button --- */
+/* --- Back to Top Button --- */
 #back-to-top {
   position: fixed;
   bottom: 30px;
@@ -279,7 +301,6 @@ nav a:hover { color: var(--primary); }
   height: 50px;
   border-radius: 50%;
   
-  /* Dreamy "Frosted Glass" Background */
   background: rgba(142, 68, 173, 0.85); /* Semi-transparent purple */
   backdrop-filter: blur(4px);            /* Blurs the text behind it */
   color: white;
@@ -473,7 +494,7 @@ footer {
   color: #e0e0e0;
 }
 
-/* The Magic Half Star */
+/* Half Star */
 .half-star {
   /* Gradient cheated slightly to look visually centered */
   background: linear-gradient(90deg, #f1c40f 45.5%, #e0e0e0 45.5%);
