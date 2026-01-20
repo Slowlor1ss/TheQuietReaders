@@ -8,12 +8,13 @@
   
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
   <!-- <title>{{ page.title }} | {{ site.title }}</title> -->
-  <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/images/favicon.png">
-  <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/images/favicon.png">
+  <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/images/LogoWhiteBorder128.png">
+  <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/images/LogoWhiteBorder128.png">
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
   <!-- Need a cookies banner <script async src="https://www.googletagmanager.com/gtag/js?id=G-56P0DL0NK1"></script> Need a cookies banner -->
+  {% feed_meta %}
   <script type="application/ld+json">
   {
       "@context": "https://schema.org",
@@ -91,6 +92,17 @@
       <div class="footer-section">
         <h3>Contact Us</h3>
         <p>thequietreaders@outlook.com</p>
+
+        <div class="rss-container">
+            <a href="{{ site.baseurl }}/feed.xml" target="_blank" class="rss-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 11a9 9 0 0 1 9 9"></path>
+                    <path d="M4 4a16 16 0 0 1 16 16"></path>
+                    <circle cx="5" cy="19" r="1"></circle>
+                </svg>
+                <span>RSS Feed</span>
+            </a>
+        </div>
       </div>
 
       <div class="footer-section">
