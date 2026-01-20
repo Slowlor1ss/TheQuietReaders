@@ -14,6 +14,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
   <!-- Need a cookies banner <script async src="https://www.googletagmanager.com/gtag/js?id=G-56P0DL0NK1"></script> Need a cookies banner -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "The Quiet Readers",
+      "alternateName": ["TheQuietReaders", "TQR"],
+      "url": "{{ site.url }}{{ site.baseurl }}/"
+  }
+  </script>
 </head>
 
 <body>
@@ -70,7 +79,7 @@
         <p>A dreamy space for book reviews, romance, fantasy, and media. Exploring new worlds, one page at a time.</p>
       </div>
 
-      <div class="footer-section">
+      <div class="footer-section" style= "text-align: center">
         <h3>Explore</h3>
         <ul class="footer-links">
           <li><a href="{{ site.baseurl }}/books/">Book Reviews</a></li>
@@ -80,14 +89,32 @@
       </div>
 
       <div class="footer-section">
-        <h3>Stay Updated</h3>
-        <p>Join our newsletter for weekly magic.</p>
-        <form class="subscribe-form">
-            <input type="email" placeholder="Your email address" required>
-            <button type="submit">Subscribe</button>
-        </form>
+        <h3>Contact Us</h3>
+        <p>thequietreaders@outlook.com</p>
       </div>
-      
+
+      <div class="footer-section">
+          <h3>Stay Updated</h3>
+          <p>Join our newsletter for monthly magic.</p>
+          
+          <form id="newsletter-form" class="subscribe-form" method="POST">
+              <input type="email" id="email-input" name="fields[email]" placeholder="Your email address" required>
+              
+              <input type="hidden" name="ml-submit" value="1">
+              <input type="hidden" name="anticsrf" value="true">
+
+              <button type="submit" id="subscribe-btn">Subscribe</button>
+          </form>
+
+          <div id="newsletter-success" style="display:none; margin-top:10px; color: #dcd6e8; font-size: 0.9rem;">
+              ✨ You're on the list! Check your inbox (Might be in your spam!).
+          </div>
+          
+          <div id="newsletter-error" style="display:none; margin-top:10px; color: #ffadad; font-size: 0.9rem;">
+              Oops! Something went wrong. Please try again.
+          </div>
+      </div>
+
     </div>
 
     <div class="footer-bottom">
@@ -115,3 +142,44 @@
   <script src="{{ site.baseurl }}/assets/js/scripts.js"></script>
 </body>
 </html>
+
+<!-- Newsletter script -->
+ <script>
+    const form = document.getElementById('newsletter-form');
+    const emailInput = document.getElementById('email-input');
+    const btn = document.getElementById('subscribe-btn');
+    const successMsg = document.getElementById('newsletter-success');
+    const errorMsg = document.getElementById('newsletter-error');
+
+    // Your specific MailerLite URL
+    const ML_URL = 'https://assets.mailerlite.com/jsonp/2050294/forms/177069136154723589/subscribe';
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Stop the ugly redirect
+        
+        // Disable button while loading
+        btn.textContent = '...';
+        btn.disabled = true;
+
+        // Package the data
+        const data = new FormData(form);
+        
+        // Send it to MailerLite
+        fetch(ML_URL, {
+            method: 'POST',
+            body: data
+        })
+        .then(response => {
+            // MailerLite's JSONP endpoint is tricky, it might return an "opaque" response
+            // But if we get here without a network error, we assume it worked.
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            btn.textContent = 'Subscribe';
+            btn.disabled = false;
+            errorMsg.style.display = 'block';
+        });
+    });
+</script>

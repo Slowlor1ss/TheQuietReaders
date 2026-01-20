@@ -5,8 +5,8 @@ date: 18-01-2026
 pages: 416
 isbn: "9781923232068"
 amznlink: "https://amzn.to/3Z5FEcR"
-bookshplink: ""
-image: "/assets/images/books/TheWrongGameKandiSteiner_Small.png"
+bookshplink: "https://uk.bookshop.org/a/16879/9781923232068"
+image: "/assets/images/books/TheWrongGameKandiSteiner_small.png"
 genre: ["Contemporary", "Romance"]
 category: "Book"
 rating: 3

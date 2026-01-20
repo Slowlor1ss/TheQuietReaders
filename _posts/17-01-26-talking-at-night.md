@@ -4,7 +4,9 @@ title: "Talking at Night by Claire Daverley"
 date: 17-01-2026
 pages: 416
 isbn: "9780241604830"
-image: "/assets/images/books/TalkingAtNightClaireDaverly_Small.png"
+amznlink: "https://amzn.to/4qsUXIi"
+bookshplink: "https://uk.bookshop.org/a/16879/9781405953849"
+image: "/assets/images/books/TalkingAtNightClaireDaverly_small.png"
 genre: ["Contemporary", "Romance"]
 category: "Book"
 rating: 4

@@ -650,7 +650,7 @@ footer {
   
   /* Grid Layout for columns */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 50px;
 }
 
@@ -658,7 +658,8 @@ footer {
   color: #dcd6e8; /* Lilac accent for headers */
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  margin-bottom: 20px;
+  margin-Top: 5px;
+  margin-Bottom: -5px;
 }
 
 .footer-section p {

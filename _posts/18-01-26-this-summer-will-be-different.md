@@ -5,8 +5,8 @@ date: 18-01-2026
 pages: 384
 isbn: "9781405965453"
 amznlink: "https://amzn.to/45QmZFr"
-bookshplink: "test"
-image: "/assets/images/books/ThisSummerWillBeDifferentCarleyFortune_Small.png"
+bookshplink: "https://uk.bookshop.org/a/16879/9781405965453"
+image: "/assets/images/books/ThisSummerWillBeDifferentCarleyFortune_small.png"
 genre: ["Comedy", "Romance"]
 category: "Book"
 rating: 4.5
@@ -28,11 +28,11 @@ The book opens with Lucy Ashby, 5 years in the past, arriving at Prince Edwards 
 
 ## Writing Style 
 
-Carley Fortune’s writing style is one that has an emphasis on* immersion*. I have never read a book of hers that didn’t manage to perk my imagination, and this book was no different. Throughout every word I was hooked by the way she described Prince Edward Island *(and Felix). *Carley is a very descriptive writer, and this evokes a specific type of imagery in this book that feels nostalgic for a time I have never lived. It’s the kind of nostalgia that sneaks up on you - soft, warm, and strangely familiar, even if you’ve never stepped foot on the island she’s describing. What I have to say I love the most is how her descriptions don’t feel pointless - they are a way for her to weave emotions in without us consciously noticing. The way she describes the shore-line or a glance that lingers too long. It just comes together perfectly to evoke strong emotions that, as a reader, you don’t even fully understand where they came from. 
+Carley Fortune’s writing style is one that has an emphasis on *immersion*. I have never read a book of hers that didn’t manage to perk my imagination, and this book was no different. Throughout every word I was hooked by the way she described Prince Edward Island *(and Felix).* Carley is a very descriptive writer, and this evokes a specific type of imagery in this book that feels nostalgic for a time I have never lived. It’s the kind of nostalgia that sneaks up on you - soft, warm, and strangely familiar, even if you’ve never stepped foot on the island she’s describing. What I have to say I love the most is how her descriptions don’t feel pointless - they are a way for her to weave emotions in without us consciously noticing. The way she describes the shore-line or a glance that lingers too long. It just comes together perfectly to evoke strong emotions that, as a reader, you don’t even fully understand where they came from. 
 
 What I Loved
 
-For starters, This Summer Will Be Different singlehandedly pulled me out of a months-long reading slump caused by another book that shall remain nameless *for now. *I read this book in one sitting because I was so engrossed I *couldn’t* put it down if I had wanted to (which I very obviously didn’t). This book focuses on a lot more than the lustful desire of a girl and her best friend’s brother, it addresses feelings of belonging, friendships and a desire to escape. \
+For starters, This Summer Will Be Different singlehandedly pulled me out of a months-long reading slump caused by another book that shall remain nameless *for now.* I read this book in one sitting because I was so engrossed I *couldn’t* put it down if I had wanted to (which I very obviously didn’t). This book focuses on a lot more than the lustful desire of a girl and her best friend’s brother, it addresses feelings of belonging, friendships and a desire to escape. \
 What surprised me most was how natural the romance felt. Lucy and Felix don’t come across like a cliché - they feel like two people who keep bumping into each other at exactly the wrong *(or right)* time. Their chemistry is just… easy. It’s the kind of connection that sneaks up on you, where one minute they’re trying to be sensible and the next they’re staring at each other like they’ve forgotten how to breathe. And Lucy’s whole inner world adds so much to that. She’s constantly trying to figure out where she fits, both in her own life and in the people around her, and that makes her moments with Felix feel even more meaningful. With him, she gets to drop the act a little. She gets to want things. She gets to feel like she belongs somewhere, even if it’s messy and complicated and absolutely not part of the plan.
 
 
