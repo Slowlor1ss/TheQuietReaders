@@ -21,3 +21,7 @@ header_pages:
   - books.md
   - tv.md
   - games.md
+
+# Show one paragraph and a read more button on RSS feed 
+# feed:
+#   excerpt_only: true
