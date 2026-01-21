@@ -6,7 +6,7 @@ pages: 416
 isbn: "9781923232068"
 amznlink: "https://amzn.to/3Z5FEcR"
 bookshplink: "https://uk.bookshop.org/a/16879/9781923232068"
-image: "/assets/images/books/TheWrongGameKandiSteiner_small.png"
+image: "/assets/images/books/the-wrong-game-kandi-steiner-280.webp"
 genre: ["Contemporary", "Romance"]
 category: "Book"
 rating: 3

@@ -6,7 +6,7 @@ pages: 464
 isbn: "9781408728888"
 amznlink: "https://amzn.to/49y91KR"
 bookshplink: "https://uk.bookshop.org/a/16879/9781408728888"
-image: "/assets/images/books/Deep_End_Ali_Hazelwood_small.png"
+image: "/assets/images/books/deep-end-ali-hazelwood-280.webp"
 genre: ["Romance"]
 category: "Book"
 rating: 3.5

@@ -11,8 +11,10 @@ layout: null
       "tags"     : "{{ post.tags | join: ', ' }}",
       "url"      : "{{ site.baseurl }}{{ post.url }}",
       "date"     : "{{ post.date }}",
-      "image"    : "{{ post.image | relative_url }}",
-      "rating": "{{ post.rating }}",
+
+      "image"    : {{ post.image | jsonify }}, 
+
+      "rating"   : "{{ post.rating }}",
       "stars_html": {% capture star_output %}{% include stars.html rating=post.rating %}{% endcapture %}{{ star_output | jsonify }}
     } {% unless forloop.last %},{% endunless %}
   {% endfor %}

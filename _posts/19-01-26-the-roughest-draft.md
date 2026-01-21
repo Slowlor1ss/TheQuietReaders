@@ -6,7 +6,7 @@ pages: 339
 isbn: "9781035018642"
 amznlink: "https://amzn.to/4pLOJlG"
 bookshplink: "https://uk.bookshop.org/a/16879/9781035018642"
-image: "/assets/images/books/the-roughest-draft_small.png"
+image: "/assets/images/books/the-roughest-draft-280.webp"
 genre: ["Comedy", "Romance", "Contemporary"]
 category: "Book"
 rating: 3.5

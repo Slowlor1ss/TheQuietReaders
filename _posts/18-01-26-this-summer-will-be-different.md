@@ -6,7 +6,7 @@ pages: 384
 isbn: "9781405965453"
 amznlink: "https://amzn.to/45QmZFr"
 bookshplink: "https://uk.bookshop.org/a/16879/9781405965453"
-image: "/assets/images/books/ThisSummerWillBeDifferentCarleyFortune_small.png"
+image: "/assets/images/books/this-summer-will-be-different-carley-fortune-280.webp"
 genre: ["Comedy", "Romance"]
 category: "Book"
 rating: 4.5

@@ -3,8 +3,40 @@ layout: default
 ---
 
 <article class="review-post">
-  
-    <img src="{{ site.baseurl }}{{ page.image }}" alt="{{ page.title }}" class="review-float-image">
+    <!-- TODO: We should probably just add a high rez image to the .md file -->
+    {% comment %} Normalize Data {% endcomment %}
+    {% if page.image.path %}
+        {% assign raw_path = page.image.path %}
+        {% assign alt_text = page.image.alt | default: page.title %}
+    {% else %}
+        {% assign raw_path = page.image %}
+        {% assign alt_text = page.title %}
+    {% endif %}
+
+    {% comment %} Try use higher rez image {% endcomment %}
+    {% assign final_path = raw_path %}
+
+    {% if raw_path contains "-280" %}
+        {% comment %} Calculate what the big file SHOULD be named {% endcomment %}
+        {% assign potential_large = raw_path | replace: "-280", "-420" %}
+        
+        {% comment %} Search Jekyll's file list to see if it actually exists {% endcomment %}
+        {% for file in site.static_files %}
+            {% if file.path == potential_large %}
+                {% assign final_path = potential_large %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% comment %} Render the Image {% endcomment %}
+    <img 
+        src="{{ final_path | absolute_url }}" 
+        alt="{{ alt_text }}"
+        loading="lazy"
+        decoding="async"
+        class="review-float-image"
+    >
 
     <div class="review-meta">
         <h1 class="post-title">{{ page.title }}</h1>
@@ -88,7 +120,22 @@ layout: default
             {% if sameTagCount >= minCommonTags %}
             <div class="card">
                 <a href="{{ site.baseurl }}{{ post.url }}">
-                    <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}">
+                    {% if post.image.path %}
+                    <img 
+                        src="{{ post.image.path | relative_url }}" 
+                        alt="{{ post.image.alt | default: post.title }}"
+                        loading="lazy"
+                        decoding="async"
+                        height="280"
+                    >
+                    {% else %}
+                    <img 
+                        src="{{ post.image | relative_url }}" 
+                        alt="{{ post.title }}"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                    {% endif %}
                     <div class="card-content">
               
                         <div class="tags-container">
