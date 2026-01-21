@@ -48,8 +48,8 @@ I will also say, although the story does it well, the whole ‘reading a book ab
 I recommend this book to those that love a good enemies-to-lovers trope, especially with the slow-burn romance. It’s perfect for those of you out there that prefer a book without explicit sexual scenes in your books as well. The Roughest Draft does contain mature content, but it does not rely on it to further the narrative, nor does it ever get *too* explicit.
 
 ## Songs
-Songs that I find reminiscent of the book:
 
+Songs that I find reminiscent of the book:\
 [Ceilings by Lizzy McAlpine](https://www.youtube.com/watch?v=SOxmA-nKfbU&list=RDSOxmA-nKfbU&start_radio=1)\
 [Heat Waves by Glass Animals](https://www.youtube.com/watch?v=mRD0-GxqHVo&list=RDmRD0-GxqHVo&start_radio=1)\
 [Lost In You by Khai Dreams](https://www.youtube.com/watch?v=I1UeM184MoU&list=RDI1UeM184MoU&start_radio=1)\

@@ -47,9 +47,13 @@ This Summer Will Be Different is the kind of book I’d hand to anyone who doesn
 
 
 ## Songs
+
+Songs that I find reminiscent of the book:\
 [Ribs by Lorde](https://www.youtube.com/watch?v=b7pE8AG1jjE&list=RDb7pE8AG1jjE&start_radio=1)\
 [Brazil by Declan Mckenna](https://www.youtube.com/watch?v=UWhY6kfKEts&list=RDUWhY6kfKEts&start_radio=1)\
 [Out of My League by Fitz and the Tantrums](https://www.youtube.com/watch?v=4d2I6SIs_bk&list=RD4d2I6SIs_bk&start_radio=1)\
 [Tongue Tied by GROUPLOVE](https://www.youtube.com/watch?v=UCcGuJzewCo&list=RDUCcGuJzewCo&start_radio=1)\
 [Geronimo by Sheppard ](https://www.youtube.com/watch?v=UL_EXAyGCkw&list=RDUL_EXAyGCkw&start_radio=1)\
 [Ho Hey by The Lumineers](https://www.youtube.com/watch?v=zvCBSSwgtg4&list=RDzvCBSSwgtg4&start_radio=1)
+
+*(P.S. We made them links so feel free to click on them and get teleported straight into the vibes.)*
