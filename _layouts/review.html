@@ -32,7 +32,7 @@ layout: default
     {% comment %} Render the Image {% endcomment %}
     <img 
         src="{{ final_path | absolute_url }}" 
-        alt="{{ alt_text }}"
+        alt="{{ alt_text }} book cover"
         loading="lazy"
         decoding="async"
         class="review-float-image"
@@ -120,22 +120,12 @@ layout: default
             {% if sameTagCount >= minCommonTags %}
             <div class="card">
                 <a href="{{ site.baseurl }}{{ post.url }}">
-                    {% if post.image.path %}
-                    <img 
-                        src="{{ post.image.path | relative_url }}" 
-                        alt="{{ post.image.alt | default: post.title }}"
-                        loading="lazy"
-                        decoding="async"
-                        height="280"
-                    >
-                    {% else %}
                     <img 
                         src="{{ post.image | relative_url }}" 
-                        alt="{{ post.title }}"
+                        alt="{{ post.title }} book cover"
                         loading="lazy"
                         decoding="async"
                     >
-                    {% endif %}
                     <div class="card-content">
               
                         <div class="tags-container">

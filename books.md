@@ -25,22 +25,12 @@ permalink: /books/
     </div> -->
     <div class="card">
       <a href="{{ site.baseurl }}{{ post.url }}">
-        {% if post.image.path %}
-          <img 
-            src="{{ post.image.path | relative_url }}" 
-            alt="{{ post.image.alt | default: post.title }}"
-            loading="lazy"
-            decoding="async"
-            height="280"
-          >
-        {% else %}
           <img 
             src="{{ post.image | relative_url }}" 
-            alt="{{ post.title }}"
+            alt="{{ post.title }} book cover"
             loading="lazy"
             decoding="async"
           >
-        {% endif %}
         <div class="card-content">
           
           <div class="tags-container" style="margin-bottom:10px;">

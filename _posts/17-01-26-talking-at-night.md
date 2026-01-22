@@ -6,9 +6,7 @@ pages: 416
 isbn: "9780241604830"
 amznlink: "https://amzn.to/4qsUXIi"
 bookshplink: "https://uk.bookshop.org/a/16879/9781405953849"
-image:
-  path: "/assets/images/books/talking-at-night-claire-daverly-280.webp"
-  alt: "Book cover of Talking at Night by Claire Daverly, in orange"
+image: "/assets/images/books/talking-at-night-claire-daverly-280.webp"
 genre: ["Contemporary", "Romance"]
 category: "Book"
 rating: 4

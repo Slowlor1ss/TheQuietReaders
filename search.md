@@ -63,21 +63,12 @@ permalink: /search/
             
             // --- JAVASCRIPT IMAGE LOGIC (No Liquid Here!) ---
             let imgSrc = "";
-            let imgAlt = post.title;
+            let imgAlt = post.title + "book cover";
 
             if (post.image) {
-                // Case A: New Format (Object)
-                if (typeof post.image === 'object' && post.image.path) {
-                    imgSrc = post.image.path;
-                    if (post.image.alt) imgAlt = post.image.alt;
-                } 
-                // Case B: Old Format (String)
-                else if (typeof post.image === 'string') {
-                    imgSrc = post.image;
-                }
+                imgSrc = post.image;
             }
 
-            // Fix Path: Add baseurl if missing
             if (imgSrc && imgSrc.startsWith('/') && BASE_URL) {
                 if (!imgSrc.startsWith(BASE_URL)) {
                     imgSrc = BASE_URL + imgSrc;
