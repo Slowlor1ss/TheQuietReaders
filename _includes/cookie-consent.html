@@ -1,0 +1,163 @@
+<style>
+  #cookie-banner {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 380px;
+    max-width: 90%;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    
+    /* The "Quiet" Aesthetic */
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    font-family: inherit; 
+    z-index: 10000;
+  }
+
+  #cookie-banner::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 20px;
+    bottom: 20px;
+    width: 4px;
+    background-color: #8e44ad;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  #cookie-banner p {
+    margin: 0 0 20px 0;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding-left: 15px;
+  }
+
+  #cookie-banner strong {
+    color: #222;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.05rem;
+  }
+
+  .cookie-buttons {
+    display: flex;
+    gap: 12px;
+    padding-left: 15px;
+
+  /* The "Yes" Button */
+  .btn-accept {
+    background-color: #8e44ad; 
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(142, 68, 173, 0.2); /* Purple glow */
+  }
+
+  .btn-accept:hover {
+    background-color: #732d91; /* Darker purple on hover */
+    transform: translateY(-1px);
+  }
+
+  /* The "No" Button - Subtle */
+  .btn-decline {
+    background-color: transparent;
+    color: #888;
+    border: 2px solid transparent;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .btn-decline:hover {
+    color: #333;
+    background-color: #f9f9f9;
+  }
+
+  @media (max-width: 600px) {
+    #cookie-banner {
+      bottom: 0; 
+      left: 0; 
+      right: 0; 
+      width: 100%;
+      max-width: 100%;
+      border-radius: 20px 20px 0 0; /* Rounded top only */
+      padding: 30px 20px 40px 20px; /* More padding for thumbs */
+    }
+    #cookie-banner::before { display: none; } /* Remove purple line on mobile */
+    #cookie-banner p, .cookie-buttons { padding-left: 0; }
+  }
+</style>
+
+<div id="cookie-banner">
+  <p>
+    <strong>We respect your reading privacy.</strong><br>
+    We use cookies solely for analytics to see which books you like most. 
+    We <u>never</u> sell your data to third parties.
+  </p>
+  <div class="cookie-buttons">
+    <button id="btn-accept-cookies" class="btn-accept">Okay, I accept</button>
+    <button id="btn-decline-cookies" class="btn-decline">No thanks</button>
+  </div>
+</div>
+
+<script>
+  const GA_MEASUREMENT_ID = 'G-56P0DL0NK1'; 
+
+  // Helper Function: Load Google Analytics Script
+  function loadGoogleAnalytics() {
+    // Inject the script tag
+    const script = document.createElement('script');
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    script.async = true;
+    document.head.appendChild(script);
+
+    // Initialize the Data Layer
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
+    
+    console.log("Analytics Loaded: Privacy respected. B') ");
+  }
+
+  // Logic: Check for previous consent
+  window.addEventListener('load', function() {
+    const consent = localStorage.getItem('cookie_consent');
+    const banner = document.getElementById('cookie-banner');
+
+    if (consent === 'accepted') {
+      // User already said yes -> Load GA immediately
+      loadGoogleAnalytics();
+    } else if (consent === 'declined') {
+      // User said no -> Do nothing (GA stays blocked)
+    } else {
+      // First time visitor -> Show the banner
+      banner.style.display = 'block';
+    }
+
+    // Handle Button Clicks
+    document.getElementById('btn-accept-cookies').addEventListener('click', function() {
+      localStorage.setItem('cookie_consent', 'accepted');
+      banner.style.display = 'none';
+      loadGoogleAnalytics();
+    });
+
+    document.getElementById('btn-decline-cookies').addEventListener('click', function() {
+      localStorage.setItem('cookie_consent', 'declined');
+      banner.style.display = 'none';
+    });
+  });
+</script>
