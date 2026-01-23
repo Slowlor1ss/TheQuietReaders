@@ -149,27 +149,18 @@ class SimplePublisher(ctk.CTk):
         entry.pack(fill="x", pady=5, padx=5)
         return entry
 
-    # Stop Parent Scrolling
-    def fix_scroll_propagation(self, widget):
-        # We access the internal Tkinter widget (_textbox)
-        # We bind the MouseWheel event to manually scroll the text box
-        # and then return "break" which tells Tkinter "Stop! Don't tell the parent!"
-        def _on_mousewheel(event):
-            widget._textbox.yview_scroll(int(-1*(event.delta/120)), "units")
-            return "break" # The magic word that stops propagation
-            
-        # Bind for Windows (MouseWheel) and Linux (Button-4/5)
-        widget._textbox.bind("<MouseWheel>", _on_mousewheel)
-
     def fix_scroll_propagation(self, widget):
         def _on_mousewheel(event):
-            # Check if the internal text widget currently has the keyboard focus
+            # Check if we are currently typing in the text box
             if self.focus_get() == widget._textbox:
-                # It is selected -> Scroll the text box
+                # Box Selected -> Scroll the Text Box (Standard speed)
                 widget._textbox.yview_scroll(int(-1*(event.delta/120)), "units")
                 return "break" # Stop the parent page from scrolling
             else:
-                return 
+                # Box not Selected -> Scroll the Parent Page
+                # We multiply by 10 as otherwise our scroll is super slow for some reason???
+                self.scroll._parent_canvas.yview_scroll(int(-1*(event.delta/120)*10), "units")
+                return "break" # Stop the parent page from scrolling
 
         # Bind for Windows (MouseWheel) and Linux (Button-4/5)
         widget._textbox.bind("<MouseWheel>", _on_mousewheel)
