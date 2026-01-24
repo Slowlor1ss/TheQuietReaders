@@ -100,9 +100,11 @@ layout: default
 
     <hr>
 
+    <!-- TODO: once we got more books we should probably increase minCommonTags to 2 
+     but maybe also have a check if the book has at least 2 tags for obvious reasons -->
     <h3>You might also like...</h3>
     <div class="grid-container">
-        {% assign maxRelated = 2 %}
+        {% assign maxRelated = 4 %}
         {% assign minCommonTags = 1 %}
         {% assign maxRelatedCounter = 0 %}
     
@@ -139,7 +141,7 @@ layout: default
                         {% include stars.html rating=post.rating %}
 
                         <p>
-                            {{ post.description }}
+                            {{ post.customdesc }}
                         </p>
 
                     </div>

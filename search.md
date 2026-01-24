@@ -93,6 +93,9 @@ permalink: /search/
                   <div class="stars">
                     ${post.stars_html || ''} 
                   </div>
+                  <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
+                    ${ post.customdesc }
+                  </p>
                 </div>
               </a>
             </div>
@@ -156,7 +159,7 @@ permalink: /search/
     gap: 30px;
   }
 
-  .grid-container p {
+  /* .grid-container p {
     text-align: center;
-  }
+  } */
 </style>

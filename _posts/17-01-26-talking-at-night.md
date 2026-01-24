@@ -11,7 +11,8 @@ genre: ["Contemporary", "Romance"]
 category: "Book"
 rating: 4
 featured: true
-description: "What do you do when the one person you should forget is the one just can't let go?"
+description: "A book review of Talking at Night by Claire Daverley | What do you do when the one person you should forget is the one just can't let go?"
+customdesc: "What do you do when the one person you should forget is the one just can't let go?"
 author: "Eris Langley"
 --- 
 

@@ -38,7 +38,7 @@ permalink: /our-picks/
           </div>
 
           <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
-            {{ post.description }}
+            {{ post.customdesc }}
           </p>
 
         </div>

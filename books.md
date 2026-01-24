@@ -1,7 +1,10 @@
 ---
 layout: default
 title: Book Reviews
+seo_title: "Romance & Fantasy Book Review Collection"
 permalink: /books/
+description: "Browse our complete library of honest book reviews. Filter by name, genre, and author to find your perfect next read."
+image: /assets/images/icons/LogoWhiteBorder.png # Image shown when sharing this specific link
 ---
 
 <h1 class="page-heading">Book Reviews</h1>
@@ -46,7 +49,7 @@ permalink: /books/
           </div>
 
           <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
-            {{ post.description }}
+            {{ post.customdesc }}
           </p>
 
         </div>

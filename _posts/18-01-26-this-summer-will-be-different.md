@@ -11,7 +11,8 @@ genre: ["Comedy", "Romance"]
 category: "Book"
 rating: 4.5
 featured: true
-description: "Every summer forces Felix and Lucy to be together but they shouldn’t be. Can they resist temptation?"
+description: "A book review of This Summer Will Be Different by Carley Fortune | Every summer forces Felix and Lucy to be together but they shouldn’t be. Can they resist temptation?"
+customdesc: "Every summer forces Felix and Lucy to be together but they shouldn’t be. Can they resist temptation?"
 author: "Eris Langley"
 ---
 

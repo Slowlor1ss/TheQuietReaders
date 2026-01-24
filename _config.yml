@@ -1,11 +1,26 @@
+# https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md
 title: The Quiet Readers
-email: contact@thequietreaders.com
+email: thequietreaders@outlook.com
 description: >- # The ">-" lets you write a long description
-  A dreamy space for book reviews, romance, fantasy, and media.
+  Discover honest romance and fantasy book reviews at The Quiet Readers. 
+  An independent blog and dreamy space for book recommendations, movies, series, and gaming.
 baseurl: "" 
 url: "https://thequietreaders.com" 
-twitter_username: quietreaders
-github_username:  slowlor1ss
+
+lang: en-US
+author:
+  name: The Quiet Readers
+  email: thequietreaders@outlook.com
+  twitter: quietreaders # TODO
+
+# Branding for Google Search (Knowledge Graph)
+# This uses your largest icon so Google displays it next to your search result
+logo: /assets/images/icons/LogoSecondary.png 
+
+# Social Sharing Fallback 
+# If a page has no image, Twitter/Facebook will use this one by default.
+# TODO: create a generic "The Quiet Readers" banner
+image: /assets/images/icons/LogoSecondary.png 
 
 # Build settings
 theme: minima

@@ -11,7 +11,8 @@ genre: ["Contemporary", "Romance"]
 category: "Book"
 rating: 3
 featured: false
-description: "Two season tickets. One genius idea. Zero interest in a relationship. Until…"
+description: "A book review of The Wrong Game by Kandi Steiner | Two season tickets. One genius idea. Zero interest in a relationship. Until…"
+customdesc: "Two season tickets. One genius idea. Zero interest in a relationship. Until…"
 author: "Eris Langley"
 ---
 

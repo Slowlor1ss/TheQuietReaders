@@ -5,6 +5,7 @@ layout: null
   {% for post in site.posts %}
     {
       "title"    : "{{ post.title | escape }}",
+      "customdesc"    : "{{ post.customdesc | escape }}",
       "genre"    : "{{ post.genre | join: ', ' }}", 
       "author"   : "{{ post.author | escape }}",
       "category" : "{{ post.category }}",

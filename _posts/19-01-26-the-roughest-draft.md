@@ -1,6 +1,6 @@
 ---
 layout: review
-title: "The Roughest Draft by Emily Wibberley &  Austin Siegemund-Broka"
+title: "The Roughest Draft by Emily Wibberley & Austin Siegemund-Broka"
 date: 19-01-2026
 pages: 339
 isbn: "9781035018642"
@@ -11,7 +11,8 @@ genre: ["Comedy", "Romance", "Contemporary"]
 category: "Book"
 rating: 3.5
 featured: false
-description: "They haven’t spoken since, and never planned to, except they have one final book due on contract.”"
+description: "A book review of The Roughest Draft by Emily Wibberley & Austin Siegemund-Broka | They haven’t spoken since, and never planned to, except they have one final book due on contract."
+customdesc: "They haven’t spoken since, and never planned to, except they have one final book due on contract."
 author: "Eris Langley"
 ---
 
