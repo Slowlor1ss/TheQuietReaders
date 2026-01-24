@@ -91,7 +91,7 @@ class SimplePublisher(ctk.CTk):
 
         # Form Fields
         self.entry_title = self.create_input("Book Title")
-        self.entry_author = self.create_input("Author Name")
+        self.entry_author = self.create_input("Review Author Name")
         self.entry_genre = self.create_input("Genre (e.g. Romance, Comedy)")
         self.entry_pages = self.create_input("Pages")
         self.entry_isbn = self.create_input("ISBN")
@@ -105,9 +105,9 @@ class SimplePublisher(ctk.CTk):
         self.check_featured.pack(anchor="w", pady=(10, 5), padx=20)
 
         # Description
-        # ctk.CTkLabel(self.scroll, text="Short Description: (1-2 lines preferably)").pack(anchor="w", pady=(0), padx=(5))
-        # self.entry_desc = ctk.CTkTextbox(self.scroll, height=60)
-        # self.entry_desc.pack(fill="x", pady=5, padx=5)
+        ctk.CTkLabel(self.scroll, text="Short Description: (1-2 lines preferably)").pack(anchor="w", pady=(0), padx=(5))
+        self.entry_custom_desc = ctk.CTkTextbox(self.scroll, height=60)
+        self.entry_custom_desc.pack(fill="x", pady=5, padx=5)
 
         # Body
         ctk.CTkLabel(self.scroll, text="Full Review (Markdown):").pack(anchor="w", pady=(0), padx=(5))
@@ -322,7 +322,7 @@ Make sure you have done a preview first (use the preview button under review)"
             # Prepare Slugs
             # We use your clean_filename logic for the folder slug too
             title = data['title']
-            slug_text = f"{title} by {data['author']} Book Review"
+            slug_text = f"{title} Book Review"
             post_slug = clean_filename(slug_text)
             # TODO: and TEST
             # I think Jekyll requires Year-Month-Day (%Y-%m-%d) for filenames, 
@@ -373,12 +373,14 @@ isbn: "{data['isbn']}"
 amznlink: "{data['amazon']}"
 bookshplink: "{data['bookshop']}"
 featured: {featured_line}
-description: "{data['desc']}"
+description: "{data['seodesc']}"
+customdesc: "{data['customdesc']}"
 ---
 
 {data['body']}
 """
-            md_filename = f"_posts/{today}-{post_slug}.md"
+            # Not using the variable today as we want 26 rather then 2026
+            md_filename = f"_posts/{datetime.now().strftime("%d-%m-%y")}-{post_slug}.md"
 
             # Create Branch & Commit
             sb = repo.get_branch("main")
@@ -502,7 +504,7 @@ description: "{data['desc']}"
         # SEO description
         # TODO: Maybe add some variation and pick randomly from multiple templates 
         main_genre = raw_genre.split(',')[0].strip() if raw_genre else "Book"
-        seo_description = f"Read our honest book review on {title} by {author}. A {rating}/5 star {main_genre} novel. We discuss the plot, characters, and if it's worth the hype."
+        seo_description = f"Read our honest book review on {title}. A {rating}/5 star {main_genre} novel. We discuss the plot, characters, and if it's worth the hype."
 
         # Return a dictionary of clean data if all passed
         return {
@@ -514,8 +516,8 @@ description: "{data['desc']}"
             "amazon": link_amzn,
             "bookshop": link_book,
             "genre": formatted_genre,
-            "desc": seo_description,
-            #"desc": self.entry_desc.get("1.0", "end-1c").strip(),
+            "seodesc": seo_description,
+            "customdesc": self.entry_custom_desc.get("1.0", "end-1c").strip(),
             "body": self.entry_body.get("1.0", "end-1c")
         }
 
