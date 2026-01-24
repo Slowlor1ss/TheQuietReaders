@@ -504,7 +504,7 @@ customdesc: "{data['customdesc']}"
         # SEO description
         # TODO: Maybe add some variation and pick randomly from multiple templates 
         main_genre = raw_genre.split(',')[0].strip() if raw_genre else "Book"
-        seo_description = f"Read our honest book review on {title}. A {rating}/5 star {main_genre} novel. We discuss the plot, characters, and if it's worth the hype."
+        seo_description = f"Read our honest book review on {title} a {main_genre} novel. We discuss the plot, characters, and if it's worth the hype."
 
         # Return a dictionary of clean data if all passed
         return {
