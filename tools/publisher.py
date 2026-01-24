@@ -105,9 +105,9 @@ class SimplePublisher(ctk.CTk):
         self.check_featured.pack(anchor="w", pady=(10, 5), padx=20)
 
         # Description
-        ctk.CTkLabel(self.scroll, text="Short Description: (1-2 lines preferably)").pack(anchor="w", pady=(0), padx=(5))
-        self.entry_desc = ctk.CTkTextbox(self.scroll, height=60)
-        self.entry_desc.pack(fill="x", pady=5, padx=5)
+        # ctk.CTkLabel(self.scroll, text="Short Description: (1-2 lines preferably)").pack(anchor="w", pady=(0), padx=(5))
+        # self.entry_desc = ctk.CTkTextbox(self.scroll, height=60)
+        # self.entry_desc.pack(fill="x", pady=5, padx=5)
 
         # Body
         ctk.CTkLabel(self.scroll, text="Full Review (Markdown):").pack(anchor="w", pady=(0), padx=(5))
@@ -322,7 +322,8 @@ Make sure you have done a preview first (use the preview button under review)"
             # Prepare Slugs
             # We use your clean_filename logic for the folder slug too
             title = data['title']
-            post_slug = clean_filename(title) 
+            slug_text = f"{title} by {data['author']} Book Review"
+            post_slug = clean_filename(slug_text)
             # TODO: and TEST
             # I think Jekyll requires Year-Month-Day (%Y-%m-%d) for filenames, 
             # or the posts won't appear in the right order.
@@ -385,10 +386,10 @@ description: "{data['desc']}"
             repo.create_git_ref(ref=f"refs/heads/{branch_name}", sha=sb.commit.sha)
 
             # Upload Files
-            repo.create_file(path_420, f"Img 420: {title}", buf_420.getvalue(), branch=branch_name)
-            repo.create_file(path_280, f"Img 280: {title}", buf_280.getvalue(), branch=branch_name)
-            repo.create_file(path_orig, f"Img Original: {title}", buf_original, branch=branch_name)
-            repo.create_file(md_filename, f"Post: {title}", md_content, branch=branch_name)
+            self.safe_upload(repo, path_420, f"Img 420: {title}", buf_420.getvalue(), branch_name)
+            self.safe_upload(repo, path_280, f"Img 280: {title}", buf_280.getvalue(), branch_name)
+            self.safe_upload(repo, path_orig, f"Img Original: {title}", buf_original, branch_name)
+            self.safe_upload(repo, md_filename, f"Post: {title}", md_content, branch_name)
 
             # Pull Request
             pr = repo.create_pull(title=f"New Post: {title}", body="Auto-generated", head=branch_name, base="main")
@@ -399,6 +400,31 @@ description: "{data['desc']}"
         except Exception as e:
             messagebox.showerror("Error", str(e))
             self.reset_ui()
+
+    def safe_upload(self, repo, path, message, content, branch):
+        """
+        Tries to Create a file. If it exists, it Updates it instead.
+        """
+        try:
+            # Try to Create
+            repo.create_file(path, message, content, branch=branch)
+            print(f"Created: {path}")
+            
+        except Exception as e:
+            # Fallback to Update
+            # If create failed, it likely exists. We need to find the 'sha' to overwrite it.
+            print(f"File exists ({path}), switching to Update mode...")
+            try:
+                # Get the existing file info to find its 'sha'
+                contents = repo.get_contents(path, ref=branch)
+                
+                # Update it
+                repo.update_file(path, message, content, contents.sha, branch=branch)
+                messagebox.showinfo("Notice", f"({path})\nFile already exists on repo! We will send a request to update it.\n Dont worry about it - just tell me this message showed up and send a screenshot")
+                print(f"Updated: {path}")
+            except Exception as e2:
+                # If it still fails, it's a real error (like permission issues)
+                print(f"Critical Error uploading {path}: {e2}")
 
     def validate_inputs(self):
         # Gather raw data
@@ -472,6 +498,11 @@ description: "{data['desc']}"
         else:
             messagebox.showerror("No Genre supplied", f"{raw_genre} Need at least 1 genre")
             return None
+        
+        # SEO description
+        # TODO: Maybe add some variation and pick randomly from multiple templates 
+        main_genre = raw_genre.split(',')[0].strip() if raw_genre else "Book"
+        seo_description = f"Read our honest book review on {title} by {author}. A {rating}/5 star {main_genre} novel. We discuss the plot, characters, and if it's worth the hype."
 
         # Return a dictionary of clean data if all passed
         return {
@@ -483,7 +514,8 @@ description: "{data['desc']}"
             "amazon": link_amzn,
             "bookshop": link_book,
             "genre": formatted_genre,
-            "desc": self.entry_desc.get("1.0", "end-1c").strip(),
+            "desc": seo_description,
+            #"desc": self.entry_desc.get("1.0", "end-1c").strip(),
             "body": self.entry_body.get("1.0", "end-1c")
         }
 
