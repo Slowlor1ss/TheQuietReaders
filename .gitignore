@@ -5,3 +5,4 @@ _site
 /tools/build
 tools/publisher.spec
 tools/dist/publisher.exe
+tools/makeBuild.txt

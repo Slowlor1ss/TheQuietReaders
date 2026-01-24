@@ -13,7 +13,7 @@ from tkhtmlview import HTMLLabel
 # CONFIG
 GITHUB_REPO_NAME = "Slowlor1ss/TheQuietReaders"
 # hehe not pushing this to my public github lol
-GITHUB_TOKEN = ""
+GITHUB_TOKEN = "ghp_"
 # Appearance
 ctk.set_appearance_mode("System")
 ctk.set_default_color_theme("blue")
@@ -380,7 +380,7 @@ customdesc: "{data['customdesc']}"
 {data['body']}
 """
             # Not using the variable today as we want 26 rather then 2026
-            md_filename = f"_posts/{datetime.now().strftime("%d-%m-%y")}-{post_slug}.md"
+            md_filename = f"_posts/{datetime.now().strftime('%d-%m-%y')}-{post_slug}.md"
 
             # Create Branch & Commit
             sb = repo.get_branch("main")
