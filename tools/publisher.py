@@ -368,7 +368,7 @@ author: "{data['author']}"
 genre: [{data['genre']}]
 pages: {data['pages']}
 rating: {data['rating']}
-image: "/{path_420}"
+image: "/{path_280}"
 isbn: "{data['isbn']}"
 amznlink: "{data['amazon']}"
 bookshplink: "{data['bookshop']}"
