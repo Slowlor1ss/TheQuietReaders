@@ -7,12 +7,12 @@ author: "Eris Langley"
 genre: ["Romance", "Comedy", "Contemporary"]
 pages: 400
 rating: 4.0
-image: "/assets/images/books/love-theoretically-420.webp"
+image: "/assets/images/books/love-theoretically-280.webp"
 isbn: "9781408725795"
 amznlink: "https://amzn.to/4qFTFKr"
 bookshplink: "https://uk.bookshop.org/a/16879/9781408725795"
 featured: true
-description: "Read our honest book review on Love, Theoretically by Ali Hazelwood. A 4.0/5 star Romance novel. We discuss the plot, characters, and if it's worth the hype."
+description: "Read our honest book review on Love, Theoretically by Ali Hazelwood. A 4/5 star heated rivalry. We discuss the plot, characters, and if it's worth the hype."
 customdesc: "Will falling into an experimentalist’s orbit finally tempt her to put her most guarded theories on love into practice?"
 ---
 
