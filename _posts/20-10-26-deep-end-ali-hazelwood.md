@@ -11,7 +11,8 @@ genre: ["Romance"]
 category: "Book"
 rating: 3.5
 featured: false
-description: "It was supposed to be just a temporary, mutually satisfying fling. But things never go as planned…"
+description: "A book review of Deep End by Ali Hazelwood | It was supposed to be just a temporary, mutually satisfying fling. But things never go as planned…"
+customdesc: "It was supposed to be just a temporary, mutually satisfying fling. But things never go as planned…"
 author: "Eris Langley"
 ---
 
