@@ -14,7 +14,7 @@ amznlink: "https://amzn.to/466WZpl"
 bookshplink: "https://uk.bookshop.org/a/16879/9781405972192"
 featured: false
 description: "Read our honest book review on Ralph's Party by Lisa Jewell a Romance novel. We discuss the plot, characters, and if it's worth the hype."
-customdesc: "Sooner or Later it’s all going to come to a head - and what better place for tears and laughter, breakups and makeups than at Ralph’s Party. \"
+customdesc: "Sooner or Later it’s all going to come to a head - and what better place for tears and laughter, breakups and makeups than at Ralph’s Party."
 ---
 
 
