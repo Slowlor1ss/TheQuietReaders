@@ -157,6 +157,7 @@ layout: default
 
 </article>
 
+<!-- Google rich results -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
@@ -165,7 +166,17 @@ layout: default
     "@type": "Book",
     "name": "{{ page.title }}",
     "image": "{{ site.url }}{{ site.baseurl }}{{ page.image }}",
-    {% if page.isbn %}"isbn": "{{ page.isbn }}"{% endif %}
+    "author": "{{ page.title | split: ' by ' | last | strip }}",
+    {% if page.isbn %}"isbn": "{{ page.isbn }}",{% endif %}
+    {% if page.pages %}"numberOfPages": {{ page.pages }},{% endif %}
+    {% if page.genre %}
+    "genre": [
+      {% assign clean_genres = page.genre | replace: '[', '' | replace: ']', '' | replace: '"', '' | split: ',' %}
+      {% for g in clean_genres %}
+        "{{ g | strip }}"{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+    {% endif %}
   },
   "reviewRating": {
     "@type": "Rating",
