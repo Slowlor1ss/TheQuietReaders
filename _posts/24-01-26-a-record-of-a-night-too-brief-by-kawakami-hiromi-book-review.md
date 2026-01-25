@@ -2,6 +2,7 @@
 layout: review
 category: "Book"
 title: "A Record of a Night Too Brief by Kawakami Hiromi"
+seo_title: "A Record of a Night Too Brief by Kawakami Hiromi | Book Review"
 date: 24-01-2026
 author: "Eris Langley"
 genre: ["Contemporary", "Japanese Literature"]

@@ -1,6 +1,7 @@
 ---
 layout: review
 title: "The Roughest Draft by Emily Wibberley & Austin Siegemund-Broka"
+seo_title: "The Roughest Draft by Emily Wibberley & Austin Siegemund-Broka | Book Review"
 date: 19-01-2026
 pages: 339
 isbn: "9781035018642"

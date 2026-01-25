@@ -1,6 +1,7 @@
 ---
 layout: review
 title: "Deep End by Ali Hazelwood"
+seo_title: "Deep End by Ali Hazelwood | Book Review"
 date: 20-01-2026
 pages: 464
 isbn: "9781408728888"

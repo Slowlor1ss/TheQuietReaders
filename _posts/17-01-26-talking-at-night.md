@@ -1,6 +1,7 @@
 ---
 layout: review
 title: "Talking at Night by Claire Daverley"
+seo_title: "Talking at Night by Claire Daverley | Book Review"
 date: 17-01-2026
 pages: 416
 isbn: "9780241604830"

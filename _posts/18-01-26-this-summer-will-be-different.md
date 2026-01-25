@@ -1,6 +1,7 @@
 ---
 layout: review
 title: "This Summer Will Be Different by Carley Fortune"
+seo_title: "This Summer Will Be Different by Carley Fortune | Book Review"
 date: 18-01-2026
 pages: 384
 isbn: "9781405965453"

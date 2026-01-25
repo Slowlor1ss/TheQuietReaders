@@ -2,6 +2,7 @@
 layout: review
 category: "Book"
 title: "Love, Theoretically by Ali Hazelwood"
+seo_title: "Love, Theoretically by Ali Hazelwood | Book Review"
 date: 24-01-2026
 author: "Eris Langley"
 genre: ["Romance", "Comedy", "Contemporary"]

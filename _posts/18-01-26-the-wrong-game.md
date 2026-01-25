@@ -1,6 +1,7 @@
 ---
 layout: review
 title: "The Wrong Game by Kandi Steiner"
+seo_title: "The Wrong Game by Kandi Steiner | Book Review"
 date: 18-01-2026
 pages: 416
 isbn: "9781923232068"
