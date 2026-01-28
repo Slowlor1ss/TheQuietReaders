@@ -17,14 +17,14 @@ description: "Read our honest book review on Storm and Fury by Jennifer L. Armen
 customdesc: "But all bets are off as a supernatural war is unleashed…"
 ---
 
-*Storm and Fury* delivers a compelling blend of urban fantasy, character‑driven storytelling, and accessible worldbuilding. The novel introduces readers to Trinity Marrow, a heroine whose special abilities and lived experiences shape the emotional core of the story. Jennifer L. Armentrout builds a modern supernatural setting that feels engaging without overwhelming, balancing action, and character development in a way that keeps the narrative moving. With its mix of humour, heartfelt moments and humour, the book establishes a strong foundation for the trilogy’s larger arc. \
+*Storm and Fury* delivers a compelling blend of urban fantasy, character‑driven storytelling, and accessible worldbuilding. The novel introduces readers to Trinity Marrow, a heroine whose special abilities and lived experiences shape the emotional core of the story. Jennifer L. Armentrout builds a modern supernatural setting that feels engaging without overwhelming, balancing action, and character development in a way that keeps the narrative moving. With its mix of humour, heartfelt moments and humour, the book establishes a strong foundation for the trilogy’s larger arc.
 
 
 ----
 
  
 ## A Summary  
-*Storm and Fury* centers on Trinity Marrow, a young woman with rare supernatural abilities who has spent her life hidden within a Warden stronghold, protected not only by the gargoyle‑shifter community but also by her best friend and guardian, Misha, whose loyalty shapes much of her emotional world. When an unforeseen threat disrupts the precarious safety of their home, Trinity is forced into an uneasy alliance with a disciplined (*and attractive*) Warden from another clan whose arrival challenges her beliefs about independence, and the limits placed on her life. As the danger escalates, Trinity finds herself pushed beyond the boundaries she has always known, navigating a world where alliances are blurred, enemies aren’t always obvious and her own identity carries more weight than she ever imagined. The novel blends supernatural intrigue, action, and slow‑building emotional tension while exploring themes of self‑discovery, autonomy, grief, moral complexity, and the burden of power. Trinity’s dynamic with Misha adds depth to the story’s exploration of loyalty, betrayal and loss, while her evolving connection with the drop-dead gorgeous Warn highlights the tension between protection and respect. This book sets up a world where personal growth and supernatural stakes are tightly coiled, creating a narrative driven as much by emotions as by the action. \
+*Storm and Fury* centers on Trinity Marrow, a young woman with rare supernatural abilities who has spent her life hidden within a Warden stronghold, protected not only by the gargoyle‑shifter community but also by her best friend and guardian, Misha, whose loyalty shapes much of her emotional world. When an unforeseen threat disrupts the precarious safety of their home, Trinity is forced into an uneasy alliance with a disciplined (*and attractive*) Warden from another clan whose arrival challenges her beliefs about independence, and the limits placed on her life. As the danger escalates, Trinity finds herself pushed beyond the boundaries she has always known, navigating a world where alliances are blurred, enemies aren’t always obvious and her own identity carries more weight than she ever imagined. The novel blends supernatural intrigue, action, and slow‑building emotional tension while exploring themes of self‑discovery, autonomy, grief, moral complexity, and the burden of power. Trinity’s dynamic with Misha adds depth to the story’s exploration of loyalty, betrayal and loss, while her evolving connection with the drop-dead gorgeous Warn highlights the tension between protection and respect. This book sets up a world where personal growth and supernatural stakes are tightly coiled, creating a narrative driven as much by emotions as by the action.
  
 
 ## What I loved
@@ -32,7 +32,7 @@ customdesc: "But all bets are off as a supernatural war is unleashed…"
 I had planned to read *Storm and Fury* in four or five days, but that went out the window when I read three-hundred pages on the first day. I ended up devouring this book in what basically amounted to a day and a half - completely unplanned. It just has this sneaky “I’ll just read one more chapter” energy that turns into you suddenly realizing you’ve been glued to the pages for hours. This world pulls you in suddenly and doesn’t let go.  
 One of the things that really makes it stand out for me, is how Trinity’s eye condition (retinitis pigmentosa) is written. It’s portrayed in a really grounded and thoughtful way. It impacts how she moves through the world, sometimes in frustrating ways, but it never becomes the thing that defines her. The story lets her be powerful, stubborn, funny, scared, brave - all the things a character should be - while still acknowledging the reality of her disability. It’s just one part of who she is, handled with honesty and respect. And this clearly comes from the fact that Jennifer L. Armentrout also suffers from retinitis pigmentosa, and I adore the fact that she is shedding some light on the condition through her writing! 
 Worldbuilding is another huge win, it’s rich without being overwhelming. We all know the struggle of reading fantasy books and going through the gutter for the first hundred pages as we try to figure out what is going on in this reality, but this book did it flawlessly. You learn the world through Trinity’s lens, and as Trinity learns, so do you. 
-And the characters feel like actual people rather than fantasy cutouts. They’re layered, messy, emotional, and full of little quirks that make them feel lived‑in. Every interaction has weight because everyone feels like they have their own history and motivations. It’s the kind of book that hooks you with its vibe and keeps you because the people inside it feel real. \
+And the characters feel like actual people rather than fantasy cutouts. They’re layered, messy, emotional, and full of little quirks that make them feel lived‑in. Every interaction has weight because everyone feels like they have their own history and motivations. It’s the kind of book that hooks you with its vibe and keeps you because the people inside it feel real.
 
 
 
@@ -64,14 +64,10 @@ This is the first book of the trilogy, and I am yet to read the rest (I will be 
 
 Songs that I find reminiscent of the book:
 
-[Control by Halsey](https://www.youtube.com/watch?v=so8V5dAli-Q&list=RDso8V5dAli-Q&start_radio=1)
-
-[Darkside by 	Neoni ](https://www.youtube.com/watch?v=UgKNP8GHnuk&list=RDUgKNP8GHnuk&start_radio=1)
-
-[Hurricane by Fleurie](https://www.youtube.com/watch?v=nZcf3oXfz5k&list=RDnZcf3oXfz5k&start_radio=1)
-
-[Soldier by Fleurie](https://www.youtube.com/watch?v=32W3J7XaNH8&list=RD32W3J7XaNH8&start_radio=1)
-
+[Control by Halsey](https://www.youtube.com/watch?v=so8V5dAli-Q&list=RDso8V5dAli-Q&start_radio=1) \
+[Darkside by 	Neoni ](https://www.youtube.com/watch?v=UgKNP8GHnuk&list=RDUgKNP8GHnuk&start_radio=1) \
+[Hurricane by Fleurie](https://www.youtube.com/watch?v=nZcf3oXfz5k&list=RDnZcf3oXfz5k&start_radio=1) \
+[Soldier by Fleurie](https://www.youtube.com/watch?v=32W3J7XaNH8&list=RD32W3J7XaNH8&start_radio=1) \
 [Silhouette by Aquilo ](https://www.youtube.com/watch?v=gVDRPWHWVvs&list=RDgVDRPWHWVvs&start_radio=1)
 
 *(P.S. We made them links so feel free to click on them and get teleported straight into the vibes.)*
