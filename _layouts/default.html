@@ -43,12 +43,19 @@
   <header id="site-header">
     <div class="header-content">
       <a href="/" class="site-title">{{ site.title }}</a>
+      <!-- Highlight current and home in none of these -->
       <nav>
-        <a href="{{ site.baseurl }}/" class="nav-home">Home</a>
-        <a href="{{ site.baseurl }}/books">Books</a>
-        <a href="{{ site.baseurl }}/tv">Movies & TV</a>
-        <a href="{{ site.baseurl }}/games">Games</a>
-        <a href="{{ site.baseurl }}/about">About</a>
+        {% assign current = 'home' %}
+        {% if page.url == '/books/' or page.url == '/books' %}{% assign current = 'books' %}{% endif %}
+        {% if page.url == '/tv/' or page.url == '/tv' %}{% assign current = 'tv' %}{% endif %}
+        {% if page.url == '/games/' or page.url == '/games' %}{% assign current = 'games' %}{% endif %}
+        {% if page.url == '/about/' or page.url == '/about' %}{% assign current = 'about' %}{% endif %}
+
+        <a href="{{ site.baseurl }}/" class="{% if current == 'home' %}nav-active{% endif %}">Home</a>
+        <a href="{{ site.baseurl }}/books" class="{% if current == 'books' %}nav-active{% endif %}">Books</a>
+        <a href="{{ site.baseurl }}/tv" class="{% if current == 'tv' %}nav-active{% endif %}">Movies & TV</a>
+        <a href="{{ site.baseurl }}/games" class="{% if current == 'games' %}nav-active{% endif %}">Games</a>
+        <a href="{{ site.baseurl }}/about" class="{% if current == 'about' %}nav-active{% endif %}">About</a>
       </nav>
       
       <!-- <div class="search-container">
@@ -84,7 +91,7 @@
     </div>
   </main>
 
-<footer>
+  <footer>
     <div class="footer-content">
       
       <div class="footer-section">

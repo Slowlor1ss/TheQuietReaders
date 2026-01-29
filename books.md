@@ -34,7 +34,7 @@ image: /assets/images/icons/LogoWhiteBorder.png # Image shown when sharing this 
             loading="lazy"
             decoding="async"
           >
-        <div class="card-content">
+          <div class="card-content">
           
           <div class="tags-container" style="margin-bottom:10px;">
             {% for genre in post.genre %}

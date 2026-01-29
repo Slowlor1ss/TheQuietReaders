@@ -13,7 +13,7 @@ permalink: /games/
       <a href="{{ site.baseurl }}{{ post.url }}">
           <img 
             src="{{ post.image | relative_url }}" 
-            alt="{{ post.title }} book cover"
+            alt="{{ post.title }} game cover"
             loading="lazy"
             decoding="async"
           >

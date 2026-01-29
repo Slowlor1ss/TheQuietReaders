@@ -19,7 +19,15 @@ permalink: /our-picks/
       <a href="{{ site.baseurl }}{{ post.url }}">
           <img 
             src="{{ post.image | relative_url }}" 
+            {% if post.category == 'TV' %}
+            alt="{{ post.title }} Tv cover"
+            {% elsif post.category == 'Game' %}
+            alt="{{ post.title }} game cover"
+            {% elsif post.category == 'Film' %}
+            alt="{{ post.title }} film cover"
+            {% elsif post.category == 'Book' %}
             alt="{{ post.title }} book cover"
+            {% endif %}
             loading="lazy"
             decoding="async"
           >

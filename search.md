@@ -63,7 +63,7 @@ permalink: /search/
             
             // --- JAVASCRIPT IMAGE LOGIC (No Liquid Here!) ---
             let imgSrc = "";
-            let imgAlt = post.title + "book cover";
+            let imgAlt = post.title + "media cover";
 
             if (post.image) {
                 imgSrc = post.image;

@@ -14,10 +14,19 @@ title: Home
     {% for post in site.posts limit:4 %}
     
     <div class="card">
+      <!-- TODO: we add book cover here but need fiml tv and game respectivly -->
       <a href="{{ post.url | relative_url }}">
           <img 
             src="{{ post.image | relative_url }}" 
+            {% if post.category == 'TV' %}
+            alt="{{ post.title }} Tv cover"
+            {% elsif post.category == 'Game' %}
+            alt="{{ post.title }} game cover"
+            {% elsif post.category == 'Film' %}
+            alt="{{ post.title }} film cover"
+            {% elsif post.category == 'Book' %}
             alt="{{ post.title }} book cover"
+            {% endif %}
             loading="lazy"
             decoding="async"
           >
@@ -52,7 +61,7 @@ title: Home
   
   <div class="section-header">
     <h2>Our Picks</h2>
-    <a href="{{ site.baseurl }}/our-picks/" class="view-all-link">View all <span>&rsaquo;</span></a>
+    <a href="{{ site.baseurl }}/our-picks/" class="view-all-link">View more <span>&rsaquo;</span></a>
   </div>
 
   <div class="grid-container">

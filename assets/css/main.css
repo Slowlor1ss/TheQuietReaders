@@ -88,8 +88,8 @@ nav a {
 }
 nav a:hover { color: var(--primary); }
 
-/* Make the Home link stand out */
-.nav-home {
+/* Make the Active link stand out */
+.nav-active {
   color: var(--secondary) !important; /* Force it to be purple */
 }
 

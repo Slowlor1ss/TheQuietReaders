@@ -1,0 +1,20 @@
+---
+layout: review
+title: "The Bear" 
+seo_title: "The Bear (Season 3) | TV Review"
+date: 27-01-2026
+# TV SPECIFIC FIELDS
+seasons: 3
+episodes: 10
+network: "Disney+"
+director: "Christopher Storer"
+# STANDARD FIELDS
+image: "/assets/images/tv/the-bear-s3.webp"
+genre: ["Drama", "Comedy"]
+category: "TV"
+rating: 5
+featured: true
+description: "Is The Bear stressful or a masterpiece? Our review of Season 3."
+author: "Eris Langley"
+---
+
