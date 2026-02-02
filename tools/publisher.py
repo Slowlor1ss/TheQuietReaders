@@ -363,6 +363,7 @@ Make sure you have done a preview first (use the preview button under review)"
 layout: review
 category: "Book"
 title: "{data['title']}"
+seo_title: "{data['title']} | Book Review"
 date: {today}
 author: "{data['author']}"
 genre: [{data['genre']}]
@@ -380,7 +381,7 @@ customdesc: "{data['customdesc']}"
 {data['body']}
 """
             # Not using the variable today as we want 26 rather then 2026
-            md_filename = f"_posts/{datetime.now().strftime('%d-%m-%y')}-{post_slug}.md"
+            md_filename = f"_posts/books/{datetime.now().strftime('%d-%m-%y')}-{post_slug}.md"
 
             # Create Branch & Commit
             sb = repo.get_branch("main")
