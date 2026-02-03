@@ -64,6 +64,6 @@ Songs that I find reminiscent of the book:
 [Black Out Days by Phantogram](https://www.youtube.com/watch?v=a0ul-BghOAs&list=RDa0ul-BghOAs&start_radio=1) \
 [After Dark by Mr. Kitty](https://www.youtube.com/watch?v=sVx1mJDeUjY&list=RDsVx1mJDeUjY&start_radio=1) \
 [Me and the Devil by Soap&Skin  ](https://www.youtube.com/watch?v=NVdAZzrX0CY&list=RDsVx1mJDeUjY&index=22) \
-[Berlin by RY X](https://www.youtube.com/watch?v=cFXN20bpWtY&list=RDcFXN20bpWtY&start_radio=1) \
+[Berlin by RY X](https://www.youtube.com/watch?v=cFXN20bpWtY&list=RDcFXN20bpWtY&start_radio=1)
 
 *(P.S. We made them links so feel free to click on them and get teleported straight into the vibes.)*
