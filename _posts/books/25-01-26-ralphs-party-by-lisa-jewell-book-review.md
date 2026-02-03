@@ -7,7 +7,7 @@ date: 25-01-2026
 author: "Eris Langley"
 genre: ["Romance", "Comedy", "Contemporary"]
 pages: 368
-rating: 0.0
+rating: 0
 image: "/assets/images/books/ralphs-party-280.webp"
 isbn: "9780140279276"
 amznlink: "https://amzn.to/466WZpl"
