@@ -30,7 +30,7 @@ Edie Meyer has grown up with a prophecy. Her grandmother, who has correctly pred
 
 ## Writing Style
 
-Orenstein’s writing in this novel has this breezy, fast-paced atmosphere that makes the whole book feel like something you can fall into without noticing the hours go by. Often while reading this, I felt as if I had read 5 pages when I had *actually *read 15 - it’s just that type of book. Orenstein manages to balance the spiraling in Edie’s head with the light-hearted, funny ambiance.  She’s great at getting inside a character’s head without weighing the story down, especially when she’s exploring anxiety or the pressure of expectations, and the whole thing has that rom‑com glow while still nudging at deeper questions underneath. This novel is set in a first-person perspective, which is the perfect fit for a story where a lot of it happens inside a character’s head. 
+Orenstein’s writing in this novel has this breezy, fast-paced atmosphere that makes the whole book feel like something you can fall into without noticing the hours go by. Often while reading this, I felt as if I had read 5 pages when I had *actually* read 15 - it’s just that type of book. Orenstein manages to balance the spiraling in Edie’s head with the light-hearted, funny ambiance.  She’s great at getting inside a character’s head without weighing the story down, especially when she’s exploring anxiety or the pressure of expectations, and the whole thing has that rom‑com glow while still nudging at deeper questions underneath. This novel is set in a first-person perspective, which is the perfect fit for a story where a lot of it happens inside a character’s head. 
 
 
 ## What I Loved
@@ -45,17 +45,17 @@ I found myself wanting more from the characters, especially the side characters.
 
 ## Recommendation
 
-This is a book for the hopeless romantics, the homebodies and the spiritualists. Romance is something that is all throughout the novel, but it is more of a journey of discovery, covering topics of fate, disconnection from religion, and  identity. If you liked *In Five Years *by Rebecca Serle, you will enjoy this book.
+This is a book for the hopeless romantics, the homebodies and the spiritualists. Romance is something that is all throughout the novel, but it is more of a journey of discovery, covering topics of fate, disconnection from religion, and  identity. If you liked *In Five Years* by Rebecca Serle, you will enjoy this book.
 
 
 ## Songs
 
 
-## Songs that I find reminiscent of the book:
+Songs that I find reminiscent of the book:
 
-[Lover by Taylor Swift](https://www.youtube.com/watch?v=-BjZmE2gtdo&list=RD-BjZmE2gtdo&start_radio=1)
-[Those Eyes by New West](https://www.youtube.com/watch?v=GDND88fqt1o&list=RDGDND88fqt1o&start_radio=1)
-[Ceilings by Lizzy McAlpine](https://www.youtube.com/watch?v=SOxmA-nKfbU&list=RDMM&start_radio=1&rv=tSRLc-Jvuog)
-[the 1 by Taylor Swift](https://www.youtube.com/watch?v=KsZ6tROaVOQ&list=RDMM&index=43) \
+[Lover by Taylor Swift](https://www.youtube.com/watch?v=-BjZmE2gtdo&list=RD-BjZmE2gtdo&start_radio=1) \
+[Those Eyes by New West](https://www.youtube.com/watch?v=GDND88fqt1o&list=RDGDND88fqt1o&start_radio=1) \
+[Ceilings by Lizzy McAlpine](https://www.youtube.com/watch?v=SOxmA-nKfbU&list=RDMM&start_radio=1&rv=tSRLc-Jvuog) \
+[the 1 by Taylor Swift](https://www.youtube.com/watch?v=KsZ6tROaVOQ&list=RDMM&index=43)
 
 *(P.S. We made them links so feel free to click on them and get teleported straight into the vibes.)*
