@@ -16,7 +16,7 @@ featured: true
 description: "Read our honest book review on The Irresistible Urge To Fall For Your Enemy by Brigitte Knightley a Romnce novel. We discuss the plot, characters, and if it's worth the hype."
 customdesc: "As Osric and Aurienne work together to heal his illness and investigate the mysterious reoccurrence of a deadly pox, they find themselves ardently denying their attraction, which only fuels the heat between them."
 ---
-
+<br>
 ## Introduction
 
 The Irresistible Urge To Fall For Your Enemy is the first book in Knightley’s duology, a romantic fantasy that blends enemies‑to‑lovers tension with rich world‑building and sharp comedic beats. Knightley crafts a story that moves between magic, moral conflict, and slow‑burn attraction, grounding it in a world of ancient orders, political undercurrents, and atmospheric detail. As an opening instalment, it sets the tone beautifully - immersive, character‑driven, and full of tension for what the second book will unravel.
@@ -48,6 +48,7 @@ I would definitely recommend this book to those that love the fantasy, enemies-t
 ## Songs
 
 Songs that are reminiscent of the book:
+
 [Control by Halsey](https://www.youtube.com/watch?v=so8V5dAli-Q&list=RDso8V5dAli-Q&start_radio=1) \
 [I Found by Amber Run ](https://www.youtube.com/watch?v=CTspcr3Iaws&list=RDCTspcr3Iaws&start_radio=1) \
 [Play With Fire by Sam Tinnesz](https://www.youtube.com/watch?v=np02phdwrwk&list=RDnp02phdwrwk&start_radio=1) \

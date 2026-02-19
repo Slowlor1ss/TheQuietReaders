@@ -16,7 +16,7 @@ featured: false
 description: "Read our honest book review on Grace and Glory by Jennifer L. Armentrout a Romance novel. We discuss the plot, characters, and if it's worth the hype."
 customdesc: "Win or lose, one thing is certain - nothing will ever be the same."
 ---
-
+<br>
 ## Introduction
 
 Jennifer L. Armentrout completes the Harbinger trilogy, wrapping up the supernatural chaos, slow-burn romance and character growth she’s been building from the start. *Glory and Grace* finalizes the perfectly-timed humor, and emotional pain by leaning into everything that makes this series so addictive. Armentrout balances high‑stakes action with intimate character moments, giving readers a finale that feels both intense and heartfelt. It’s a conclusion that ties up the major arcs while still delivering the tension that fans expect.
@@ -37,7 +37,7 @@ Armentrout’s writing style in this book has more depth as well as more comedy.
 
 
 ## What I Loved
-First and foremost, I enjoyed the amount of comedy in this book, even though it was *a lot *more than in the other books of the series. It definitely made me feel *more* than the others in general - whether it was the comedy or the profound sense of loss. 
+First and foremost, I enjoyed the amount of comedy in this book, even though it was *a lot* more than in the other books of the series. It definitely made me feel *more* than the others in general - whether it was the comedy or the profound sense of loss. 
 I was worried about how Armentrout would handle the ending in terms of the disability aspect, but I think it did it well. Oftentimes with fantasy books, if there is a disability mentioned, it is magically healed and I personally don’t like it unless it really fits in with the theme of the book. Having said that, I liked the ambiguity of her disorder at the end, as it allows the reader to decide for themself, and mirrors the uncertainty of the disorder in real life too.  
 
 
