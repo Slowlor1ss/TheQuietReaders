@@ -5,7 +5,7 @@ title: "Better Than the Movies by Lynn Painter"
 seo_title: "Better Than the Movies by Lynn Painter | Book Review"
 date: 24-02-2026
 author: "Eris Langley"
-genre: ["Romance Comedy Contemporary"]
+genre: ["Romance", "Comedy", "Contemporary"]
 pages: 384
 rating: 3.5
 image: "/assets/images/books/bttm-280.webp"
@@ -76,6 +76,6 @@ The soundtrack of Wes and Liz:
 [Death with Dignity by Sufjan Stevens](https://www.youtube.com/watch?v=5fgC_yTVZYo&list=PLvhikcJH2ByShTtbrCeOKCt7r7wUM9cFv&index=14) \
 [We Are Young by fun. Feat. Janelle Monae](https://www.youtube.com/watch?v=Sv6dMFF_yts&list=RDSv6dMFF_yts&start_radio=1) \
 [New Year’s Day by Taylor Swift](https://www.youtube.com/watch?v=KkvTYrFIxNM&list=RDKkvTYrFIxNM&start_radio=1) \
-[River by Joni Mitchell](https://www.youtube.com/watch?v=ozn8UJvrLhU&list=PLvhikcJH2ByShTtbrCeOKCt7r7wUM9cFv&index=17) \
+[River by Joni Mitchell](https://www.youtube.com/watch?v=ozn8UJvrLhU&list=PLvhikcJH2ByShTtbrCeOKCt7r7wUM9cFv&index=17)
 
 *(P.S. We made them links so feel free to click on them and get teleported straight into the vibes.)*
