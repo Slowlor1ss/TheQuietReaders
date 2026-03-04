@@ -58,9 +58,10 @@ This is one of the best cozy romance books I have read in awhile. Let’s Make A
 ## Songs
 
 Songs that I find reminiscent of the book:
+
 [I wish I was Stephen Malkmus by beabadoobee](https://www.youtube.com/watch?v=RPrw_Nyq88U&list=RDRPrw_Nyq88U&start_radio=1) \
 [Ophelia by The Lumineers](https://www.youtube.com/watch?v=pTOC_q0NLTk&list=RDpTOC_q0NLTk&start_radio=1) \
-[BITE by Troye Sivan](https://www.youtube.com/watch?v=fLuWMOF6vOU&list=RDfLuWMOF6vOU&start_radio=1) \
+[BITE by Troye Sivan](https://www.youtube.com/watch?v=fLuWMOF6vOU&list=RDfLuWMOF6vOU&start_radio=1)
 
 *(P.S. We made them links so feel free to click on them and get teleported straight into the vibes.)*
 

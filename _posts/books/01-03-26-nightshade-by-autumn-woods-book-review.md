@@ -62,11 +62,12 @@ If you love yearning, and books with mafia ties, then you’ll love this. The sp
 
 ## Songs
 
-Songs that I find reminiscent of the book:
+Songs that I find reminiscent of the book: 
+
 [Shameless by Camila Cabello](https://www.youtube.com/watch?v=Fp_P_e1cPOE&list=RDFp_P_e1cPOE&start_radio=1) \
 [Dracula by Tame Impala (JENNIE remix)](https://www.youtube.com/watch?v=0UPDBODtxzw&list=RD0UPDBODtxzw&start_radio=1) \
 [Me and My Demons by OMIDO x Silent Child](https://www.youtube.com/watch?v=n1aqSM6Jgwk&list=RDn1aqSM6Jgwk&start_radio=1) \
-[Darkside by NEONI ](https://www.youtube.com/watch?v=s7-GTShjcqY&list=RDs7-GTShjcqY&start_radio=1) \
+[Darkside by NEONI ](https://www.youtube.com/watch?v=s7-GTShjcqY&list=RDs7-GTShjcqY&start_radio=1)
 
 *(P.S. We made them links so feel free to click on them and get teleported straight into the vibes.)*
 
