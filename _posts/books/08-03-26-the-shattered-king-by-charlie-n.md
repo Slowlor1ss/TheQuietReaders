@@ -16,7 +16,7 @@ featured: true
 description: "Read our honest book review on The Shattered King by Charlie N. Holmberg a Romance novel. We discuss the plot, characters, and if it's worth the hype."
 customdesc: "Nym must navigate the castle’s cruel and twisted court and uncover the haunting truth behind Prince Renn’s illness—even as she finds herself irrevocably drawn to him."
 ---
-
+<br>
 ## Introduction
 
 Charlie N. Holmberg is a prolific fantasy author known for her imaginative worlds and accessible, character‑driven storytelling. With more than two dozen books under her belt, she released *The Shattered King* on the 2nd September 2025 as the first installment of a duology. The sequel, *The Half‑Hearted Queen*, continues the story and expands the world she introduced in this atmospheric, magic‑tinged adventure.
