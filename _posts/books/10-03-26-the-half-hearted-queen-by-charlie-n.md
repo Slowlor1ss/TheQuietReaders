@@ -61,7 +61,7 @@ Songs that I find reminiscent of the book:
  [Hartebeest by Yaelokre](https://www.youtube.com/watch?v=lKjVIHhcCfo&list=RDlKjVIHhcCfo&start_radio=1) \
 [Running With the Wolves by Aurora](https://www.youtube.com/watch?v=06ht9MyJLT4&list=RD06ht9MyJLT4&start_radio=1) \
 [I Am the Winter by The Family Crest](https://www.youtube.com/watch?v=gJTjdvcaH5A&list=RDgJTjdvcaH5A&start_radio=1) \
-[Before Your Father Hears Us by The Family Crest](https://www.youtube.com/watch?v=WJ4l99gnRz8&list=RDWJ4l99gnRz8&start_radio=1) 
-[Limbs by James Marriott](https://www.youtube.com/watch?v=QFMctjGghrs&list=RDQFMctjGghrs&start_radio=1) \
+[Before Your Father Hears Us by The Family Crest](https://www.youtube.com/watch?v=WJ4l99gnRz8&list=RDWJ4l99gnRz8&start_radio=1) \
+[Limbs by James Marriott](https://www.youtube.com/watch?v=QFMctjGghrs&list=RDQFMctjGghrs&start_radio=1) 
 
 *(P.S. We made them links so feel free to click on them and get teleported straight into the vibes.)*
