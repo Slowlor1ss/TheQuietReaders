@@ -42,7 +42,7 @@ I also (surprisingly) adore how straightforward the writing style is. The book t
 
 ## What I Didn’t Love
 
-There isn’t a lot I didn’t like about this novel, but *The Naturals* is still my favourite, because I did like the plot more than in *Killer Instinct, *simply because I didn’t guess what was going to happen in the first novel, but in this one I did guess the initial twist (not the end one though, that had me floored).
+There isn’t a lot I didn’t like about this novel, but *The Naturals* is still my favourite, because I did like the plot more than in *Killer Instinct*, simply because I didn’t guess what was going to happen in the first novel, but in this one I did guess the initial twist (not the end one though, that had me floored).
 
 
 ## Series Order

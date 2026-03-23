@@ -35,7 +35,7 @@ Craven’s writing leans gritty but accessible, with that familiar mix of dark h
 
 ## What I Loved
 
-This book is part of a series, but they also function as standalones in my opinion. I picked this up at my local grocery store and decided to give it a go. The characters were very memorable, and gave me *Sherlock Holmes *combined with *Slow Horses* vibes. I think the introduction of the plot was really interesting, and reeled me in, especially with the first few chapters. 
+This book is part of a series, but they also function as standalones in my opinion. I picked this up at my local grocery store and decided to give it a go. The characters were very memorable, and gave me *Sherlock Holmes* combined with *Slow Horses* vibes. I think the introduction of the plot was really interesting, and reeled me in, especially with the first few chapters. 
 
 
 ## What I Didn’t Love
