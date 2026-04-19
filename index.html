@@ -40,9 +40,11 @@ title: Home
 
           <h3>{{ post.title }}</h3>
 
+          {% if post.category != 'Article' %}
           <div class="stars" style="margin-bottom: 10px;">
             {% include stars.html rating=post.rating %}
           </div>
+          {% endif %}
 
           <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
             {{ post.customdesc }}
@@ -87,9 +89,11 @@ title: Home
 
           <h3>{{ post.title }}</h3>
 
+          {% if post.category != 'Article' %}
           <div class="stars" style="margin-bottom: 10px;">
             {% include stars.html rating=post.rating %}
           </div>
+          {% endif %}
 
           <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
             {{ post.customdesc }}

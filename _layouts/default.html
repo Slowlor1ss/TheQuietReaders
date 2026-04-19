@@ -49,12 +49,14 @@
         {% if page.url == '/books/' or page.url == '/books' %}{% assign current = 'books' %}{% endif %}
         {% if page.url == '/tv/' or page.url == '/tv' %}{% assign current = 'tv' %}{% endif %}
         {% if page.url == '/games/' or page.url == '/games' %}{% assign current = 'games' %}{% endif %}
+        {% if page.url == '/articles/' or page.url == '/articles' %}{% assign current = 'articles' %}{% endif %}
         {% if page.url == '/about/' or page.url == '/about' %}{% assign current = 'about' %}{% endif %}
 
         <a href="{{ site.baseurl }}/" class="{% if current == 'home' %}nav-active{% endif %}">Home</a>
         <a href="{{ site.baseurl }}/books" class="{% if current == 'books' %}nav-active{% endif %}">Books</a>
         <a href="{{ site.baseurl }}/tv" class="{% if current == 'tv' %}nav-active{% endif %}">Movies & TV</a>
-        <a href="{{ site.baseurl }}/games" class="{% if current == 'games' %}nav-active{% endif %}">Games</a>
+        <!-- <a href="{{ site.baseurl }}/games" class="{% if current == 'games' %}nav-active{% endif %}">Games</a> -->
+        <a href="{{ site.baseurl }}/articles" class="{% if current == 'articles' %}nav-active{% endif %}">Articles</a>
         <a href="{{ site.baseurl }}/about" class="{% if current == 'about' %}nav-active{% endif %}">About</a>
       </nav>
       

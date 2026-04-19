@@ -220,6 +220,32 @@ layout: default
 
 <!-- Google rich results -->
 <script type="application/ld+json">
+{% if page.category == 'Articles' %}
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}{{ page.url }}"
+  },
+  "headline": "{{ page.title }}",
+  "description": "{{ page.description | strip_html | escape }}",
+  "image": "{{ site.url }}{{ site.baseurl }}{{ page.image }}",  
+  "author": {
+    "@type": "Person",
+    "name": "{{ page.author }}"
+  },  
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Quiet Readers",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}{{ site.baseurl }}/assets/images/icons/favicon-192x192.png"
+    }
+  },
+  "datePublished": "{{ page.date | date_to_xmlschema }}"
+}
+{% else %}
 {
   "@context": "https://schema.org/",
   "@type": "Review",
@@ -280,4 +306,5 @@ layout: default
     {% endif %}
   }
 }
+{% endif %}
 </script>
