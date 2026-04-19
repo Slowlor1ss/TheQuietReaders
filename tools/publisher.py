@@ -82,6 +82,29 @@ def process_inline_image(input_path, max_width=800):
         img.save(buf, format="WEBP", quality=85)
         buf.seek(0)
         return buf
+    
+# Resize function for Cover Images (Width Based - e.g., 1200px for Articles)
+def process_image_to_width(input_path, target_width):
+    if not os.path.exists(input_path):
+        return None, None
+        
+    slug_name = clean_filename(os.path.basename(input_path))
+    
+    with Image.open(input_path) as img:
+        if img.mode in ("RGBA", "P"): img = img.convert("RGBA")
+        else: img = img.convert("RGB")
+        
+        # Calculate new height to keep aspect ratio perfect
+        aspect = img.height / img.width
+        new_height = int(target_width * aspect)
+        
+        resized_img = img.resize((target_width, new_height), Image.Resampling.LANCZOS)
+        
+        img_buffer = io.BytesIO()
+        resized_img.save(img_buffer, format="WEBP", quality=85)
+        img_buffer.seek(0)
+        
+        return img_buffer, f"{slug_name}-{target_width}w.webp"
 
 # UI
 class SimplePublisher(ctk.CTk):
@@ -202,6 +225,85 @@ class SimplePublisher(ctk.CTk):
         self.btn_submit = ctk.CTkButton(self, text="Publish Book Review", height=50, command=self.start_upload, fg_color="green")
         self.btn_submit.pack(fill="x", padx=20, pady=20)
 
+    def format_affiliate_links(self, html_text):
+        
+        # Match Both (Amazon followed by Bookshop)
+        p1 = r'(?is)(?:<p[^>]*>\s*)?<a[^>]*href="([^"]+)"[^>]*>[^<]*Amazon[^<]*</a>\s*(?:</p>\s*)?(?:<p[^>]*>\s*)?<a[^>]*href="([^"]+)"[^>]*>[^<]*Bookshop[^<]*</a>(?:\s*</p>)?'
+        html_text = re.sub(p1, r'%%%AFFILIATE_BOTH_||\1||\2%%%', html_text)
+        
+        # Match Both (Bookshop followed by Amazon - just in case they are flipped)
+        p2 = r'(?is)(?:<p[^>]*>\s*)?<a[^>]*href="([^"]+)"[^>]*>[^<]*Bookshop[^<]*</a>\s*(?:</p>\s*)?(?:<p[^>]*>\s*)?<a[^>]*href="([^"]+)"[^>]*>[^<]*Amazon[^<]*</a>(?:\s*</p>)?'
+        html_text = re.sub(p2, r'%%%AFFILIATE_BOTH_||\2||\1%%%', html_text)
+        
+        # Match Amazon Only (that didn't get caught in the pairs above)
+        p3 = r'(?is)(?:<p[^>]*>\s*)?<a[^>]*href="([^"]+)"[^>]*>[^<]*Amazon[^<]*</a>(?:\s*</p>)?'
+        html_text = re.sub(p3, r'%%%AFFILIATE_AMZ_||\1%%%', html_text)
+        
+        # Match Bookshop Only (that didn't get caught in the pairs above)
+        p4 = r'(?is)(?:<p[^>]*>\s*)?<a[^>]*href="([^"]+)"[^>]*>[^<]*Bookshop[^<]*</a>(?:\s*</p>)?'
+        html_text = re.sub(p4, r'%%%AFFILIATE_BS_||\1%%%', html_text)
+
+        # Expand the tokens into the final, clean HTML blocks
+        def expand_tokens(m):
+            data = m.group(1).split('||')
+            action = data[0]
+            
+            if action == "AFFILIATE_BOTH_":
+                amz, bs = data[1], data[2]
+                return f'''
+<div class="affiliate-section">
+    <div class="affiliate-buttons-col">
+        <a href="{amz}" target="_blank" rel="nofollow noopener" class="buy-btn">
+            Amazon
+        </a>
+        <a href="{bs}" target="_blank" rel="nofollow noopener" class="buy-btn">
+            Bookshop
+        </a>
+    </div>
+    <div class="affiliate-message-col">
+        <div class="bookshop-reason">
+        <span class="reason-icon">🌱</span>
+        <p>
+            <strong>Support Local:</strong> We recommend <strong>Bookshop</strong> to help keep independent bookstores alive.
+        </p>
+        </div>
+    </div>
+</div>
+'''
+            elif action == "AFFILIATE_AMZ_":
+                amz = data[1]
+                return f'''
+<div class="affiliate-section">
+    <div class="affiliate-buttons-col">
+        <a href="{amz}" target="_blank" rel="nofollow noopener" class="buy-btn">
+            Amazon
+        </a>
+    </div>
+</div>
+'''
+            elif action == "AFFILIATE_BS_":
+                bs = data[1]
+                return f'''
+<div class="affiliate-section">
+    <div class="affiliate-buttons-col">
+        <a href="{bs}" target="_blank" rel="nofollow noopener" class="buy-btn">
+            Bookshop
+        </a>
+    </div>
+    <div class="affiliate-message-col">
+        <div class="bookshop-reason">
+        <span class="reason-icon">🌱</span>
+        <p>
+            <strong>Support Local:</strong> We recommend <strong>Bookshop</strong> to help keep independent bookstores alive.
+        </p>
+        </div>
+    </div>
+</div>
+'''
+            return m.group(0)
+
+        return re.sub(r'%%%([^%]+)%%%', expand_tokens, html_text)
+
     def create_input(self, placeholder, parent=None):
         target = parent if parent else self.scroll
         entry = ctk.CTkEntry(target, placeholder_text=placeholder)
@@ -282,6 +384,7 @@ class SimplePublisher(ctk.CTk):
         self.inline_images = []
         for i in range(len(parts) - 1):
             context = parts[i]
+            
             headings = re.findall(r'<h[1-6][^>]*>(.*?)</h[1-6]>', context)
             closest_title = headings[-1] if headings else f"Image {i+1}"
             closest_title = re.sub(r'<[^>]+>', '', closest_title).strip()
@@ -289,7 +392,10 @@ class SimplePublisher(ctk.CTk):
             messagebox.showinfo("Inline Image Needed", f"Please select the image to go under:\n\n\"{closest_title}\"")
             
             img_path = filedialog.askopenfilename(title=f"Image for: {closest_title}", filetypes=[("Images", "*.jpg *.png *.jpeg *.webp")])
+            if not img_path:
                 messagebox.showerror("Cancelled", "Image selection cancelled. Your progress was not saved.")
+                self.inline_images = []
+                self.btn_set_inline.configure(text="Set Inline Images")
                 return
             
             dialog = ctk.CTkInputDialog(text=f"Enter a short filename for this image\n(e.g. serpent-and-dove-cover):", title="Image Name")
@@ -301,6 +407,7 @@ class SimplePublisher(ctk.CTk):
             
         messagebox.showinfo("Success", f"Successfully linked {len(self.inline_images)} inline images!")
         self.btn_set_inline.configure(text=f"Inline Images Set ({len(self.inline_images)})")
+
     def open_preview(self):
         # Run Validation First
         data = self.validate_inputs()
@@ -321,7 +428,10 @@ class SimplePublisher(ctk.CTk):
         
         body_text = data['body']
 
-        # 4. Create Scrollable Frame
+        if self.mode == "Article":
+            body_text = self.format_affiliate_links(body_text)
+
+        # Create Scrollable Frame
         page_frame = ctk.CTkScrollableFrame(
             preview, 
             fg_color="white", # Paper color
@@ -380,7 +490,7 @@ class SimplePublisher(ctk.CTk):
         ctk.CTkFrame(page_frame, height=1, fg_color="#eee").pack(fill="x", padx=40, pady=(0, 20))
 
         # Body section
-        html_label.pack(fill="both", expand=True, padx=40, pady=(0, 40))
+        parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_text)
         
         for i, part in enumerate(parts):
             if part.strip():
@@ -510,6 +620,11 @@ Make sure you have done a preview first (use the preview button under review)"
             buf_420, name_420 = process_image_to_memory(self.selected_image_path, 420)
             buf_280, name_280 = process_image_to_memory(self.selected_image_path, 280)
             
+            # NEW: Generate a 1200px wide image exclusively for Articles
+            if self.mode == "Article":
+                buf_1200, name_1200 = process_image_to_width(self.selected_image_path, 1200)
+                path_1200 = f"assets/images/{subfolder}/{name_1200}"
+            
             original_ext = os.path.splitext(self.selected_image_path)[1].lower()
             name_original = f"{post_slug}{original_ext}"
             
@@ -533,14 +648,8 @@ Make sure you have done a preview first (use the preview button under review)"
             # --- ARTICLE HTML & IMAGE PROCESSING ---
             body_content = data['body']
             if self.mode == "Article":
-                link_pattern = r'(?:<p>\s*)?<a href="([^"]+)">\s*Amazon\s*</a>(?:</p>\s*)?(?:<p>\s*)?<a href="([^"]+)">\s*Bookshop\s*</a>(?:</p>\s*)?'
-                replacement = r'''
-<div class="affiliate-buttons-col">
-    <a href="\1" target="_blank" rel="nofollow noopener" class="buy-btn">Amazon</a>
-    <a href="\2" target="_blank" rel="nofollow noopener" class="buy-btn">Bookshop</a>
-</div>
-'''
-                body_content = re.sub(link_pattern, replacement, body_content, flags=re.IGNORECASE)
+                
+                body_content = self.format_affiliate_links(body_content)
 
                 if self.inline_images:
                     parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_content)
@@ -549,11 +658,12 @@ Make sure you have done a preview first (use the preview button under review)"
                         if i < len(parts) - 1:
                             img_path, img_slug = self.inline_images[i]
                             
-                            buf_inline = process_inline_image(img_path, max_width=800)
+                            # Max width dropped to 600 to keep it a reasonable reading size
+                            buf_inline = process_inline_image(img_path, max_width=600)
                             inline_repo_path = f"assets/images/articles/inline/{img_slug}-{datetime.now().strftime('%H%M%S')}.webp"
                             self.safe_upload(repo, inline_repo_path, f"Inline Img: {img_slug}", buf_inline.getvalue(), branch_name)
                             
-                            img_tag = f'\n<img src="/{inline_repo_path}" alt="{img_slug}" loading="lazy" style="width: 100%; border-radius: 8px; margin: 20px 0;">\n'
+                            img_tag = f'\n<img src="/{inline_repo_path}" alt="{img_slug}" loading="lazy" style="max-width: 250px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">\n'
                             final_body += parts[i] + img_tag
                         
                     remaining = parts[len(self.inline_images):]
@@ -583,7 +693,7 @@ customdesc: "{data['customdesc']}"
 
 {body_content}
 """
-            elif self.mode == "Film": # FILM Mode
+            elif self.mode == "Film":
                 md_content = f"""---
 layout: review
 title: "{data['title']}"
@@ -607,13 +717,13 @@ author: "{data['author']}"
 
 {body_content}
 """
-            else: # Article Mode
+            else: # Article
                 md_content = f"""---
 layout: article
 title: "{data['title']}"
 seo_title: "{data['title']} | Article"
 date: {today}
-image: "/{path_280}"
+image: "/{path_1200}"
 category: "Article"
 description: "{data['seodesc']}"
 customdesc: "{data['customdesc']}"
@@ -628,7 +738,11 @@ author: "{data['author']}"
             md_filename = f"_posts/{subfolder}/{datetime.now().strftime('%d-%m-%y')}-{post_slug}.md"
 
             # Upload Files
-            self.safe_upload(repo, path_420, f"Img 420: {title}", buf_420.getvalue(), branch_name)
+            if self.mode == "Article":
+                self.safe_upload(repo, path_1200, f"Img 1200: {title}", buf_1200.getvalue(), branch_name)
+            else:
+                self.safe_upload(repo, path_420, f"Img 420: {title}", buf_420.getvalue(), branch_name)
+                
             self.safe_upload(repo, path_280, f"Img 280: {title}", buf_280.getvalue(), branch_name)
             self.safe_upload(repo, path_orig, f"Img Original: {title}", buf_original, branch_name)
             self.safe_upload(repo, md_filename, f"Post: {title}", md_content, branch_name)
