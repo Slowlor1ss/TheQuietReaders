@@ -20,7 +20,7 @@ Fourth Wing was one of the first romantasy books I ever picked up, and it opened
 
 
 
-<img src="/assets/images/articles/inline/serpent-and-dove-192828.webp" alt="serpent-and-dove" loading="lazy" style="max-width: 350px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
+<img src="/assets/images/articles/inline/serpent-and-dove-192828.webp" alt="serpent-and-dove" loading="lazy" style="max-width: 250px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
 
 
 
@@ -78,7 +78,7 @@ Check it out here:
 
 
 
-<img src="/assets/images/articles/inline/the-shadows-between-us-192830.webp" alt="the-shadows-between-us" loading="lazy" style="max-width: 350px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
+<img src="/assets/images/articles/inline/the-shadows-between-us-192830.webp" alt="the-shadows-between-us" loading="lazy" style="max-width: 250px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
 
 
 
@@ -134,7 +134,7 @@ Check it out here:
 
 
 
-<img src="/assets/images/articles/inline/storm-and-fury-192833.webp" alt="storm-and-fury" loading="lazy" style="max-width: 350px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
+<img src="/assets/images/articles/inline/storm-and-fury-192833.webp" alt="storm-and-fury" loading="lazy" style="max-width: 250px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
 
 
 
@@ -195,7 +195,7 @@ Check it out here:
 
 
 
-<img src="/assets/images/articles/inline/the-priory-of-the-orange-tree-192835.webp" alt="the-priory-of-the-orange-tree" loading="lazy" style="max-width: 350px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
+<img src="/assets/images/articles/inline/the-priory-of-the-orange-tree-192835.webp" alt="the-priory-of-the-orange-tree" loading="lazy" style="max-width: 250px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
 
 
 
@@ -249,7 +249,7 @@ Check it out here:<br>
 
 
 
-<img src="/assets/images/articles/inline/the-serpent-and-the-wings-of-night-192838.webp" alt="the-serpent-and-the-wings-of-night" loading="lazy" style="max-width: 350px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
+<img src="/assets/images/articles/inline/the-serpent-and-the-wings-of-night-192838.webp" alt="the-serpent-and-the-wings-of-night" loading="lazy" style="max-width: 250px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
 
 
 
@@ -303,7 +303,7 @@ Check it out here:
 
 
 
-<img src="/assets/images/articles/inline/dire-bound-192840.webp" alt="dire-bound" loading="lazy" style="max-width: 350px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
+<img src="/assets/images/articles/inline/dire-bound-192840.webp" alt="dire-bound" loading="lazy" style="max-width: 250px; width: 35vw; height: auto; border-radius: 8px; margin: 20px auto; display: block;">
 
 
 
