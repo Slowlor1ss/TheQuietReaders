@@ -93,6 +93,21 @@ nav a:hover { color: var(--primary); }
   color: var(--secondary) !important; /* Force it to be purple */
 }
 
+/* Constrain the article body for better readability */
+.post-content {
+    max-width: 850px;     
+    margin: 0 auto;       
+    padding: 0 15px;      
+    line-height: 1.8;     
+    font-size: 1.1rem;    
+}
+
+/* Ensure images inside the post-content don't break the layout */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Search Bar Styling */
 .search-wrapper {
   position: relative;
