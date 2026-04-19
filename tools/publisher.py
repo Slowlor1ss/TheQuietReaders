@@ -66,6 +66,23 @@ def process_image_to_memory(input_path, height):
         
         return img_buffer, output_filename
 
+# Resize function for Inline Article Images (Width Based - Max 800px)
+def process_inline_image(input_path, max_width=800):
+    if not os.path.exists(input_path): return None
+    with Image.open(input_path) as img:
+        if img.mode in ("RGBA", "P"): img = img.convert("RGBA")
+        else: img = img.convert("RGB")
+        
+        if img.width > max_width:
+            aspect = img.height / img.width
+            new_height = int(max_width * aspect)
+            img = img.resize((max_width, new_height), Image.Resampling.LANCZOS)
+            
+        buf = io.BytesIO()
+        img.save(buf, format="WEBP", quality=85)
+        buf.seek(0)
+        return buf
+
 # UI
 class SimplePublisher(ctk.CTk):
     def __init__(self):
@@ -75,6 +92,7 @@ class SimplePublisher(ctk.CTk):
         self.geometry("550x900")
         self.selected_image_path = None
         self.mode = "Book" # Default to Book mode
+        self.inline_images = []
 
         # Scrollable container
         self.scroll = ctk.CTkScrollableFrame(
@@ -93,7 +111,7 @@ class SimplePublisher(ctk.CTk):
         # --- MODE SWITCHER ---
         self.mode_selector = ctk.CTkSegmentedButton(
             self.scroll, 
-            values=["Book", "Film"],
+            values=["Book", "Film", "Article"],
             command=self.switch_mode,
             selected_color="#8e44ad",
             selected_hover_color="#732d91"
@@ -104,7 +122,11 @@ class SimplePublisher(ctk.CTk):
         # --- SHARED FIELDS ---
         self.entry_title = self.create_input("Title")
         self.entry_author = self.create_input("Review Author Name")
-        self.entry_genre = self.create_input("Genre (e.g. Romance, Comedy)")
+        
+        # Genre Container
+        self.genre_container = ctk.CTkFrame(self.scroll, fg_color="transparent")
+        self.genre_container.pack(fill="x")
+        self.entry_genre = self.create_input("Genre (e.g. Romance, Comedy)", parent=self.genre_container)
         
         # --- BOOK SPECIFIC FIELDS CONTAINER ---
         self.book_container = ctk.CTkFrame(self.scroll, fg_color="transparent")
@@ -125,13 +147,18 @@ class SimplePublisher(ctk.CTk):
         self.entry_year = self.create_input("Release Year (e.g. 2023)", parent=self.film_container)
 
         # --- SHARED FIELDS (Bottom) ---
-        self.entry_rating = self.create_input("Rating (0-5, e.g. 4.5)")
+        self.rating_container = ctk.CTkFrame(self.scroll, fg_color="transparent")
+        self.rating_container.pack(fill="x")
+        self.entry_rating = self.create_input("Rating (0-5, e.g. 4.5)", parent=self.rating_container)
 
-        self.check_featured = ctk.CTkCheckBox(self.scroll, text="Feature this post on Homepage?", fg_color="#8e44ad")
+        self.featured_container = ctk.CTkFrame(self.scroll, fg_color="transparent")
+        self.featured_container.pack(fill="x")
+        self.check_featured = ctk.CTkCheckBox(self.featured_container, text="Feature this post on Homepage?", fg_color="#8e44ad")
         self.check_featured.pack(anchor="w", pady=(10, 5), padx=20)
 
         # Description
-        ctk.CTkLabel(self.scroll, text="Short Description: (1-2 lines preferably)").pack(anchor="w", pady=(0), padx=(5))
+        self.desc_label = ctk.CTkLabel(self.scroll, text="Short Description: (1-2 lines preferably)")
+        self.desc_label.pack(anchor="w", pady=(0), padx=(5))
         self.entry_custom_desc = ctk.CTkTextbox(self.scroll, height=60)
         self.entry_custom_desc.pack(fill="x", pady=5, padx=5)
 
@@ -154,15 +181,22 @@ class SimplePublisher(ctk.CTk):
         self.grip.bind("<Button-1>", self.start_resize)
         self.grip.bind("<B1-Motion>", self.perform_resize)
 
-        # Preview button
-        self.btn_preview = ctk.CTkButton(self.scroll, text="👁️ Preview Post", command=self.open_preview, fg_color="#555555", height=30)
-        self.btn_preview.pack(pady=5, padx=5)
+        # Article Tools Container
+        self.article_tools_container = ctk.CTkFrame(self.scroll, fg_color="transparent")
+        self.btn_set_inline = ctk.CTkButton(self.article_tools_container, text="Set Inline Images", command=self.set_inline_images, fg_color="#d35400")
+        self.btn_set_inline.pack(pady=5, padx=5)
 
         # Image Selector
         self.btn_image = ctk.CTkButton(self.scroll, text="Select Cover Image", command=self.select_image, fg_color="#8e44ad")
-        self.btn_image.pack(pady=20, padx=5)
+        self.btn_image.pack(pady=5, padx=5)
+
+        # Preview button
+        self.btn_preview = ctk.CTkButton(self.scroll, text="Preview Post", command=self.open_preview, fg_color="#555555", height=32)
+        self.btn_preview.pack(pady=20, padx=5)
+
+        # Cover image preview
         self.lbl_image = ctk.CTkLabel(self.scroll, text="No image selected", text_color="gray")
-        self.lbl_image.pack()
+        self.lbl_image.pack(pady=5, padx=5)
 
         # Submit
         self.btn_submit = ctk.CTkButton(self, text="Publish Book Review", height=50, command=self.start_upload, fg_color="green")
@@ -177,14 +211,31 @@ class SimplePublisher(ctk.CTk):
     def switch_mode(self, value):
         self.mode = value
         
+        # Hide dynamic inputs cleanly
+        self.genre_container.pack_forget()
+        self.book_container.pack_forget()
+        self.film_container.pack_forget()
+        self.rating_container.pack_forget()
+        self.featured_container.pack_forget()
+        self.article_tools_container.pack_forget()
+        
         if value == "Book":
-            self.film_container.pack_forget() # Hide Film inputs
-            self.book_container.pack(after=self.entry_genre, fill="x") # Show Book inputs
+            # Show Book inputs safely above Description
+            self.genre_container.pack(before=self.desc_label, fill="x")
+            self.book_container.pack(before=self.desc_label, fill="x") 
+            self.rating_container.pack(before=self.desc_label, fill="x")
+            self.featured_container.pack(before=self.desc_label, fill="x")
             self.btn_submit.configure(text="Publish Book Review")
-        else:
-            self.book_container.pack_forget() # Hide Book inputs
-            self.film_container.pack(after=self.entry_genre, fill="x") # Show Film inputs
+        elif value == "Film":
+            # Show Film inputs safely above Description
+            self.genre_container.pack(before=self.desc_label, fill="x")
+            self.film_container.pack(before=self.desc_label, fill="x") 
+            self.rating_container.pack(before=self.desc_label, fill="x")
+            self.featured_container.pack(before=self.desc_label, fill="x")
             self.btn_submit.configure(text="Publish Film Review")
+        elif value == "Article":
+            self.article_tools_container.pack(before=self.btn_image, fill="x")
+            self.btn_submit.configure(text="Publish Article")
 
     def fix_scroll_propagation(self, widget):
         def _on_mousewheel(event):
@@ -220,6 +271,36 @@ class SimplePublisher(ctk.CTk):
         # Apply new height
         self.entry_body.configure(height=new_height)
 
+    def set_inline_images(self):
+        body_text = self.entry_body.get("1.0", "end-1c")
+        parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_text)
+        
+        if len(parts) <= 1:
+            messagebox.showinfo("No Images Needed", "Could not find any <pre class=\"prettyprint\"></pre> placeholders in your text.")
+            return
+
+        self.inline_images = []
+        for i in range(len(parts) - 1):
+            context = parts[i]
+            headings = re.findall(r'<h[1-6][^>]*>(.*?)</h[1-6]>', context)
+            closest_title = headings[-1] if headings else f"Image {i+1}"
+            closest_title = re.sub(r'<[^>]+>', '', closest_title).strip()
+            
+            messagebox.showinfo("Inline Image Needed", f"Please select the image to go under:\n\n\"{closest_title}\"")
+            
+            img_path = filedialog.askopenfilename(title=f"Image for: {closest_title}", filetypes=[("Images", "*.jpg *.png *.jpeg *.webp")])
+                messagebox.showerror("Cancelled", "Image selection cancelled. Your progress was not saved.")
+                return
+            
+            dialog = ctk.CTkInputDialog(text=f"Enter a short filename for this image\n(e.g. serpent-and-dove-cover):", title="Image Name")
+            img_slug = dialog.get_input()
+            if not img_slug:
+                img_slug = f"inline-img-{i+1}"
+                
+            self.inline_images.append((img_path, clean_filename(img_slug)))
+            
+        messagebox.showinfo("Success", f"Successfully linked {len(self.inline_images)} inline images!")
+        self.btn_set_inline.configure(text=f"Inline Images Set ({len(self.inline_images)})")
     def open_preview(self):
         # Run Validation First
         data = self.validate_inputs()
@@ -235,8 +316,8 @@ class SimplePublisher(ctk.CTk):
         # Gather Data (From the CLEANED validation result)
         title = data['title']
         author = data['author']
-        rating = data['rating']
-        genre = data['genre'] 
+        rating = data.get('rating', "")
+        genre = data.get('genre', "")
         
         body_text = data['body']
 
@@ -254,16 +335,21 @@ class SimplePublisher(ctk.CTk):
 
         # Title Info
         ctk.CTkLabel(header_frame, text=title, font=("Georgia", 32, "bold"), text_color="black", wraplength=400, justify="left").pack(anchor="w", pady=5)
-        ctk.CTkLabel(header_frame, text=genre.upper(), font=("Arial", 12), text_color="#888").pack(anchor="w")
+        
+        if genre:
+            ctk.CTkLabel(header_frame, text=genre.upper(), font=("Arial", 12), text_color="#888").pack(anchor="w")
+            
         ctk.CTkLabel(header_frame, text=f"by {author}", font=("Georgia", 16, "italic"), text_color="#444").pack(anchor="w")
-        ctk.CTkLabel(header_frame, text=f"Rating: {rating} / 5", font=("Arial", 14), text_color="#f39c12").pack(anchor="w", pady=10)
+        
+        if self.mode != "Article":
+            ctk.CTkLabel(header_frame, text=f"Rating: {rating} / 5", font=("Arial", 14), text_color="#f39c12").pack(anchor="w", pady=10)
 
         # Extra Details - Dynamic based on mode
         details = []
         if self.mode == "Book":
             if data['pages']: details.append(f"{data['pages']} Pages")
             if data['isbn']: details.append(f"ISBN: {data['isbn']}")
-        else: # Film
+        elif self.mode == "Film":
             if data['director']: details.append(f"Dir: {data['director']}")
             if data['year']: details.append(f"Year: {data['year']}")
             if data['runtime']: details.append(f"{data['runtime']}")
@@ -294,20 +380,37 @@ class SimplePublisher(ctk.CTk):
         ctk.CTkFrame(page_frame, height=1, fg_color="#eee").pack(fill="x", padx=40, pady=(0, 20))
 
         # Body section
-        html_content = markdown.markdown(body_text)
-
-        html_label = HTMLLabel(
-            page_frame, 
-            html=f"<div>{html_content}</div>",
-            background="white",
-            width=1
-        )
         html_label.pack(fill="both", expand=True, padx=40, pady=(0, 40))
+        
+        for i, part in enumerate(parts):
+            if part.strip():
+                part_html = markdown.markdown(part)
+                html_label = HTMLLabel(
+                    page_frame, 
+                    html=f"<div>{part_html}</div>",
+                    background="white",
+                    width=1
+                )
+                html_label.pack(fill="both", expand=True, padx=40, pady=5)
+                html_label.fit_height()
 
-        html_label.fit_height()
+            if self.mode == "Article" and self.inline_images and i < len(self.inline_images):
+                img_path, _ = self.inline_images[i]
+                try:
+                    pil_img = Image.open(img_path)
+                    target_width = 450
+                    aspect = pil_img.height / pil_img.width
+                    target_height = int(target_width * aspect)
+                    ctk_img = ctk.CTkImage(light_image=pil_img, dark_image=pil_img, size=(target_width, target_height))
+                    img_label = ctk.CTkLabel(page_frame, text="", image=ctk_img)
+                    img_label.image = ctk_img
+                    img_label.pack(pady=20)
+                except Exception:
+                    err_lbl = ctk.CTkLabel(page_frame, text=f"[ Image Failed to Load: {os.path.basename(img_path)} ]", text_color="red")
+                    err_lbl.pack(pady=10)
 
     def select_image(self):
-        path = filedialog.askopenfilename(filetypes=[("Images", "*.jpg *.png *.jpeg")])
+        path = filedialog.askopenfilename(filetypes=[("Images", "*.jpg *.png *.jpeg *.webp")])
         if path:
             self.selected_image_path = path
             
@@ -337,6 +440,19 @@ class SimplePublisher(ctk.CTk):
                 self.lbl_image.configure(text=f"Error loading preview: {e}", image=None)
 
     def start_upload(self):
+        if self.mode == "Article":
+            body_text = self.entry_body.get("1.0", "end-1c")
+            parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_text)
+            placeholders = len(parts) - 1
+            
+            if placeholders > 0 and len(self.inline_images) != placeholders:
+                answer = messagebox.askyesno(
+                    "Missing Images", 
+                    f"Warning: You have {placeholders} image placeholders in your text, but you have only set {len(self.inline_images)} images.\n\nDo you still want to publish without them?"
+                )
+                if not answer:
+                    return
+
         answer = messagebox.askyesno(
             "Confirm Publish", 
             "Are you sure you want to publish this review?\n\nThis will send the files to GitHub immediately.\n\n\
@@ -364,8 +480,10 @@ Make sure you have done a preview first (use the preview button under review)"
             # Prepare Slugs
             # We use your clean_filename logic for the folder slug too
             title = data['title']
-            slug_text = f"{title} {self.mode} Review"
+            if self.mode == "Article": slug_text = f"{title} Article"
+            else: slug_text = f"{title} {self.mode} Review"
             post_slug = clean_filename(slug_text)
+            
             # TODO: and TEST
             # I think Jekyll requires Year-Month-Day (%Y-%m-%d) for filenames, 
             # or the posts won't appear in the right order.
@@ -384,7 +502,9 @@ Make sure you have done a preview first (use the preview button under review)"
             # Determine Paths based on Mode
             # Books go to _posts/books/ and assets/images/books/
             # Films go to _posts/films/ and assets/images/films/
-            subfolder = "books" if self.mode == "Book" else "films"
+            if self.mode == "Book": subfolder = "books"
+            elif self.mode == "Film": subfolder = "films"
+            else: subfolder = "articles"
 
             # Process images
             buf_420, name_420 = process_image_to_memory(self.selected_image_path, 420)
@@ -404,6 +524,41 @@ Make sure you have done a preview first (use the preview button under review)"
 
             is_featured = self.check_featured.get() == 1
             featured_line = "true" if is_featured else "false"
+
+            # Create Branch & Commit early
+            sb = repo.get_branch("main")
+            branch_name = f"post-{post_slug}-{datetime.now().strftime('%H%M%S')}"
+            repo.create_git_ref(ref=f"refs/heads/{branch_name}", sha=sb.commit.sha)
+
+            # --- ARTICLE HTML & IMAGE PROCESSING ---
+            body_content = data['body']
+            if self.mode == "Article":
+                link_pattern = r'(?:<p>\s*)?<a href="([^"]+)">\s*Amazon\s*</a>(?:</p>\s*)?(?:<p>\s*)?<a href="([^"]+)">\s*Bookshop\s*</a>(?:</p>\s*)?'
+                replacement = r'''
+<div class="affiliate-buttons-col">
+    <a href="\1" target="_blank" rel="nofollow noopener" class="buy-btn">Amazon</a>
+    <a href="\2" target="_blank" rel="nofollow noopener" class="buy-btn">Bookshop</a>
+</div>
+'''
+                body_content = re.sub(link_pattern, replacement, body_content, flags=re.IGNORECASE)
+
+                if self.inline_images:
+                    parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_content)
+                    final_body = ""
+                    for i in range(len(self.inline_images)):
+                        if i < len(parts) - 1:
+                            img_path, img_slug = self.inline_images[i]
+                            
+                            buf_inline = process_inline_image(img_path, max_width=800)
+                            inline_repo_path = f"assets/images/articles/inline/{img_slug}-{datetime.now().strftime('%H%M%S')}.webp"
+                            self.safe_upload(repo, inline_repo_path, f"Inline Img: {img_slug}", buf_inline.getvalue(), branch_name)
+                            
+                            img_tag = f'\n<img src="/{inline_repo_path}" alt="{img_slug}" loading="lazy" style="width: 100%; border-radius: 8px; margin: 20px 0;">\n'
+                            final_body += parts[i] + img_tag
+                        
+                    remaining = parts[len(self.inline_images):]
+                    final_body += "<pre class='prettyprint'></pre>".join(remaining)
+                    body_content = final_body
 
             # Create Markdown - Logic split for Book vs Film
             if self.mode == "Book":
@@ -426,9 +581,9 @@ description: "{data['seodesc']}"
 customdesc: "{data['customdesc']}"
 ---
 
-{data['body']}
+{body_content}
 """
-            else: # FILM Mode
+            elif self.mode == "Film": # FILM Mode
                 md_content = f"""---
 layout: review
 title: "{data['title']}"
@@ -450,17 +605,27 @@ customdesc: "{data['customdesc']}"
 author: "{data['author']}"
 ---
 
-{data['body']}
+{body_content}
+"""
+            else: # Article Mode
+                md_content = f"""---
+layout: article
+title: "{data['title']}"
+seo_title: "{data['title']} | Article"
+date: {today}
+image: "/{path_280}"
+category: "Article"
+description: "{data['seodesc']}"
+customdesc: "{data['customdesc']}"
+author: "{data['author']}"
+---
+
+{body_content}
 """
 
             # Not using the variable today as we want 26 rather then 2026
             # Updated to use subfolder variable
             md_filename = f"_posts/{subfolder}/{datetime.now().strftime('%d-%m-%y')}-{post_slug}.md"
-
-            # Create Branch & Commit
-            sb = repo.get_branch("main")
-            branch_name = f"post-{post_slug}-{datetime.now().strftime('%H%M%S')}"
-            repo.create_git_ref(ref=f"refs/heads/{branch_name}", sha=sb.commit.sha)
 
             # Upload Files
             self.safe_upload(repo, path_420, f"Img 420: {title}", buf_420.getvalue(), branch_name)
@@ -526,15 +691,17 @@ author: "{data['author']}"
         missing_fields = []
         if not title: missing_fields.append("Title")
         if not author: missing_fields.append("Author Name")
-        if not raw_rating: missing_fields.append("Rating")
-        if not raw_genre: missing_fields.append("Genre")
         if not self.selected_image_path: missing_fields.append("Cover Image")
 
         # Specific Requirements
+        if self.mode != "Article":
+            if not raw_genre: missing_fields.append("Genre")
+            if not raw_rating: missing_fields.append("Rating")
+
         if self.mode == "Book":
              # Optional: Add strict requirement for pages if you want? 
              pass
-        else: # Film
+        elif self.mode == "Film":
             if not director: missing_fields.append("Director")
             if not runtime: missing_fields.append("Run Time")
             if not year: missing_fields.append("Release Year")
@@ -546,12 +713,14 @@ author: "{data['author']}"
             return None
 
         # Rating Validation
-        try:
-            rating = float(raw_rating)
-            if rating < 0 or rating > 5: raise ValueError
-        except ValueError:
-            messagebox.showerror("Invalid Rating", "Rating must be a number between 0 and 5 (e.g. 3.5 or 4)")
-            return None
+        rating = ""
+        if self.mode != "Article":
+            try:
+                rating = float(raw_rating)
+                if rating < 0 or rating > 5: raise ValueError
+            except ValueError:
+                messagebox.showerror("Invalid Rating", "Rating must be a number between 0 and 5 (e.g. 3.5 or 4)")
+                return None
 
         # --- BOOK SPECIFIC VALIDATIONS ---
         pages_int = ""
@@ -595,21 +764,25 @@ author: "{data['author']}"
                 return None
         
         # Genre processing (comma seperated and in quotations)
-        if raw_genre:
-            # Split by comma, remove spaces, add quotes
-            g_list = [f'"{g.strip()}"' for g in raw_genre.split(',') if g.strip()]
-            formatted_genre = ", ".join(g_list)
-        else:
-            messagebox.showerror("No Genre supplied", f"{raw_genre} Need at least 1 genre")
-            return None
+        formatted_genre = ""
+        main_genre = "Book"
+        if self.mode != "Article":
+            if raw_genre:
+                # Split by comma, remove spaces, add quotes
+                g_list = [f'"{g.strip()}"' for g in raw_genre.split(',') if g.strip()]
+                formatted_genre = ", ".join(g_list)
+                main_genre = raw_genre.split(',')[0].strip()
+            else:
+                messagebox.showerror("No Genre supplied", f"{raw_genre} Need at least 1 genre")
+                return None
         
         # SEO description
         # TODO: Maybe add some variation and pick randomly from multiple templates 
-        main_genre = raw_genre.split(',')[0].strip() if raw_genre else "Book"
-        
-        # Adjust SEO string based on mode
-        type_str = "novel" if self.mode == "Book" else "movie"
-        seo_description = f"Read our honest review on {title} a {main_genre} {type_str}. We discuss the plot, characters, and if it's worth the hype."
+        if self.mode == "Article":
+            seo_description = f"Read our latest feature on {title}. A deep dive and discussion."
+        else:
+            type_str = "novel" if self.mode == "Book" else "movie"
+            seo_description = f"Read our honest review on {title} a {main_genre} {type_str}. We discuss the plot, characters, and if it's worth the hype."
 
         # Return a dictionary of clean data if all passed
         return {
