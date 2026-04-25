@@ -375,10 +375,11 @@ class SimplePublisher(ctk.CTk):
 
     def set_inline_images(self):
         body_text = self.entry_body.get("1.0", "end-1c")
-        parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_text)
+        # parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_text)
+        parts = re.split(r'<img[^>]*src=[^>]*>', body_text)
         
         if len(parts) <= 1:
-            messagebox.showinfo("No Images Needed", "Could not find any <pre class=\"prettyprint\"></pre> placeholders in your text.")
+            messagebox.showinfo("No Images Needed", "Could not find any <pre class=\"prettyprint\"></pre> placeholders in your text. Nor any <img> tags")
             return
 
         self.inline_images = []
@@ -490,7 +491,8 @@ class SimplePublisher(ctk.CTk):
         ctk.CTkFrame(page_frame, height=1, fg_color="#eee").pack(fill="x", padx=40, pady=(0, 20))
 
         # Body section
-        parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_text)
+        # parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_text)
+        parts = re.split(r'<img[^>]*src=[^>]*>', body_text)
         
         for i, part in enumerate(parts):
             if part.strip():
@@ -552,7 +554,8 @@ class SimplePublisher(ctk.CTk):
     def start_upload(self):
         if self.mode == "Article":
             body_text = self.entry_body.get("1.0", "end-1c")
-            parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_text)
+            # parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_text)
+            parts = re.split(r'<img[^>]*src=[^>]*>', body_text)
             placeholders = len(parts) - 1
             
             if placeholders > 0 and len(self.inline_images) != placeholders:
@@ -652,7 +655,8 @@ Make sure you have done a preview first (use the preview button under review)"
                 body_content = self.format_affiliate_links(body_content)
 
                 if self.inline_images:
-                    parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_content)
+                    # parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_content)
+                    parts = re.split(r'<img[^>]*src=[^>]*>', body_content)
                     final_body = ""
                     for i in range(len(self.inline_images)):
                         if i < len(parts) - 1:
@@ -667,7 +671,8 @@ Make sure you have done a preview first (use the preview button under review)"
                             final_body += parts[i] + img_tag
                         
                     remaining = parts[len(self.inline_images):]
-                    final_body += "<pre class='prettyprint'></pre>".join(remaining)
+                    # final_body += "<pre class='prettyprint'></pre>".join(remaining)
+                    final_body += "<img src="">".join(remaining)
                     body_content = final_body
 
             # Create Markdown - Logic split for Book vs Film
