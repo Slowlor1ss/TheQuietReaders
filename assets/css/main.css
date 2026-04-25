@@ -825,3 +825,39 @@ footer {
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
+
+/* --- Read More Callout Box --- */
+.read-more-callout {
+    background-color: #f8f9fa; /* Soft, light grey background */
+    border-left: 4px solid #8e44ad; /* Theme-colored left border */
+    padding: 15px 20px;
+    margin: 25px 0;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.read-more-icon {
+    font-size: 1.6rem;
+}
+
+.read-more-text {
+    font-size: 1.05rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Make the links inside the text pop nicely without being a button */
+.read-more-text a {
+    color: #8e44ad;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.read-more-text a:hover {
+    color: #5e2c73;
+}
