@@ -108,6 +108,10 @@ nav a:hover { color: var(--primary); }
     height: auto;
 }
 
+.post-content h2 {
+    text-align: center;
+}
+
 /* Search Bar Styling */
 .search-wrapper {
   position: relative;
