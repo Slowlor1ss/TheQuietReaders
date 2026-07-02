@@ -5,6 +5,7 @@ from PIL import Image
 import io
 import os
 import re
+import sys
 import shutil
 import zipfile
 import json
@@ -41,6 +42,27 @@ def clean_filename(filename):
     
     # Convert to lowercase and strip ends
     return name.lower().strip('-')
+
+class ConsoleRedirector:
+    def __init__(self):
+        self.buffer = []
+        self.console_textbox = None
+        self.original_stdout = sys.stdout
+        self.original_stderr = sys.stderr
+
+    def write(self, text):
+        self.original_stdout.write(text) 
+        self.buffer.append(text)
+        
+        # Update text in the console textbox if it exists
+        if self.console_textbox and self.console_textbox.winfo_exists():
+            self.console_textbox.configure(state="normal")
+            self.console_textbox.insert("end", text)
+            self.console_textbox.see("end") # Auto-scroll to bottom
+            self.console_textbox.configure(state="disabled")
+
+    def flush(self):
+        self.original_stdout.flush()
 
 # Resize function and changes to webp
 def process_image_to_memory(input_path, height):
@@ -129,6 +151,32 @@ class SimplePublisher(ctk.CTk):
         self.selected_image_path = None
         self.mode = "Book" # Default to Book mode
         self.gdocs_zip_data = None
+
+        # Console window for debugging
+        self.dev_console_window = None
+        self.console_logger = ConsoleRedirector()
+        sys.stdout = self.console_logger
+        sys.stderr = self.console_logger # Catches errors too!
+        
+        self.menu_bar = ctk.CTkFrame(self, fg_color="transparent")
+        self.menu_bar.pack(fill="x", side="top")
+        menu_style = {
+            "fg_color": "transparent",
+            "text_color": "#030303",
+            "hover_color": "#CCCCCC",
+            "height": 24,
+            "width": 60,
+            "font": ("Arial", 12),
+            "corner_radius": 0
+        }
+        self.btn_console = ctk.CTkButton(self.menu_bar, text="Console", command=self.toggle_dev_console, **menu_style)
+        self.btn_console.pack(side="left")
+        self.btn_save = ctk.CTkButton(self.menu_bar, text="Save Draft", command=self.start_save, **menu_style)
+        self.btn_save.pack(side="left")
+        self.bind("<Control-Shift-D>", lambda event: self.toggle_dev_console())
+        self.bind("<Control-Shift-d>", lambda event: self.toggle_dev_console())
+        self.bind("<Control-S>", lambda event: self.start_save())
+        self.bind("<Control-s>", lambda event: self.start_save())
 
         # Check for BeautifulSoup dependency
         if BeautifulSoup is None:
@@ -320,6 +368,35 @@ class SimplePublisher(ctk.CTk):
             self.body_label.pack_forget()
             self.entry_body.pack_forget()
             self.grip.pack_forget()
+
+    def toggle_dev_console(self, event=None):
+        if self.dev_console_window is None or not self.dev_console_window.winfo_exists():
+            # Make a window
+            self.dev_console_window = ctk.CTkToplevel(self)
+            self.dev_console_window.lift()
+            self.dev_console_window.title("Dev Console")
+            self.dev_console_window.geometry("600x400")
+            
+            # MAke read-only textbox
+            txt_console = ctk.CTkTextbox(self.dev_console_window, font=("Consolas", 12), fg_color="#1e1e1e", text_color="#cccccc")
+            txt_console.pack(fill="both", expand=True, padx=10, pady=10)
+            
+            # Dump history buffer
+            txt_console.insert("1.0", "".join(self.console_logger.buffer))
+            txt_console.see("end")
+            txt_console.configure(state="disabled")
+
+            # I dont know why but the console window drops to the back 
+            # I I think at some point I forced the main window to be on top of other windows we create, 
+            # but for now this ill do
+            # and no it doesnt work withouth the delay of 1ms
+            self.dev_console_window.after(1, lambda: self.dev_console_window.lift())
+
+            # Link to logger
+            self.console_logger.console_textbox = txt_console
+        else:
+            # If its already open close it
+            self.dev_console_window.destroy()
 
     def fix_scroll_propagation(self, widget):
         def _on_mousewheel(event):
@@ -976,11 +1053,15 @@ author: "{data['author']}"
     def reset_ui(self):
         self.btn_submit.configure(state="normal", text=f"Publish {self.mode} Review")
 
+    def start_save(self):
+        """Starts the background loop that saves data every 10 seconds."""
+        self.autosave_loop(force_save_message=True)
+
     def start_autosave(self):
         """Starts the background loop that saves data every 10 seconds."""
         self.autosave_loop()
 
-    def autosave_loop(self):
+    def autosave_loop(self, force_save_message=False):
         """Silently saves all current text inputs to a local JSON file."""
         try:
             # We don't save image paths as they might move/delete between sessions
@@ -1019,6 +1100,10 @@ author: "{data['author']}"
                 
                 # Automatically erase text after some time
                 self.after(2000, lambda: self.lbl_autosave.configure(text=""))
+            elif force_save_message:
+                self.lbl_autosave.configure(text="Saved Draft")
+                self.after(2000, lambda: self.lbl_autosave.configure(text=""))
+
             if has_content:
                 with open("autosave_draft.json", "w", encoding="utf-8") as f:
                     json.dump(data, f)
@@ -1103,6 +1188,8 @@ author: "{data['author']}"
 
     def on_closing(self):
             """Runs when the user clicks the X to close the window."""
+            sys.stdout = sys.__stdout__
+            sys.stderr = sys.__stderr__
             self.cleanup_temp_folders()
             self.destroy()
 
