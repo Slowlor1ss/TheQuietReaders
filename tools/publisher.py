@@ -9,6 +9,9 @@ import sys
 import shutil
 import zipfile
 import json
+import urllib.request
+import json
+import random
 from datetime import datetime
 import threading
 import markdown 
@@ -171,8 +174,10 @@ class SimplePublisher(ctk.CTk):
         }
         self.btn_console = ctk.CTkButton(self.menu_bar, text="Console", command=self.toggle_dev_console, **menu_style)
         self.btn_console.pack(side="left")
-        self.btn_save = ctk.CTkButton(self.menu_bar, text="Save Draft", command=self.start_save, **menu_style)
+        self.btn_save = ctk.CTkButton(self.menu_bar, text="| Save Draft", command=self.start_save, **menu_style)
         self.btn_save.pack(side="left")
+        self.btn_motivation = ctk.CTkButton(self.menu_bar, text="| Motivation", command=lambda: self.show_animal_popup(random.randint(100, 999), is_motivation=True), **menu_style)
+        self.btn_motivation.pack(side="left")
         self.bind("<Control-Shift-D>", lambda event: self.toggle_dev_console())
         self.bind("<Control-Shift-d>", lambda event: self.toggle_dev_console())
         self.bind("<Control-S>", lambda event: self.start_save())
@@ -627,12 +632,12 @@ class SimplePublisher(ctk.CTk):
             parts = re.split(r'<pre class="prettyprint">\s*</pre>', body_text)
             placeholders = len(parts) - 1
             if placeholders > 0:
-                 answer = messagebox.askyesno(
+                answer = messagebox.askyesno(
                     "Placeholders Found", 
                     f"Warning: You have {placeholders} image placeholders in your text. This only works for articles published via ZIP now.\n\nDo you still want to publish without processing them?"
                 )
-            if not answer:
-                return
+                if not answer:
+                    return
 
         answer = messagebox.askyesno(
             "Confirm Publish", 
@@ -875,8 +880,8 @@ author: "{data['author']}"
 
             # Pull Request
             pr = repo.create_pull(title=f"New Post: {title} ({self.mode})", body="Auto-generated via Publisher Tool", head=branch_name, base="main")
-
-            messagebox.showinfo("Success", f"Done! PR Created.\n#{pr.number}")
+            self.show_success_popup(pr.number)
+            #messagebox.showinfo("Success", f"Done! PR Created.\n#{pr.number}")
             
             # Wipe the temporary folders
             self.cleanup_temp_folders()
@@ -916,6 +921,176 @@ author: "{data['author']}"
                 # If it still fails, it's a real error (like permission issues)
                 print(f"Critical Error uploading {path}: {e2}")
                 raise
+
+    # I was told this was a feature of highest priority...
+    def show_animal_popup(self, pr_number, is_motivation=False):
+        """Creates a custom success window with a cute random animal."""
+        popup = ctk.CTkToplevel(self)
+        # Writing if like this is cursed but it seems to be the way here
+        popup.title("You got this!" if is_motivation else "Success!")
+        if is_motivation:
+            popup.geometry()
+        else:
+            popup.geometry("350x400")
+        
+        # Force the popup to the front of the screen
+        popup.after(50, lambda: popup.lift())
+        
+        # Success text
+        if is_motivation:
+            messages = [
+                "When Hagrid comes to pick up Harry in the first movie and gets angry that the Dursley's didn't tell Harry anything.\nHagrid: \"you mean to tell me that he knows nothing about anything?!\" (Not exactly what he said tho) Then oblivious little Harry: \"I know some things. I know math and stuff.\"\nI'm sorry, but it's just a cute",
+                "I believe in you, and also in snacks. You should get one, this is your sign",
+                "You can't spell \"legend\" without \"try.\", whai what? that doesnt even make sense. Dont worry she won't notice. but- No buts, itll be fineee",
+                "In the Middle of Somewhere by Roan Parrish\nLike, you know that feeling,” I try to explain, “where it’s Sunday night and you have school or work the next morning but then it’s a snow day and you don’t have to go in? You feel like that.” “I feel like a natural disaster?” he teases, but his gaze is intent. “No,” I say, forcing myself to say what I mean. “A relief. You feel like a huge relief.” Rex’s eyes go very soft. “You feel like a relief too, Daniel,” he says.",
+                "Ithaca, by Claire North\nTo be patient is to feel burning rage, impotent fury, to rage and rock against the injustice of the world and yet - and yet - to hold one's tongue. That is what she has come to understand of patience, though no one else seems to comprehend the heat of it in her chest.",
+                "Persuasion by Jane Austen\nYou pierce my soul. I am half agony, half hope.",
+                "Emma by Jane Austen\nIf I loved you less, I might be able to talk about it more.",
+                "Happiness can be found even in the darkest of times when only remember to turn on the light\n-Dumbledore",
+                "Rivers know this: there is no hurry. We will get there someday",
+                "People say nothing is impossible, but I do nothing every day.",
+                "You're braver than you believe, stronger than you seem, and smarter than you think",
+                "We can't do everything, but we do what we can. ",
+                "Cardan in Cruel Prince\n\"the next time you want to make a point\", Jude says, \"I beg you not to make it so dramatically.\" \"so long as you're begging.\", he says.",
+                "Cruel Prince by Holly Black\nBy you, I am forever undone.",
+                "Excuse me, are you the tooth fairy?",
+                "Man is not made better by being degraded.\n- Dorothea Dix",
+                "If it's not broke don't fix it\n - Every programmer ever",
+                "If you're not having fun, you're not doing it right.",
+                "\"Boys are dumb,\" she said with a grin. \"But you make me dumber and I like you for it.\"",
+                "This place is angelic compared to my hole-in-the-wall.",
+                "Mayhaps it wasn't the best of his work but she liked it, someone liked it and for the first time in a while he felt his efforts were worthy.",
+                "2 pizzas and a garlic bread for $6.99 ",
+                "Learning without thought is labour lost, thought without learning is perilous",
+                "When I saw you, I fell in love, and you smiled because you knew.",
+                "Beauty is in the eye of the beholder",
+                "That's just like, your opinion, man\n - The dude",
+                "Never say never, cos you never know - wait FUCk",
+                "Time flies like an arrow. Fruit flies like a banana.",
+                "Common sense is the metaphysic of savages.",
+                "\"in another life, I would have really liked just doing laundry and taxes with you\"\n- Everything Everywhere All at Once.",
+                "You know nothing John Snow",
+                "I got a pocket, got a pocket full of sunshine.",
+                "You think you know people then they surprise you.\n - Allison",
+                "A man who can't bear to share his habits is a man who needs to quit them.\n- Stephen kings the dark tower",
+                "I want breakfast",
+                "We've both done a lot of things you're going to regret\n- Glados Portal 2",
+                "In a world without gold, we might have been heros.\n - Edward 'Blackbeard' Thatch, AC:Black Flag",
+                "When life gives you lemons, don't make lemonade - make life take the lemons back! Get mad! I don't want your damn lemons, what am I supposed to do with these? Demand to see life's manager. Make life rue the day it thought it could give Cave Johnson lemons. Do you know who I am? I'm the man who's gonna burn your house down with the lemons. I'm going to to get my engineers to invent a combustible lemon that burns your house down!",
+                "\"Truth is, the game was rigged from the start\"\n- Benny, Fallout: New Vegas",
+                "Zeus! Your son has returned!\nI bring the destruction of Olympus!",
+                "Despite everything, it's still you",
+                "\"I don't know about angels, but it's fear that gives men wings\"- Max Payne",
+                "It's MIDDAY!?!",
+                "\"It's a-me! Mario!\"\n- Mario Auditore, Assassin's Creed ",
+                "Despite my best efforts to the contrary, it turns out I've won.\n- RDR2",
+                "\"In time, you will know the tragic extent of my failings.\"\n- The Ancestor, Darkest Dungeon",
+                "\"Sit your ass down in that chair and drink your goddamn TEA!\"\n- idk porbably some brit, Final Fantasy VII",
+                "Life is brilliant. Beautiful. It enchants us, to the point of obsession."
+            ]
+            display_text = random.choice(messages)
+        else:
+            display_text = f"Done! PR Created.\n#{pr_number}"
+        lbl_msg = ctk.CTkLabel(popup, text=display_text, font=("Arial", 18, "bold"), wraplength=300)
+        lbl_msg.pack(padx=10,pady=(20, 10))
+
+        # Placeholder for the image while it downloads
+        if is_motivation:
+            display_text = "Generating Motivation..."
+        else:
+            display_text = "Generating Reward..."
+        lbl_img = ctk.CTkLabel(popup, text=display_text, text_color="gray")
+        lbl_img.pack(pady=10, expand=True)
+        
+        btn_ok = ctk.CTkButton(popup, text="Pawesome!", command=popup.destroy, fg_color="green", hover_color="#006400")
+        btn_ok.pack(pady=(10, 20))
+
+        def fetch_animal():
+            # Format: (API URL, key where the image is located)
+            apis = [
+                ("https://random-d.uk/api/random", "url"),              
+                
+                # I hate the UK (these use Imgur, renable once the govement comes to thier senses)
+                #("https://some-random-api.com/animal/red_panda", "image"), 
+                #("https://some-random-api.com/animal/koala", "image"),     
+                #("https://some-random-api.com/animal/bird", "image"),
+                #("https://some-random-api.com/animal/racoon", "image"),
+                
+                ("https://dog.ceo/api/breeds/image/random", "message"),    
+                ("https://randomfox.ca/floof/", "image"),                  
+                
+                (f"https://robohash.org/{pr_number}?set=set4&size=200x200", None)
+            ]
+            
+            random.shuffle(apis) # Pick a random api
+            
+            img_url = None
+            # For debugging
+            used_api = None
+            
+            # Try each API until one actually works
+            for api_url, key in apis:
+                try:
+                    used_api = api_url
+                    if key is None:
+                        # It's a direct image link (like RoboHash), so we already have the URL!
+                        img_url = api_url
+                        break
+                    else:
+                        # JSON APIs
+                        req = urllib.request.Request(api_url, headers={'User-Agent': 'Mozilla/5.0'})
+                        with urllib.request.urlopen(req, timeout=5) as response:
+                            data = json.loads(response.read().decode('utf-8'))
+                            
+                            # Grab URL
+                            img_url = data.get(key)
+                            
+                            if not img_url and 'link' in data:
+                                img_url = data['link']
+                            if not img_url and 'url' in data:
+                                img_url = data['url']
+                                
+                            if img_url:
+                                break
+                except Exception as e:
+                    print(f"API failed ({api_url}): {e}")
+                    continue
+            
+            # All APIs failed
+            if not img_url:
+                used_api = None
+                lbl_img.after(0, lambda: lbl_img.configure(text="All animal are currently sleeping! :("))
+                return
+
+            try:
+                # Download the actual image bytes
+                req_img = urllib.request.Request(img_url, headers={'User-Agent': 'Mozilla/5.0'})
+                with urllib.request.urlopen(req_img, timeout=5) as img_response:
+                    img_data = img_response.read()
+                    
+                pil_img = Image.open(io.BytesIO(img_data))
+                
+                # Resize to fit in the popup
+                aspect = pil_img.width / pil_img.height
+                target_height = 200
+                target_width = int(target_height * aspect)
+                
+                ctk_img = ctk.CTkImage(
+                    light_image=pil_img, 
+                    dark_image=pil_img, 
+                    size=(target_width, target_height)
+                )
+                
+                # Update UI
+                lbl_img.after(0, lambda: lbl_img.configure(image=ctk_img, text=""))
+                lbl_img.image = ctk_img # Keep it in memory!
+                print(f"Fetched cute animal from {used_api} URL:{img_url}")
+            except Exception as e:
+                print(f"Failed to fetch cute animal: {e}")
+                lbl_img.after(0, lambda: lbl_img.configure(text="Cute animal failed to load :("))
+
+        # Run the download in the background so it doesn't freeze the popup UI
+        threading.Thread(target=fetch_animal, daemon=True).start()
 
     def validate_inputs(self):
         # Gather raw data (Shared fields)
