@@ -744,6 +744,18 @@ footer {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
+.rss-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+  padding-left: 25px;
+}
+
+.rss-links a:hover {
+  color: #d2b4de;
+  padding-left: 30px; /* Subtle slide effect (5px + 25px) if we do just 5 itll move back 25px */
+}
+
 /* Newsletter Form Styling */
 .subscribe-form {
   display: flex;
