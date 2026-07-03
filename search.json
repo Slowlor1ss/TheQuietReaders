@@ -3,20 +3,21 @@ layout: null
 ---
 [
   {% for post in site.posts %}
+    {% capture star_output %}{% include stars.html rating=post.rating %}{% endcapture %}
     {
-      "title"    : "{{ post.title | escape }}",
-      "customdesc"    : "{{ post.customdesc | escape }}",
-      "genre"    : "{{ post.genre | join: ', ' }}", 
-      "author"   : "{{ post.author | escape }}",
-      "category" : "{{ post.category }}",
-      "tags"     : "{{ post.tags | join: ', ' }}",
-      "url"      : "{{ site.baseurl }}{{ post.url }}",
-      "date"     : "{{ post.date }}",
+      "title"       : {{ post.title | jsonify }},
+      "customdesc"  : {{ post.customdesc | jsonify }},
+      "genre"       : {{ post.genre | join: ', ' | jsonify }},
+      "author"      : {{ post.author | jsonify }},
+      "category"    : {{ post.category | jsonify }},
+      "tags"        : {{ post.tags | join: ', ' | jsonify }},
+      "url"         : {{ site.baseurl | append: post.url | jsonify }},
+      "date"        : {{ post.date | date: "%Y-%m-%d" | jsonify }},
 
-      "image"    : {{ post.image | jsonify }}, 
+      "image"       : {{ post.image | jsonify }},
 
-      "rating"   : "{{ post.rating }}",
-      "stars_html": {% capture star_output %}{% include stars.html rating=post.rating %}{% endcapture %}{{ star_output | jsonify }}
+      "rating"      : {{ post.rating | jsonify }},
+      "stars_html"  : {{ star_output | strip | jsonify }}
     } {% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]
