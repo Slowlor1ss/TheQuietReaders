@@ -26,4 +26,4 @@ permalink: /games/
       </a>
     </div>
   {% endfor %}
-</div>
+</div> 
