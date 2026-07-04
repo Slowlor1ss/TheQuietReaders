@@ -54,18 +54,32 @@ class ConsoleRedirector:
         self.original_stderr = sys.stderr
 
     def write(self, text):
-        self.original_stdout.write(text) 
+        # Only write to original_stdout if it exists (prevents build with --noconsole crash)
+        if self.original_stdout is not None and hasattr(self.original_stdout, 'write'):
+            try:
+                self.original_stdout.write(text)
+            except (AttributeError, OSError):
+                pass
+
         self.buffer.append(text)
         
         # Update text in the console textbox if it exists
         if self.console_textbox and self.console_textbox.winfo_exists():
-            self.console_textbox.configure(state="normal")
-            self.console_textbox.insert("end", text)
-            self.console_textbox.see("end") # Auto-scroll to bottom
-            self.console_textbox.configure(state="disabled")
+            try:
+                self.console_textbox.configure(state="normal")
+                self.console_textbox.insert("end", text)
+                self.console_textbox.see("end")  # Auto-scroll to bottom
+                self.console_textbox.configure(state="disabled")
+            except Exception:
+                pass
 
     def flush(self):
-        self.original_stdout.flush()
+        # Prevent crash when Python calls flush() during exit or buffer clears
+        if self.original_stdout is not None and hasattr(self.original_stdout, 'flush'):
+            try:
+                self.original_stdout.flush()
+            except (AttributeError, OSError):
+                pass
 
 # Resize function and changes to webp
 def process_image_to_memory(input_path, height):
@@ -880,7 +894,7 @@ author: "{data['author']}"
 
             # Pull Request
             pr = repo.create_pull(title=f"New Post: {title} ({self.mode})", body="Auto-generated via Publisher Tool", head=branch_name, base="main")
-            self.show_success_popup(pr.number)
+            self.show_animal_popup(pr.number)
             #messagebox.showinfo("Success", f"Done! PR Created.\n#{pr.number}")
             
             # Wipe the temporary folders
@@ -888,8 +902,8 @@ author: "{data['author']}"
             self.gdocs_zip_data = None 
             
             # Wipe the autosave draft
-            if os.path.exists("autosave_draft.json"):
-                os.remove("autosave_draft.json")
+            #if os.path.exists("autosave_draft.json"):
+            #    os.remove("autosave_draft.json")
                 
             self.reset_ui()
 
