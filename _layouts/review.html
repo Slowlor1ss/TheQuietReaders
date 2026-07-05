@@ -287,7 +287,7 @@ layout: default
             { "@type": "Person", "name": {{ actor | jsonify }} }{% unless forloop.last %}, {% endunless %}
             {% endfor %}
         ],{% endif %}
-        {% if page.run_time %}"duration": "PT{{ page.run_time | remove: 'mins' | remove: 'min' | remove: 'minutes' | strip }}M",{% endif %}
+        {% if page.run_time %}"duration": "PT{{ page.run_time | remove: 'minutes' | remove: 'mins' | remove: 'min' | strip }}M",{% endif %}
         {% if page.release_year %}"datePublished": {{ page.release_year | jsonify }},{% endif %}
     {% elsif page.category == 'Book' %}
         "@type": "Book",
