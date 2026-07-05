@@ -24,7 +24,7 @@ permalink: /our-picks/
             {% elsif post.category == 'Game' %}
             alt="{{ post.title }} game cover"
             {% elsif post.category == 'Film' %}
-            alt="{{ post.title }} film cover"
+            alt="{{ post.title }} movie cover"
             {% elsif post.category == 'Book' %}
             alt="{{ post.title }} book cover"
             {% endif %}

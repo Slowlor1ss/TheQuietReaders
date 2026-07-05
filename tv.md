@@ -18,7 +18,7 @@ permalink: /tv/
             {% if post.category == 'TV' %}
             alt="{{ post.title }} Tv cover"
             {% elsif post.category == 'Film' %}
-            alt="{{ post.title }} film cover"
+            alt="{{ post.title }} movie cover"
             {% endif %}
             loading="lazy"
             decoding="async"

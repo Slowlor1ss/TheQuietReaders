@@ -37,7 +37,7 @@ layout: default
         {% elsif page.category == 'Game' %}
         alt="{{ page.title }} game cover"
         {% elsif page.category == 'Film' %}
-        alt="{{ page.title }} film cover"
+        alt="{{ page.title }} movie cover"
         {% elsif page.category == 'Book' %}
         alt="{{ page.title }} book cover"
         {% endif %}
@@ -271,36 +271,47 @@ layout: default
   "datePublished": "{{ page.date | date_to_xmlschema }}",
   "description": "{{ page.description | strip_html | escape }}",
 
-  "itemReviewed": {
+"itemReviewed": {
     {% if page.category == 'TV' %}
         "@type": "TVSeries",
-        "name": "{{ page.title }}",
-        {% if page.director %}"director": { "@type": "Person", "name": "{{ page.director }}" },{% endif %}
+        "name": {{ page.title | jsonify }},
+        {% if page.director %}"director": { "@type": "Person", "name": {{ page.director | jsonify }} },{% endif %}
         {% if page.seasons %}"numberOfSeasons": {{ page.seasons }},{% endif %}
-        {% if page.network %}"productionCompany": { "@type": "Organization", "name": "{{ page.network }}" },{% endif %}
+        {% if page.network %}"productionCompany": { "@type": "Organization", "name": {{ page.network | jsonify }} },{% endif %}
+    {% elsif page.category == 'Film' %}
+        "@type": "Movie",
+        "name": {{ page.title | jsonify }},
+        {% if page.director %}"director": { "@type": "Person", "name": {{ page.director | jsonify }} },{% endif %}
+        {% if page.leading_actors %}"actor": [
+            {% for actor in page.leading_actors %}
+            { "@type": "Person", "name": {{ actor | jsonify }} }{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+        ],{% endif %}
+        {% if page.run_time %}"duration": "PT{{ page.run_time }}M",{% endif %}
+        {% if page.release_year %}"datePublished": {{ page.release_year | jsonify }},{% endif %}
     {% elsif page.category == 'Book' %}
         "@type": "Book",
-        "name": "{{ page.title }}",
-        "author": "{{ page.title | split: ' by ' | last | strip }}",
-        {% if page.isbn %}"isbn": "{{ page.isbn }}",{% endif %}
+        "name": {{ page.title | jsonify }},
+        "author": { "@type": "Person", "name": {{ page.title | split: ' by ' | last | strip | jsonify }} },
+        {% if page.isbn %}"isbn": {{ page.isbn | jsonify }},{% endif %}
         {% if page.pages %}"numberOfPages": {{ page.pages }},{% endif %}
     {% elsif page.category == 'Game' %}
         "@type": "VideoGame",
-        "name": "{{ page.title }}",
-        "gamePlatform": "{{ page.platform }}", 
-        "author": { "@type": "Organization", "name": "{{ page.developer }}" },
-    /* FALLBACK (If no category is specified) */
+        "name": {{ page.title | jsonify }},
+        "gamePlatform": {{ page.platform | jsonify }}, 
+        "author": { "@type": "Organization", "name": {{ page.developer | jsonify }} },
+    /* FALLBACK */
     {% else %}
-        "@type": "CreativeWork",
-        "name": "{{ page.title }}",
+        "@type": "Book",
+        "name": {{ page.title | jsonify }},
     {% endif %}
 
-    "image": "{{ site.url }}{{ site.baseurl }}{{ page.image }}",
+    "image": {{ site.url | append: site.baseurl | append: page.image | jsonify }}{% if page.genre %},{% endif %}
     {% if page.genre %}
         "genre": [
             {% assign clean_genres = page.genre | replace: '[', '' | replace: ']', '' | replace: '"', '' | split: ',' %}
             {% for g in clean_genres %}
-                "{{ g | strip }}"{% unless forloop.last %},{% endunless %}
+                {{ g | strip | jsonify }}{% unless forloop.last %},{% endunless %}
             {% endfor %}
         ]
     {% endif %}
