@@ -93,6 +93,16 @@ nav a:hover { color: var(--primary); }
   color: var(--secondary) !important; /* Force it to be purple */
 }
 
+/* burger button */
+.nav-toggle {
+  display: none;
+  width: 0px;
+  height: 0px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
 /* Constrain the article body for better readability */
 .post-content {
     max-width: 850px;     
@@ -351,6 +361,73 @@ nav a:hover { color: var(--primary); }
   .view-all-link {
     font-size: 0.85rem; /* Smaller link text */
   }
+
+  /* --- Hamburger Navigation Bar on Mobile --- */
+  .header-content {
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This pushes them to opposite sides */
+    width: 100%; /* This makes sure the container stretches all the way across the screen */
+    margin-top: 10px; /* Optional: adds a little breathing room below the title */
+  }
+
+  .site-title {
+    margin: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .nav-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 2px;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    order: 3;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  nav.is-open {
+    display: flex;
+  }
+
+  nav a {
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+
+  .search-container {
+    order: 2;
+  }
 }
 
 /* Review Page Specifics */
@@ -560,6 +637,11 @@ nav a:hover { color: var(--primary); }
 /* --- Mobile View --- */
 /* On phones, we stack it so it's not squished */
 @media (max-width: 768px) {
+  .post-title,
+  .review-meta h1 {
+    font-size: 1.5rem; /* smaller text for mobile */
+  }
+
   .review-float-image {
     float: none;
     display: block;
@@ -572,9 +654,8 @@ nav a:hover { color: var(--primary); }
   }
 }
 
-/* Responsive Mobile */
 @media (max-width: 768px) {
-  .header-content { flex-direction: column; gap: 15px; }
+  /* .header-content { flex-direction: column; gap: 15px; } */
   .review-header { flex-direction: column; }
   .review-image img { width: 100%; max-width: 400px; }
   nav a { margin: 0 10px; }

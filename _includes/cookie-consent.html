@@ -48,6 +48,7 @@
     display: flex;
     gap: 12px;
     padding-left: 15px;
+  }
 
   /* The "Yes" Button */
   .btn-accept {
@@ -87,17 +88,13 @@
   }
 
   @media (max-width: 600px) {
-    #cookie-banner {
-      bottom: 0; 
-      left: 0; 
-      right: 0; 
-      width: 100%;
-      max-width: 100%;
-      border-radius: 20px 20px 0 0; /* Rounded top only */
-      padding: 30px 20px 40px 20px; /* More padding for thumbs */
-    }
-    #cookie-banner::before { display: none; } /* Remove purple line on mobile */
-    #cookie-banner p, .cookie-buttons { padding-left: 0; }
+      #cookie-banner {
+        max-width: 70%;
+      }
+      #cookie-banner p, .cookie-buttons { 
+        padding-left: 0; 
+        line-height: 1.2;
+      }
   }
 </style>
 

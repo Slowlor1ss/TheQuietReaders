@@ -44,7 +44,7 @@
     <div class="header-content">
       <a href="/" class="site-title">{{ site.title }}</a>
       <!-- Highlight current and home in none of these -->
-      <nav>
+      <nav id="site-nav">
         {% assign current = 'home' %}
         {% if page.url == '/books/' or page.url == '/books' %}{% assign current = 'books' %}{% endif %}
         {% if page.url == '/tv/' or page.url == '/tv' %}{% assign current = 'tv' %}{% endif %}
@@ -55,35 +55,31 @@
         <a href="{{ site.baseurl }}/" class="{% if current == 'home' %}nav-active{% endif %}">Home</a>
         <a href="{{ site.baseurl }}/books" class="{% if current == 'books' %}nav-active{% endif %}">Books</a>
         <a href="{{ site.baseurl }}/tv" class="{% if current == 'tv' %}nav-active{% endif %}">Movies & TV</a>
-        <!-- <a href="{{ site.baseurl }}/games" class="{% if current == 'games' %}nav-active{% endif %}">Games</a> -->
+         <!-- <a href="{{ site.baseurl }}/games" class="{% if current == 'games' %}nav-active{% endif %}">Games</a> -->
         <a href="{{ site.baseurl }}/articles" class="{% if current == 'articles' %}nav-active{% endif %}">Articles</a>
         <a href="{{ site.baseurl }}/about" class="{% if current == 'about' %}nav-active{% endif %}">About</a>
       </nav>
-      
-      <!-- <div class="search-container">
-        <div class="search-wrapper">
-          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8e44ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input type="text" id="search-input" placeholder="Search title, genre, or..." class="search-bar">
-        </div>
-        <ul id="results-container"></ul>
-      </div> -->
 
-      <div class="search-container">
-        <form action="/search/" method="get" class="search-wrapper">
-          <input type="text" name="q" id="search-input" placeholder="Search title, genre, or..." class="search-bar">
-          <button type="submit" class="search-icon-btn" aria-label="Search">
-            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8e44ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </button>
-        </form>
-        <ul id="results-container"></ul>
+      <div class="header-actions">
+        <div class="search-container">
+          <form action="/search/" method="get" class="search-wrapper">
+            <input type="text" name="q" id="search-input" placeholder="Search title, genre, or..." class="search-bar">
+            <button type="submit" class="search-icon-btn" aria-label="Search">
+              <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8e44ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </form>
+          <ul id="results-container"></ul>
+        </div>
+        <!-- Mobile Hamburger Toggle Button -->
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      
     </div>
   </header>
 

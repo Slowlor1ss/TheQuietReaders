@@ -18,3 +18,15 @@ function scrollFunction() {
 function scrollToTop() {
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
+
+// Toggle Hamburger Menu on Mobile
+document.addEventListener("DOMContentLoaded", function() {
+  const navToggle = document.getElementById("nav-toggle");
+  const siteNav = document.getElementById("site-nav");
+
+  if (navToggle && siteNav) {
+    navToggle.addEventListener("click", function() {
+      siteNav.classList.toggle("is-open");
+    });
+  }
+});
