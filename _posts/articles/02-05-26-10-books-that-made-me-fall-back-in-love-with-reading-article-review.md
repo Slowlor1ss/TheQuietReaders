@@ -1,11 +1,7 @@
 ---
 layout: article
-title: "10 Books That Made Me Fall Back In Love With Reading
-
-"
-seo_title: "10 Books That Made Me Fall Back In Love With Reading
-
- | Article"
+title: "10 Books That Made Me Fall Back In Love With Reading"
+seo_title: "10 Books That Made Me Fall Back In Love With Reading | Article"
 date: 02-05-2026
 image: "/assets/images/articles/alisa-anton-uq-dhp-c-rc-i-unsplash-1200w.webp"
 category: "Article"
@@ -124,4 +120,4 @@ author: "Eris Langley"
                         </p>
 </div>
 </div>
-</div><p></p><div class="read-more-callout"><span class="read-more-icon">📖</span><div class="read-more-text"></div><a href="https://thequietreaders.com/book/2026/01/24/love-theoretically-by-ali-hazelwood-book-review.html">Check out my book review on Love, Theoretically by clicking here.</a></div><p></p><p></p><h3>Related Articles:</h3><div class="read-more-callout"><span class="read-more-icon">📖</span><div class="read-more-text"></div><a href="https://thequietreaders.com/article/2026/04/19/6-fantasy-books-to-read-when-you-are-missing-fourth-wing-article.html">6 Fantasy Books To Read When You Are Missing Fourth Wing</a></div><div class="read-more-callout"><span class="read-more-icon">📖</span><div class="read-more-text"></div><a href="https://thequietreaders.com/article/2026/04/26/the-10-best-romance-books-i-have-read-in-2026-so-far-article-review.html">The 10 Best Romance Books I Have Read in 2026 So Far</a></div><p></p>
+</div><p></p><div class="read-more-callout"><span class="read-more-icon">📖</span><div class="read-more-text"></div><a href="https://thequietreaders.com/book/2026/01/24/love-theoretically-by-ali-hazelwood-book-review.html">Check out my book review on Love, Theoretically by clicking here.</a></div>

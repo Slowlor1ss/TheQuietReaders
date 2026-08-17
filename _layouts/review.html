@@ -150,7 +150,9 @@ layout: default
         {% assign minCommonTags = 1 %}
         {% assign maxRelatedCounter = 0 %}
 
-        {% for post in site.posts %}
+        <!-- Randomize posts so we dont always suggest the same ones -->
+        {% assign shuffled_posts = site.posts | sample: 1000 %}
+        {% for post in shuffled_posts %}
             {% assign sameTagCount = 0 %}
     
             {% for tag in post.genre %}

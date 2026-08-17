@@ -28,4 +28,74 @@ layout: default
 
     <div style="clear: both;"></div>
     <hr>
+
+    {% capture related_cards %}
+        {% assign maxRelated = 4 %}
+        {% assign minCommonTags = 1 %}
+        {% assign maxRelatedCounter = 0 %}
+        <!-- Randomize posts so we dont always suggest the same ones -->
+        {% assign shuffled_posts = site.posts | sample: 1000 %}
+        {% for post in shuffled_posts %}
+            {% assign sameTagCount = 0 %}
+    
+            {% for tag in post.category %}
+                {% if post.url != page.url %}
+                    {% if page.category contains tag %}
+                        {% assign sameTagCount = sameTagCount | plus: 1 %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+    
+            {% if sameTagCount >= minCommonTags %}
+                <div class="card">
+                    <a href="{{ site.baseurl }}{{ post.url }}">
+                        <img 
+                            src="{{ post.image | relative_url }}" 
+                            {% if post.category == 'TV' %}
+                            alt="{{ post.title }} TV show cover"
+                            {% elsif post.category == 'Game' %}
+                            alt="{{ post.title }} video game cover"
+                            {% elsif post.category == 'Film' %}
+                            alt="{{ post.title }} movie poster"
+                            {% elsif post.category == 'Book' %}
+                            alt="{{ post.title }} book cover"
+                            {% else %}
+                            alt="{{ post.title }} review image"
+                            {% endif %}
+                            loading="lazy"
+                            decoding="async"
+                        >
+                        <div class="card-content">
+                
+                            <div class="tags-container">
+                                {% for genre in post.genre %}
+                                <span class="genre-tag">{{ genre }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <h3>{{ post.title }}</h3>
+
+                            <p>
+                                {{ post.customdesc }}
+                            </p>
+
+                        </div>
+                    </a>
+                </div>
+                {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+                {% if maxRelatedCounter >= maxRelated %}
+                    {% break %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endcapture %}
+
+    {% assign related_cards_stripped = related_cards | strip %}
+
+    {% if related_cards_stripped != "" %}
+        <h3>You might also like...</h3>
+        <div class="grid-container">
+            {{ related_cards }}
+        </div>
+    {% endif %}
 </article> 
