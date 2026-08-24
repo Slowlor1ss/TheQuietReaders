@@ -27,11 +27,9 @@ Published in February 2026 by Daisy Pearce, *Something in the Walls* is a horror
 
 Mina has a secret. She carries it around everyday as it eats her alive. So when she gets the chance to see what truly lies on the other side, she must take it, even if her partner disagrees, and even if it may destroy her in the process. Her degree in child psychology has not had any time to collect dust, but she must trust the knowledge she has accumulated while she tries to help Alice ー a teenage girl who is convinced she has the devil inside of her. And she must do all of this while tackling a horrid heatwave within the UK that threatens to take her life before she has the chance to achieve what she really wants.
 
-
 ## Writing Style
 
 The writing style is very descriptive and has plenty of internal monologues. It has a singular POV and fairly short chapters. 
-
 
 ## My Thoughts
 
@@ -45,7 +43,6 @@ By far my favorite part of the book was the use of the weather to set the scene.
 
 Unfortunately, the reason this isn’t rated higher is because it fell into the easy trap that so many other novels of a similar type do. It rushed the ending. The last 30-50 pages felt too fast-paced for comfort, missed out important details and left me feeling a lot more confused than satisfied. 
 
-
 ## Trigger Warnings
 
  **Please note this is a non-comprehensive list and there may be triggers in this book not explicitly stated here.**
@@ -54,8 +51,6 @@ Unfortunately, the reason this isn’t rated higher is because it fell into the 
 * Death of a child (off-page) x2
 * Torture
 * Adultery
-* 
-
 
 ## Recommendation
 
