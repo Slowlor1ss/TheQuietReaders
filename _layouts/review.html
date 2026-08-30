@@ -47,7 +47,7 @@ layout: default
     >
 
     <div class="review-meta">
-        <h1 class="post-title">{{ page.title }}</h1>
+        <h1 class="post-title">{{ page.title }}{% if page.book_author and page.book_author != "" %} by {{ page.book_author }}{% endif %}</h1>
     
         <div class="tags">
             {% for genre in page.genre %}
@@ -89,6 +89,16 @@ layout: default
                 {% if page.pages %}<strong>Pages:</strong> {{ page.pages }}{% endif %}
             {% endif %}
 
+        </p>
+        {% endif %}
+
+        {% if page.book_author and page.book_author != "" %}
+        <p class="book-author-more" style="margin-top: 5px; margin-bottom: 5px;">
+            {% if page.book_author_link and page.book_author_link != "" %}
+            <a href="{{ page.book_author_link | relative_url }}">More about {{ page.book_author }}</a>
+            {% else %}
+            More about {{ page.book_author }}
+            {% endif %}
         </p>
         {% endif %}
 
@@ -294,7 +304,7 @@ layout: default
     {% elsif page.category == 'Book' %}
         "@type": "Book",
         "name": {{ page.title | jsonify }},
-        "author": { "@type": "Person", "name": {{ page.title | split: ' by ' | last | strip | jsonify }} },
+        "author": {% if page.book_author and page.book_author != "" %}{ "@type": "Person", "name": {{ page.book_author | jsonify }} }{% else %}{ "@type": "Person", "name": {{ page.title | split: ' by ' | last | strip | jsonify }} }{% endif %},
         {% if page.isbn %}"isbn": {{ page.isbn | jsonify }},{% endif %}
         {% if page.pages %}"numberOfPages": {{ page.pages }},{% endif %}
     {% elsif page.category == 'Game' %}
