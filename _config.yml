@@ -37,6 +37,10 @@ header_pages:
   - tv.md
   - games.md
 
+collections:
+  other:
+    output: true
+
 # Show one paragraph and a read more button on RSS feed 
 # feed:
 #   excerpt_only: true
